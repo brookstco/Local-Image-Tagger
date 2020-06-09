@@ -12,7 +12,7 @@
             <RowDefinition Height="10*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Image x:Name="largeImage" HorizontalAlignment="Left" VerticalAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Stretch="None"/> <!--stretch=none displays images at normal size-->
+        <Image x:Name="largeImage" HorizontalAlignment="Left" VerticalAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Stretch="None" ScrollViewer.VerticalScrollBarVisibility="Disabled"/> <!--stretch=none displays images at normal size-->
         <Button Content="Open Image" HorizontalAlignment="Stretch" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Center" Click="File_Open_Click"/>
         
     </Grid>
