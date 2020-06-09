@@ -1,5 +1,5 @@
 ﻿LocalImageTagger
-1.0.0.0
+
 
 winexe
 C#
@@ -12,9 +12,9 @@ TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\App.xaml
 2709255222
 
-6890626499
+4-685797237
 1921654412462
 ImageViewer.xaml;MainWindow.xaml;
 
-True
+False
 
