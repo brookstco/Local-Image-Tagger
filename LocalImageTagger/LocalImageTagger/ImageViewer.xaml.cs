@@ -37,7 +37,7 @@ namespace LocalImageTagger
                     RestoreDirectory = true
                 };
 
-                if (dlg.ShowDialog() == true)//if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                if (dlg.ShowDialog() == true)
                 {
                     string selectedFileName = dlg.FileName;
                     BitmapImage bitmap = new BitmapImage(); //Directly typing it is one option, or use var.

@@ -17,12 +17,16 @@ namespace LocalImageTagger
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            ImageViewer window = new ImageViewer();
+
+            MainWindow window = new MainWindow();
+            //ImageViewer window = new ImageViewer();
             if (e.Args.Length >= 1)
             {
+                //TODO: Command Line Searches
                 //This will enable searching and other effects from the command line by adding the search terms as parameters on bootup
                 //Open immediately in new tab if ones are saved from before?
             }
+
             /*Globalization controls. Unneeded for now.
             CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US"); //Sets thread default culture- Use if I multithread
             CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("en-US");
@@ -32,6 +36,13 @@ namespace LocalImageTagger
             */
 
             window.Show();
+
+            //TODO: Open popup based on settings
+            //Show a popup on the first time opening the program, or if the setting is toggled.
+            //If firstTimeOpen setting is true
+            FirstTimePopUp popup = new FirstTimePopUp();
+            popup.Show();
+
         }
     }
 }

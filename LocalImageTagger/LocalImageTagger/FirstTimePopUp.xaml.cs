@@ -9,6 +9,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Diagnostics;
+using System.Windows.Navigation;
 
 namespace LocalImageTagger
 {
@@ -23,7 +25,17 @@ namespace LocalImageTagger
         }
         private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
         {
-            System.Diagnostics.Process.Start(e.Uri.AbsoluteUri);
+            //TODO: Broken Hyperlinks 
+            //Apparently this breaks because this is a .core type project. Not sure important, so will be ignored for now.
+            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            e.Handled = true;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO: Popup's checkbox for settings
+            //Deal with the checkbox here. Changes app setting for the popup next time
+            this.Close();
         }
     }
 }

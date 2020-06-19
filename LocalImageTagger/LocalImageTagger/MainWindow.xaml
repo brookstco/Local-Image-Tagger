@@ -7,6 +7,8 @@
         mc:Ignorable="d"
         Title="Local Image Tagger" Height="450" Width="800">
     <Grid>
+        <TextBox HorizontalAlignment="Left" Margin="245,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="448"/>
+        <Button Content="Search" HorizontalAlignment="Left" Margin="698,48,0,0" VerticalAlignment="Top" Height="18" Width="58"/>
 
     </Grid>
 </RibbonWindow>
