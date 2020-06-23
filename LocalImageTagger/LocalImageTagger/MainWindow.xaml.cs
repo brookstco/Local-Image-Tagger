@@ -25,5 +25,11 @@ namespace LocalImageTagger
         {
             InitializeComponent();
         }
+
+        private void Test_Button_Click(object sender, RoutedEventArgs e)
+        {
+            ImageViewer popUp = new ImageViewer();
+            popUp.Show();
+        }
     }
 }
