@@ -31,5 +31,11 @@ namespace LocalImageTagger
             ImageViewer popUp = new ImageViewer();
             popUp.Show();
         }
+
+        private void Tag_Button_Click(object sender, RoutedEventArgs e)
+        {
+            NewTagWindow popUp = new NewTagWindow();
+            popUp.Show();
+        }
     }
 }

@@ -9,7 +9,8 @@
     <Grid>
         <TextBox HorizontalAlignment="Left" Margin="245,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="448"/>
         <Button Content="Search" ToolTip="Searches Tagged Images by Tag"  HorizontalAlignment="Left" Margin="698,48,0,0" VerticalAlignment="Top" Height="18" Width="58"/>
-        <Button Content="Open Test Image Viewer" ToolTip="Opens new window with test image loading" HorizontalAlignment="Left" Margin="357,236,0,0" VerticalAlignment="Top" Click="Test_Button_Click"/>
+        <Button Content="Open Test Image Viewer" ToolTip="Opens new window with test image loading" HorizontalAlignment="Center" Margin="0,236,0,0" VerticalAlignment="Top" Click="Test_Button_Click"/>
+        <Button Content="Add New Tag Test" ToolTip="Opens new tag dialog, but doesn't actually work" HorizontalAlignment="Center" Margin="0,280,0,0" VerticalAlignment="Top" Click="Tag_Button_Click"/>
 
     </Grid>
 </RibbonWindow>
