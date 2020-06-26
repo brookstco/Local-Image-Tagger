@@ -31,7 +31,7 @@ namespace LocalImageTagger
             e.Handled = true;
         }
 
-        private void btnOk_Click(object sender, RoutedEventArgs e)
+        private void BtnOk_Click(object sender, RoutedEventArgs e)
         {
             //TODO: Popup's checkbox for settings
             //Deal with the checkbox here. Changes app setting for the popup next time

@@ -16,7 +16,7 @@
             </Hyperlink> . This is a personal project, so updates may be slow, but please report any bugs or issues on <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://github.com/brookstco/Local-Image-Tagger/issues">
             GitHub</Hyperlink>.
         </TextBlock>
-        <Button Name="btnOk"  Content="OK" IsCancel="True" IsDefault="True" Margin="114,323,114,0" Click="btnOk_Click" VerticalAlignment="Top"/>
+        <Button Name="btnOk"  Content="OK" IsCancel="True" IsDefault="True" Margin="114,323,114,0" Click="BtnOk_Click" VerticalAlignment="Top"/>
         <CheckBox Content="Do Not Show on Startup" IsChecked="True" HorizontalAlignment="Center" Margin="0,295,0,0" VerticalAlignment="Top"/>
 
     </Grid>
