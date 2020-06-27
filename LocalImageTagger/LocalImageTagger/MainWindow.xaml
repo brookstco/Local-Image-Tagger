@@ -23,14 +23,15 @@
         
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="5"/>
-                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
             <StackPanel Orientation="Horizontal" Grid.ColumnSpan="10">
@@ -38,9 +39,10 @@
                 <Button x:Name="btnSearch" Content="Search" ToolTip="Searches Tagged Images by Tag"  HorizontalAlignment="Left" Margin="0,10,10,10" VerticalAlignment="Top" VerticalContentAlignment="Center" MinWidth="50" MinHeight="20"/>
             </StackPanel>
             
-            <Button Content="Open Test Image Viewer" ToolTip="Opens new window with test image loading" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Test_Button_Click" Grid.Row="1"/>
-            <Button Content="Add New Tag Test" ToolTip="Opens new tag dialog, but doesn't actually work" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Tag_Button_Click" Grid.Row="2"/>
+            <Button Content="Open Test Image Viewer" ToolTip="Opens new window with test image loading" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Test_Button_Click" Grid.Row="1"/>
+            <Button Content="Add New Tag Test" ToolTip="Opens new tag dialog, but doesn't actually work" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Tag_Button_Click" Grid.Row="2"/>
 
+            <GridSplitter Grid.Row="1" Grid.Column="1" Width="5" HorizontalAlignment="Stretch" Grid.RowSpan="10" ShowsPreview="True"/>
         </Grid>
     </DockPanel>
     
