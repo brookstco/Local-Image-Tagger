@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LocalImageTagger"
         mc:Ignorable="d"
-        Title="NewTagWindow" SizeToContent="WidthAndHeight">
+        Title="NewTagWindow" SizeToContent="WidthAndHeight"
+        WindowStartupLocation="CenterOwner" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -24,9 +25,9 @@
         <TextBox Name="txtBoxTag" Grid.Column="1" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Width="250" ToolTip="(Required) Enter the new tag.&#x0a;It should have no spaces. Use - or _ instead."/>
 
         <Label Content="_Category" Grid.Row="1" Target="{Binding ElementName=txtBoxCat}" HorizontalAlignment="Right" Margin="10,0,0,0" VerticalAlignment="Top"/><!--comboBoxCategory-->
-        <TextBox Name="txtBoxCat" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Top" Width="250" ToolTip="(Required) Enter the category that the tag belongs to."/> <!--TODO: Have a popup if the category is new to check if they want to add it as a new category-->
-        <!--<ComboBox Name="comboBoxCategory" Grid.Column="1" Grid.Row="1" Margin="10,0,0,10" ToolTip="(Required) Select the category that the tag belongs to"/>
-        <Button Content="_New" Grid.Column="2" HorizontalAlignment="Left" Margin="5,0,10,0" VerticalAlignment="Top" ToolTip="Add a new category" Grid.Row="1"/>-->
+        <!--<TextBox Name="txtBoxCat" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Top" Width="250" ToolTip="(Required) Enter the category that the tag belongs to."/> --><!--TODO: Have a popup if the category is new to check if they want to add it as a new category-->
+        <ComboBox Name="comboBoxCategory" Grid.Column="1" Grid.Row="1" Margin="10,0,10,10" IsEditable="True" ToolTip="(Required) Select the category that the tag belongs to"/>
+        <Button Content="_New" Grid.Column="2" HorizontalAlignment="Left" Margin="0,0,10,0" VerticalAlignment="Top" ToolTip="Add a new category" Grid.Row="1"/>
 
         <Label Content="_Description" Target="{Binding ElementName=txtBoxDesc}" Grid.Row="2" HorizontalAlignment="Right" Margin="10,0,0,0" VerticalAlignment="Top"/>
         <TextBox Name="txtBoxDesc" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,10" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Top" Width="250" Height="70" ToolTip="(Optional) Enter the description for the new tag. This will be visible in the tag dictionary."/>

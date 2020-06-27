@@ -40,7 +40,10 @@ namespace LocalImageTagger
             //TODO: Open popup based on settings
             //Show a popup on the first time opening the program, or if the setting is toggled.
             //If firstTimeOpen setting is true
-            FirstTimePopUp popup = new FirstTimePopUp();
+            FirstTimePopUp popup = new FirstTimePopUp
+            {
+                Owner = window //The popup will load in the center of the main window of the window
+            };
             popup.Show();
 
         }

@@ -34,8 +34,11 @@ namespace LocalImageTagger
 
         private void Tag_Button_Click(object sender, RoutedEventArgs e)
         {
-            NewTagWindow popUp = new NewTagWindow();
-            popUp.Show();
+            NewTagWindow dialog = new NewTagWindow
+            {
+                Owner = this //Make this window the owner of the popup, so that it will show in the center.
+            };
+            dialog.Show();
         }
     }
 }

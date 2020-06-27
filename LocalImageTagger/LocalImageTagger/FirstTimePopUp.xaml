@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LocalImageTagger"
         mc:Ignorable="d"
-        Title="Welcome" Height="400" Width="300">
+        Title="Welcome" Height="400" Width="300"
+        WindowStartupLocation="CenterOwner" >
     <Grid>
         <TextBlock HorizontalAlignment="Center" Margin="30,20,30,0"  TextWrapping="Wrap" VerticalAlignment="Top">
             Welcome!
