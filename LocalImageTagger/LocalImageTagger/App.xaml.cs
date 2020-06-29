@@ -19,7 +19,7 @@ namespace LocalImageTagger
         {
 
             MainWindow window = new MainWindow();
-            //ImageViewer window = new ImageViewer();
+            //Test window = new Test();
             if (e.Args.Length >= 1)
             {
                 //TODO: Command Line Searches

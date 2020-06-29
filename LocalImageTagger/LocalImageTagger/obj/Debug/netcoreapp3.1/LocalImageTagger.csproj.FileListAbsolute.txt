@@ -23,3 +23,6 @@ C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalIma
 C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\obj\Debug\netcoreapp3.1\FirstTimePopUp.baml
 C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\obj\Debug\netcoreapp3.1\NewTagWindow.g.cs
 C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\obj\Debug\netcoreapp3.1\NewTagWindow.baml
+C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\obj\Debug\netcoreapp3.1\App.baml
+C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\obj\Debug\netcoreapp3.1\Test.baml
+C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\obj\Debug\netcoreapp3.1\Test.g.cs

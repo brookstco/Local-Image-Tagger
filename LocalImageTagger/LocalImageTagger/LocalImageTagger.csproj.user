@@ -16,6 +16,9 @@
     <Compile Update="NewTagWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Test.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="FirstTimePopUp.xaml">
@@ -28,6 +31,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="NewTagWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Test.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

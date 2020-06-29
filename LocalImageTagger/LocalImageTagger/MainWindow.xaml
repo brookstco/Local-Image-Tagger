@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LocalImageTagger"
         mc:Ignorable="d"
-        Title="Local Image Tagger" Height="450" Width="800">
+        Title="Local Image Tagger" Height="600" Width="1000">
 
     <DockPanel>
         <Menu DockPanel.Dock="Top">
@@ -29,9 +29,9 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="5*"/>
                 <ColumnDefinition Width="5"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
 
             <StackPanel Orientation="Horizontal" Grid.ColumnSpan="10">

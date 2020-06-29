@@ -5,6 +5,13 @@
              Startup="Application_Startup">
              <!--StartupUri="ImageViewer.xaml"--> 
     <Application.Resources>
-         
+        <Style  x:Key="StandardStyleTextBlock" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="FontSize" Value="12" />
+        </Style>
+
+        <Style x:Key="StandardStyleLabelBold" TargetType="Label">
+            <Setter Property="FontWeight" Value="SemiBold"></Setter>
+        </Style>
     </Application.Resources>
 </Application>

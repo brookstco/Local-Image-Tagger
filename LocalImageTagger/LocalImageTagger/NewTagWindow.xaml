@@ -21,10 +21,10 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <Label Content="_Tag"  Target="{Binding ElementName=txtBoxTag}" HorizontalAlignment="Right" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label Style="{StaticResource StandardStyleLabelBold}" Target="{Binding ElementName=txtBoxTag}" HorizontalAlignment="Right" Margin="10,10,0,0" VerticalAlignment="Top" >_Tag</Label>
         <TextBox Name="txtBoxTag" Grid.Column="1" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Width="250" ToolTip="(Required) Enter the new tag.&#x0a;It should have no spaces. Use - or _ instead."/>
 
-        <Label Content="_Category" Grid.Row="1" Target="{Binding ElementName=txtBoxCat}" HorizontalAlignment="Right" Margin="10,0,0,0" VerticalAlignment="Top"/><!--comboBoxCategory-->
+        <Label Content="_Category" Style="{StaticResource StandardStyleLabelBold}" Grid.Row="1" Target="{Binding ElementName=txtBoxCat}" HorizontalAlignment="Right" Margin="10,0,0,0" VerticalAlignment="Top"/><!--comboBoxCategory-->
         <!--<TextBox Name="txtBoxCat" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Top" Width="250" ToolTip="(Required) Enter the category that the tag belongs to."/> --><!--TODO: Have a popup if the category is new to check if they want to add it as a new category-->
         <ComboBox Name="comboBoxCategory" Grid.Column="1" Grid.Row="1" Margin="10,0,10,10" IsEditable="True" ToolTip="(Required) Select the category that the tag belongs to"/>
         <Button Content="_New" Grid.Column="2" HorizontalAlignment="Left" Margin="0,0,10,0" VerticalAlignment="Top" ToolTip="Add a new category" Grid.Row="1"/>
