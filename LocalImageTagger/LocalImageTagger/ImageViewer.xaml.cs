@@ -22,9 +22,11 @@ namespace LocalImageTagger
         public ImageViewer()
         {
             InitializeComponent();
+            //TODO: Have the size of the popped out video player adjust based on video versus photo, but go back to the old user size if a pi is opened back up afterwards
         }
 
         protected int imageSelector = 0;
+        protected bool fullSize = false;
         void File_Open_Click(object sender, RoutedEventArgs e)
         {
             if (imageSelector == 0)
@@ -33,18 +35,32 @@ namespace LocalImageTagger
                 OpenFileDialog dlg = new OpenFileDialog
                 {
                     InitialDirectory = "c:\\",
-                    Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All Files (*.*)|*.*",
+                    Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|Video files (*.mp4)|*.mp4|All Files (*.*)|*.*",
                     RestoreDirectory = true
                 };
 
                 if (dlg.ShowDialog() == true)
                 {
                     string selectedFileName = dlg.FileName;
-                    BitmapImage bitmap = new BitmapImage(); //Directly typing it is one option, or use var.
-                    bitmap.BeginInit();
-                    bitmap.UriSource = new Uri(selectedFileName);
-                    bitmap.EndInit();
-                    largeImage.Source = bitmap;
+                    string selectedFileExt = System.IO.Path.GetExtension(selectedFileName);
+
+                    //Use an image player if an image, and a media player if it is a video
+                    if (selectedFileExt == ".png" || selectedFileExt == ".jpg" || selectedFileExt == ".jpeg")
+                    {
+                        videoPlayer.Source = null;
+                        BitmapImage bitmap = new BitmapImage(); //Directly typing it is one option, or use var.
+                        bitmap.BeginInit();
+                        bitmap.UriSource = new Uri(selectedFileName);
+                        bitmap.EndInit();
+                        largeImage.Source = bitmap;
+                    }
+                    else if (selectedFileExt == ".mp4")
+                    {
+                        largeImage.Source = null;
+
+                        videoPlayer.Source = new Uri(selectedFileName);
+                        videoPlayer.Play(); //just autoplays since this is just a test
+                    }
                 }
             }
             else if(imageSelector == 1)
@@ -63,6 +79,19 @@ namespace LocalImageTagger
                 var bitmap = new BitmapImage(uri); //creates an image file of that path
                 largeImage.Source = bitmap; //tells the image to be the loaded image
                 imageSelector--;
+            }
+        }
+
+        private void BtnSizeSwap_Click(object sender, RoutedEventArgs e)
+        {
+            fullSize = !fullSize;
+            if (fullSize)
+            {
+                largeImage.Stretch = Stretch.None;
+            }
+            else
+            {
+                largeImage.Stretch = Stretch.Uniform;
             }
         }
     }

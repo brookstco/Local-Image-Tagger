@@ -24,6 +24,8 @@ namespace LocalImageTagger
         public MainWindow()
         {
             InitializeComponent();
+            //TODO: When closing this main window, close al other windows too.
+            //TODO: When closing, prompt about closing, and have a checkbox for not having that warning anymore
         }
 
         private void Test_Button_Click(object sender, RoutedEventArgs e)

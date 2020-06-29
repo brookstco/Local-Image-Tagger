@@ -17,8 +17,14 @@
             <ColumnDefinition Width="5"/>
             <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
+        <StackPanel>
+            <Button Name="btnSizeSwap"  Click="BtnSizeSwap_Click">
+                _Swap Size
+            </Button>
+        </StackPanel>
         <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" ShowsPreview="True" Grid.RowSpan="2"/>
-        <Image x:Name="largeImage" HorizontalAlignment="Left" Grid.Column="2" VerticalAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Stretch="None" ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="0,199,0,0"/>
+        <Image x:Name="largeImage" HorizontalAlignment="Left" Grid.Column="2" VerticalAlignment="Top" Margin="5" Stretch="Uniform" Grid.ColumnSpan="2"/>
+        <MediaElement x:Name="videoPlayer" LoadedBehavior="Manual" Stretch="None" HorizontalAlignment="Left" Grid.Column="2" VerticalAlignment="Top" Margin="5" Grid.ColumnSpan="2"/>
         <!--stretch=none displays images at normal size-->
         <Button Content="Open Image" ToolTip="Open an image"  HorizontalAlignment="Stretch" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Center" Click="File_Open_Click"/>
 
