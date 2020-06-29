@@ -23,6 +23,7 @@ namespace LocalImageTagger
         {
             InitializeComponent();
             //TODO: Have the size of the popped out video player adjust based on video versus photo, but go back to the old user size if a pi is opened back up afterwards
+            //IDEA: Multi-thread loading higher-resolutions, so a smaller preview can be seen immediately, and the full image will load at its own pace, for large images at least.
         }
 
         protected int imageSelector = 0;

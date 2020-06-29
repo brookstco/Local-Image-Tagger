@@ -15,6 +15,7 @@ namespace LocalImageTagger
     /// </summary>
     public partial class App : Application
     {
+        //TODO: Make this only have 1 instance up at a time. If it is already open, bring it to the front.
         private void Application_Startup(object sender, StartupEventArgs e)
         {
 
