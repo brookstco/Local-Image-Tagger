@@ -77,7 +77,7 @@ namespace LocalImageTagger {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/LocalImageTagger;component/imageviewer.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/LocalImageTagger;V1.0.0.0;component/imageviewer.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\ImageViewer.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
