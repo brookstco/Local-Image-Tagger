@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Update="TagDatabaseDataSet.Designer.cs">
+    <Compile Update="Database\TagDatabaseDataSet.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>TagDatabaseDataSet.xsd</DependentUpon>
@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="TagDatabaseDataSet.xsd">
+    <None Update="Database\TagDatabaseDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>TagDatabaseDataSet.Designer.cs</LastGenOutput>
     </None>

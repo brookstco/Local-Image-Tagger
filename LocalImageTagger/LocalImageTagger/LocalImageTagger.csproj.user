@@ -21,7 +21,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Update="TagDatabaseDataSet.xsd">
+    <None Update="Database\TagDatabaseDataSet.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>

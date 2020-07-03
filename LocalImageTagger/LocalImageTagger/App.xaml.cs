@@ -13,12 +13,7 @@ namespace LocalImageTagger
 
     //TODO: Put this stuff where it belongs
     //This will be stored in a smallint field in the database
-    public enum tagType : short
-    {
-        Unknown = 0,
-        Standard,
-        Alias
-    }
+
 
     /// <summary>
     /// Interaction logic for App.xaml
