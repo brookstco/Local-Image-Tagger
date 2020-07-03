@@ -9,3 +9,7 @@ WPF Project built in Visual studio with C#
  Internet access or local servers are not required once the images are stored locally. Photo metadata is secondary behind descriptive tags. Already existing metadata won't be disturbed though, and file sizes won't be inflated, since the tags are stored in a program specific database. So one could use another photo sepcfic program to bake in EXIF, and use this for accessing it for art.
 
 Can natively work with the filetypes: BMP, JPEG, PNG, TIFF, Windows Media Photo, GIF, and ICON. Other codecs will also be added, but are less critical. Eventually, also video files will load, and tags can be loaded from the standard metadata forms: Exchangeable image file (Exif), tEXt (PNG Textual Data), image file directory (IFD), International Press Telecommunications Council (IPTC), and Extensible Metadata Platform (XMP)).
+
+
+Technical Details:
+The program was created in visual studio 2019 as a wpf project in the MVVM style. The tag database is a 3-table system that is based on the three-table system that is often called Toxi.
