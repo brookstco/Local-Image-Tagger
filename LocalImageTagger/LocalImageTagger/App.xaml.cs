@@ -10,6 +10,16 @@ using System.Windows;
 
 namespace LocalImageTagger
 {
+
+    //TODO: Put this stuff where it belongs
+    //This will be stored in a smallint field in the database
+    public enum tagType : short
+    {
+        Unknown = 0,
+        Standard,
+        Alias
+    }
+
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
@@ -27,7 +37,9 @@ namespace LocalImageTagger
                 //This will enable searching and other effects from the command line by adding the search terms as parameters on bootup
                 //Open immediately in new tab if ones are saved from before?
             }
+            window.Show();
 
+            #region Globalization
             /*Globalization controls. Unneeded for now.
             CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US"); //Sets thread default culture- Use if I multithread
             CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("en-US");
@@ -35,9 +47,9 @@ namespace LocalImageTagger
             Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US"); //Sets number display culture
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US"); //Sets language deafult
             */
+            #endregion
 
-            window.Show();
-
+            #region First-Time pop-up
             //TODO: Open popup based on settings
             //Show a popup on the first time opening the program, or if the setting is toggled.
             //If firstTimeOpen setting is true
@@ -46,6 +58,7 @@ namespace LocalImageTagger
                 Owner = window //The popup will load in the center of the main window of the window
             };
             popup.Show();
+            #endregion
 
         }
     }
