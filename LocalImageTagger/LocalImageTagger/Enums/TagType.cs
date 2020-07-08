@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace LocalImageTagger.Enums
+﻿namespace LocalImageTagger
 {
     /// <summary>
     /// The type  of tag. Changes how the "TagAssociations" field is used.
