@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\unknownFile.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\unknownFile.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Database\TagDatabaseDataSet.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
