@@ -18,7 +18,7 @@
         /// <summary>
         /// The name of the item
         /// </summary>
-        public string Name { get { return getFileFolderName(FullPath)}; }
+        public string Name { get { return getFileFolderName(FullPath); } }
 
         /// <summary>
         /// Database ID
