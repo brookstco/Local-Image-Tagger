@@ -18,6 +18,11 @@ namespace LocalImageTagger.ViewModels
         #region Commands
 
         /// <summary>
+        /// Toggles fullscreen
+        /// </summary>
+        public ICommand ToggleFullscreen { get; private set; }
+
+        /// <summary>
         /// Command to swap the stretch property for the window
         /// </summary>
         public ICommand SwapSize { get; private set; }
@@ -50,6 +55,17 @@ namespace LocalImageTagger.ViewModels
         #endregion
 
         #region Properties
+
+        /// <summary>
+        /// Window Style used for full screening the app
+        /// </summary>
+        public WindowStyle WindowStyle { get; set; }
+
+        /// <summary>
+        /// Window State used for full screening the app
+        /// </summary>
+        public WindowState WindowState { get; set; }
+
 
         /// <summary>
         /// The Bitmap image form of the image.
@@ -102,6 +118,7 @@ namespace LocalImageTagger.ViewModels
             SetRenderingModeNormal = new RelayCommand(setRenderingModeDefault);
             SwapRenderingMode = new RelayCommand(swapRenderingMode);
             OpenCloseSidebar = new RelayCommand(swapSideBar);
+            ToggleFullscreen = new RelayCommand(toggleFullscreen);
 
             //TODO: Temporary image. This should be passed in instead when this is opened
             Image = new BitmapImage(new Uri(Path.Join("C:", "Users", "Colin", "Pictures", "untitled.png")));
@@ -114,11 +131,42 @@ namespace LocalImageTagger.ViewModels
             swapRenderingMode();
             sideBarOpen = false;
             swapSideBar();
+            //Use revert to set not fullscreen at the start
+            revertFullscreen();
         }
 
         #endregion
 
         #region Methods
+
+        /// <summary>
+        /// Toggles fullscreen for this window
+        /// </summary>
+        public void toggleFullscreen()
+        {
+            //If maximized
+            if (WindowStyle == WindowStyle.None)
+            {
+                revertFullscreen();
+            }
+            else
+            {
+                makeFullscreen();
+            }
+        }
+
+        private void makeFullscreen()
+        {
+            WindowStyle = WindowStyle.None;
+            WindowState = WindowState.Maximized;
+        }
+        private void revertFullscreen()
+        {
+            WindowStyle = WindowStyle.SingleBorderWindow;
+            WindowState = WindowState.Normal;
+
+        }
+
 
         /// <summary>
         /// Swaps the image's stretch property between Uniform and None
