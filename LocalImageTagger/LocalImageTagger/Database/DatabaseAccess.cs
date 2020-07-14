@@ -6,11 +6,9 @@ namespace LocalImageTagger
 {
     class DatabaseAccess
     {
-
         const int nameLength = 100;
         const int uriLength = 2000;
         //+ others for the tags
-
 
         #region Searching 
 
@@ -145,8 +143,6 @@ namespace LocalImageTagger
         }
 
         #endregion
-
-
 
         #region Tagmap
 

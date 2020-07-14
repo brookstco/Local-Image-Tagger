@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 using static System.Net.Mime.MediaTypeNames;
 using System.IO;
 using Microsoft.Win32;
+using LocalImageTagger.ViewModels;
 
 namespace LocalImageTagger
 {
@@ -22,10 +23,14 @@ namespace LocalImageTagger
         public ImageViewer()
         {
             InitializeComponent();
-            //TODO: Have the size of the popped out video player adjust based on video versus photo, but go back to the old user size if a pi is opened back up afterwards
-            //IDEA: Multi-thread loading higher-resolutions, so a smaller preview can be seen immediately, and the full image will load at its own pace, for large images at least.
+            
+            DataContext = new ImageViewerViewModel();
         }
 
+        //TODO: Have the size of the popped out video player adjust based on video versus photo, but go back to the old user size if a pi is opened back up afterwards
+        //IDEA: Multi-thread loading higher-resolutions, so a smaller preview can be seen immediately, and the full image will load at its own pace, for large images at least.
+        
+        /*
         protected int imageSelector = 0;
         protected bool fullSize = false;
         void File_Open_Click(object sender, RoutedEventArgs e)
@@ -94,6 +99,6 @@ namespace LocalImageTagger
             {
                 largeImage.Stretch = Stretch.Uniform;
             }
-        }
+        }*/
     }
 }

@@ -1,19 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup />
+  <PropertyGroup>
+    <ShowAllFiles>false</ShowAllFiles>
+  </PropertyGroup>
   <ItemGroup>
     <ApplicationDefinition Update="App.xaml">
       <SubType>Designer</SubType>
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="FirstTimePopUp.xaml.cs">
+    <Compile Update="Views\File Displays\ImageDisplay.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="ImageViewer.xaml.cs">
+    <Compile Update="Views\File Displays\VideoDisplay.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="NewTagWindow.xaml.cs">
+    <Compile Update="Views\FirstTimePopUp.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\ImageViewer.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\NewTagWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Test.xaml.cs">
@@ -26,16 +34,22 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="FirstTimePopUp.xaml">
+    <Page Update="Views\File Displays\ImageDisplay.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="ImageViewer.xaml">
+    <Page Update="Views\File Displays\VideoDisplay.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="MainWindow.xaml">
+    <Page Update="Views\FirstTimePopUp.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="NewTagWindow.xaml">
+    <Page Update="Views\ImageViewer.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\NewTagWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Test.xaml">

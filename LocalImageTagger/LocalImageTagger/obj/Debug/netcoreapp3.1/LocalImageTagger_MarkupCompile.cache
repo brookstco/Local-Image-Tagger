@@ -5,16 +5,16 @@ winexe
 C#
 .cs
 C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\obj\Debug\netcoreapp3.1\
-LocalImageTagger_haio1b3d_wpftmp
+LocalImageTagger
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\App.xaml
-584524952
+7-1486880405
 
-22-1586963644
-1921654412462
-FirstTimePopUp.xaml;ImageViewer.xaml;MainWindow.xaml;NewTagWindow.xaml;Test.xaml;
+2213259901
+193-1796087239
+Test.xaml;Views\File Displays\ImageDisplay.xaml;Views\File Displays\VideoDisplay.xaml;Views\FirstTimePopUp.xaml;Views\ImageViewer.xaml;Views\MainWindow.xaml;Views\NewTagWindow.xaml;
 
-True
+False
 
