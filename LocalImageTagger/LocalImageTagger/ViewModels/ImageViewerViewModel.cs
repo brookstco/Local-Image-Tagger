@@ -9,6 +9,9 @@ namespace LocalImageTagger.ViewModels
 {
     class ImageViewerViewModel : BaseViewModel
     {
+        //TODO: Full screen and sidebar close (and probably some zoom/pan controls) should be always on screen, but fade out when the window isn't interacted with.
+        //TODO: Fullscreen needs a keyboard escape (like esc)
+
 
         /// <summary>
         /// Bool for whether the sidebar with tags is open (true) or not (false)
@@ -127,7 +130,7 @@ namespace LocalImageTagger.ViewModels
             SetRenderingModeHighQuality = new RelayCommand(setRenderingModeHQ);
             SetRenderingModeNormal = new RelayCommand(setRenderingModeDefault);
             SwapRenderingMode = new RelayCommand(swapRenderingMode);
-            OpenCloseSidebar = new RelayCommand(swapSideBar);
+            OpenCloseSidebar = new RelayCommand(toggleSideBar);
             ToggleFullscreen = new RelayCommand(toggleFullscreen);
 
             //TODO: Temporary image. This should be passed in instead when this is opened
@@ -140,7 +143,7 @@ namespace LocalImageTagger.ViewModels
             RenderingBitmapScalingMode = BitmapScalingMode.NearestNeighbor;
             swapRenderingMode();
             sideBarOpen = false;
-            swapSideBar();
+            toggleSideBar();
             //Use revert to set not fullscreen at the start
             revertFullscreen();
         }
@@ -249,7 +252,11 @@ namespace LocalImageTagger.ViewModels
 
         #endregion
 
-        public void swapSideBar()
+
+        /// <summary>
+        /// Toggle the sidebar in or out
+        /// </summary>
+        public void toggleSideBar()
         {
             //Do the swap first
             sideBarOpen = !sideBarOpen;
