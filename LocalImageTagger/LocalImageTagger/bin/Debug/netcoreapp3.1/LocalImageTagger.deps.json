@@ -8,7 +8,8 @@
     ".NETCoreApp,Version=v3.1": {
       "LocalImageTagger/1.0.0": {
         "dependencies": {
-          "PropertyChanged.Fody": "3.2.8"
+          "PropertyChanged.Fody": "3.2.8",
+          "Wpf.Controls.PanAndZoom": "2.3.3"
         },
         "runtime": {
           "LocalImageTagger.dll": {}
@@ -70,6 +71,14 @@
           "System.Threading.Timer": "4.3.0",
           "System.Xml.ReaderWriter": "4.3.0",
           "System.Xml.XDocument": "4.3.0"
+        }
+      },
+      "PanAndZoom/2.3.3": {
+        "runtime": {
+          "lib/netstandard2.1/PanAndZoom.dll": {
+            "assemblyVersion": "2.3.3.0",
+            "fileVersion": "2.3.3.0"
+          }
         }
       },
       "PropertyChanged.Fody/3.2.8": {
@@ -692,6 +701,26 @@
           "System.Threading": "4.3.0",
           "System.Xml.ReaderWriter": "4.3.0"
         }
+      },
+      "Wpf.Controls.PanAndZoom/2.3.3": {
+        "dependencies": {
+          "PanAndZoom": "2.3.3",
+          "Wpf.MatrixExtensions": "2.3.3"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Wpf.Controls.PanAndZoom.dll": {
+            "assemblyVersion": "2.3.3.0",
+            "fileVersion": "2.3.3.0"
+          }
+        }
+      },
+      "Wpf.MatrixExtensions/2.3.3": {
+        "runtime": {
+          "lib/netcoreapp3.1/Wpf.MatrixExtensions.dll": {
+            "assemblyVersion": "2.3.3.0",
+            "fileVersion": "2.3.3.0"
+          }
+        }
       }
     }
   },
@@ -735,6 +764,13 @@
       "sha512": "sha512-WcSp3+vP+yHNgS8EV5J7pZ9IRpeDuARBPN28by8zqff1wJQXm26PVU8L3/fYLBJVU7BtDyqNVWq2KlCVvSSR4A==",
       "path": "netstandard.library/1.6.1",
       "hashPath": "netstandard.library.1.6.1.nupkg.sha512"
+    },
+    "PanAndZoom/2.3.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8iBIdDtp3EzNEcg7bWwu18fliVY9FvDW9VoIiIPZ+y8XMU94JOdenqAYgeJJS06zyzSKirLu2KFQPiEitSQRzA==",
+      "path": "panandzoom/2.3.3",
+      "hashPath": "panandzoom.2.3.3.nupkg.sha512"
     },
     "PropertyChanged.Fody/3.2.8": {
       "type": "package",
@@ -1225,6 +1261,20 @@
       "sha512": "sha512-5zJ0XDxAIg8iy+t4aMnQAu0MqVbqyvfoUVl1yDV61xdo3Vth45oA2FoY4pPkxYAH5f8ixpmTqXeEIya95x0aCQ==",
       "path": "system.xml.xdocument/4.3.0",
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
+    },
+    "Wpf.Controls.PanAndZoom/2.3.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1CIAKAgndDtSk8cF8Ek0cCSLyruv0JdSmnlIvEI8pwkOCbyXiQsJ2FZ0Eq7mClgvD60gDohrP8oSyzR6sa9iNw==",
+      "path": "wpf.controls.panandzoom/2.3.3",
+      "hashPath": "wpf.controls.panandzoom.2.3.3.nupkg.sha512"
+    },
+    "Wpf.MatrixExtensions/2.3.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VKysC7k1nMz13tj2gNVvd8PERaIlINJXP4+jZH51H0pkDJmwby0MexMhF1WfawpDEFLRb1tIVxwQDTbmp9O09g==",
+      "path": "wpf.matrixextensions/2.3.3",
+      "hashPath": "wpf.matrixextensions.2.3.3.nupkg.sha512"
     }
   }
 }

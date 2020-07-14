@@ -37,7 +37,7 @@ namespace LocalImageTagger.ViewModels
         {
             //SelectedDisplayType = new ImageDisplayViewModel();
             SwapSize = new RelayCommand(swapSize);
-            Image = new BitmapImage(new Uri(Path.Join("C:", "Users", "Colin", "Pictures", "cat.png")));
+            Image = new BitmapImage(new Uri(Path.Join("C:", "Users", "Colin", "Pictures", "untitled.png")));
             ImageStretch = 0;
         }
 

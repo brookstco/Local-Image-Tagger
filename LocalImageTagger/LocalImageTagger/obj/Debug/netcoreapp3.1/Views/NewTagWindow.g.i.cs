@@ -101,7 +101,7 @@ namespace LocalImageTagger {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/LocalImageTagger;V1.0.0.0;component/views/newtagwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/LocalImageTagger;component/views/newtagwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\NewTagWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

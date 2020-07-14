@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:LocalImageTagger"
+        xmlns:local="clr-namespace:LocalImageTagger" xmlns:paz="clr-namespace:Wpf.Controls.PanAndZoom;assembly=Wpf.Controls.PanAndZoom"
         mc:Ignorable="d"
         Title="Local Image Tagger Image View" Height="450" Width="800">
 
@@ -54,9 +54,11 @@
             </StackPanel>
             <!--<ContentControl Content="{Binding SelectedDisplayType}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>-->
         </DockPanel>
-        
-        <Image Source="{Binding Image}" Stretch="Uniform" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top" />
-
+        <local:ZoomBorder ClipToBounds="True"
+                        VerticalAlignment="Stretch" HorizontalAlignment="Stretch" 
+                        Grid.Column="2">
+            <Image Source="{Binding Image}" Stretch="Uniform" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        </local:ZoomBorder>
     </Grid>
 
 </Window>
