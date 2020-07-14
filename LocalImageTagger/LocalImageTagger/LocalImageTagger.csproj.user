@@ -9,12 +9,6 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Views\File Displays\ImageDisplay.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\File Displays\VideoDisplay.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Views\FirstTimePopUp.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -27,6 +21,9 @@
     <Compile Update="Test.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\VideoViewer.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Update="Database\TagDatabaseDataSet.xsd">
@@ -34,12 +31,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Views\File Displays\ImageDisplay.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\File Displays\VideoDisplay.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="Views\FirstTimePopUp.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -53,6 +44,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Test.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\VideoViewer.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

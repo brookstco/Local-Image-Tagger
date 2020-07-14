@@ -31,24 +31,32 @@
         <Button Content="Open Image" ToolTip="Open an image"  HorizontalAlignment="Stretch" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Center" Click="File_Open_Click"/>
 
     </Grid>-->
-    <StackPanel>
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
         <DockPanel>
-            <Expander IsExpanded="True" ExpandDirection="Right" DockPanel.Dock="Left">
-                <StackPanel>
-                    <TextBlock>Tag</TextBlock>
-                    <TextBlock>Tag</TextBlock>
-                    <TextBlock>Tag</TextBlock>
-                    <TextBlock>Tag</TextBlock>
-                    <TextBlock>Tag</TextBlock>
-                    <TextBlock>Tag</TextBlock>
-                    <Button Name="btnSizeSwap"  Command="{Binding SwapSize}">_Swap Size</Button>
-                    <!--<Button Content="_Open Image" ToolTip="Open an image" Click="File_Open_Click"/>-->
-                </StackPanel>
-            </Expander>
-
-            <ContentControl Content="{Binding SelectedDisplayType}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            <StackPanel DockPanel.Dock="Left">
+                <TextBlock>Tag</TextBlock>
+                <TextBlock>Tag</TextBlock>
+                <TextBlock>Tag</TextBlock>
+                <TextBlock>Tag</TextBlock>
+                <TextBlock>Tag</TextBlock>
+                <TextBlock>Tag</TextBlock>
+                <!--<Button Content="_Open Image" ToolTip="Open an image" Click="File_Open_Click"/>-->
+            </StackPanel>
+            <!--<ContentControl Content="{Binding SelectedDisplayType}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>-->
         </DockPanel>
+        
+        <Image Source="{Binding Image}" Stretch="Uniform" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top" />
 
-    </StackPanel>
+    </Grid>
 
 </Window>

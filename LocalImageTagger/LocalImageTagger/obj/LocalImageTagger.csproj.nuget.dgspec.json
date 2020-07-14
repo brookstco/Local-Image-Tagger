@@ -45,6 +45,10 @@
             "PropertyChanged.Fody": {
               "target": "Package",
               "version": "[3.2.8, )"
+            },
+            "Wpf.Controls.PanAndZoom": {
+              "target": "Package",
+              "version": "[2.3.3, )"
             }
           },
           "imports": [
