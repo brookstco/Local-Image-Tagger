@@ -27,9 +27,14 @@ namespace LocalImageTagger
             DataContext = new ImageViewerViewModel();
         }
 
+        private void RenderingModeSwap(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         //TODO: Have the size of the popped out video player adjust based on video versus photo, but go back to the old user size if a pi is opened back up afterwards
         //IDEA: Multi-thread loading higher-resolutions, so a smaller preview can be seen immediately, and the full image will load at its own pace, for large images at least.
-        
+
         /*
         protected int imageSelector = 0;
         protected bool fullSize = false;

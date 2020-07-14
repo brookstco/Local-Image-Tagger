@@ -51,13 +51,15 @@
                 <TextBlock>Tag</TextBlock>
                 <TextBlock>Tag</TextBlock>
                 <!--<Button Content="_Open Image" ToolTip="Open an image" Click="File_Open_Click"/>-->
+                <Button Content="_Nearest Neighbor" ToolTip="Swaps between smooth and pixel perfect rendering." Command="{Binding SetRenderingModeNearestNeighbor}"/>
+                <Button Content="_Normal" ToolTip="Swaps between smooth and pixel perfect rendering." Command="{Binding SetRenderingModeNormal}"/>
             </StackPanel>
             <!--<ContentControl Content="{Binding SelectedDisplayType}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>-->
         </DockPanel>
         <local:ZoomBorder ClipToBounds="True"
                         VerticalAlignment="Stretch" HorizontalAlignment="Stretch" 
                         Grid.Column="2">
-            <Image Source="{Binding Image}" Stretch="Uniform" HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <Image Source="{Binding Image}" Stretch="Uniform" HorizontalAlignment="Left" VerticalAlignment="Top" RenderOptions.BitmapScalingMode="{Binding RenderingBitmapScalingMode}"/>
         </local:ZoomBorder>
     </Grid>
 

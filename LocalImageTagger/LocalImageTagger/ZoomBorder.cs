@@ -49,7 +49,11 @@ namespace LocalImageTagger
                 TranslateTransform tt = new TranslateTransform();
                 group.Children.Add(tt);
                 child.RenderTransform = group;
+                //This decides where the origin of the transformations are. If it doesn't zoom according to the mouse, this should be set properly to the transform point
                 child.RenderTransformOrigin = new Point(0.0, 0.0);
+
+                //These are the current hardcoded command controls.
+                //TODO:Change controls for zoomborder
                 this.MouseWheel += child_Zoom;
                 this.MouseLeftButtonDown += child_CaptureMouse;
                 this.MouseLeftButtonUp += child_ReleaseMouseCapture;
