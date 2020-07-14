@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -8,37 +9,43 @@ namespace LocalImageTagger.ViewModels
 {
     class ImageViewerViewModel : BaseViewModel
     {
+
         /// <summary>
-        /// The viewmodel to display the appropraite file type
+        /// Bool for whether the sidebar with tags is open (true) or not (false)
         /// </summary>
-        //public BaseViewModel SelectedDisplayType { get; set; }
+        private bool sideBarOpen = true;
 
         #region Commands
 
         /// <summary>
         /// Command to swap the stretch property for the window
         /// </summary>
-        public ICommand SwapSize { get; set; }
+        public ICommand SwapSize { get; private set; }
 
         /// <summary>
         /// Command to set the rendering mode to NearestNeighbor
         /// </summary>
-        public ICommand SetRenderingModeNearestNeighbor { get; set; }
+        public ICommand SetRenderingModeNearestNeighbor { get; private set; }
 
         /// <summary>
         /// Command to set the rendering mode to High Quality
         /// </summary>
-        public ICommand SetRenderingModeHighQuality { get; set; }
+        public ICommand SetRenderingModeHighQuality { get; private set; }
 
         /// <summary>
         /// Command to set the rendering mode to Normal
         /// </summary>
-        public ICommand SetRenderingModeNormal { get; set; }
+        public ICommand SetRenderingModeNormal { get; private set; }
 
         /// <summary>
         /// Swaps between NN and Normal rendering modes
         /// </summary>
-        public ICommand SwapRenderingMode { get; set; }
+        public ICommand SwapRenderingMode { get; private set; }
+
+        /// <summary>
+        /// Swaps whether the sidebar is open or closed
+        /// </summary>
+        public ICommand OpenCloseSidebar { get; private set; }
 
         #endregion
 
@@ -47,29 +54,41 @@ namespace LocalImageTagger.ViewModels
         /// <summary>
         /// The Bitmap image form of the image.
         /// </summary>
-        public BitmapImage Image { get; set; }
+        public BitmapImage Image { get; private set; }
 
         /// <summary>
         /// The current Stretch property for the image
         /// </summary>
-        public Stretch ImageStretch { get; set; }
+        public Stretch ImageStretch { get; private set; }
 
         /// <summary>
         /// The current rendering mode for the image.
         /// </summary>
-        public BitmapScalingMode RenderingBitmapScalingMode { get; set; }
+        public BitmapScalingMode RenderingBitmapScalingMode { get; private set; }
 
         /// <summary>
         /// The content shown in the rendering swap button. Changes depending on the current rendering mode
         /// </summary>
-        public string ButtonRenderContent { get; set; }
+        public string ButtonRenderContent { get; private set; }
 
         /// <summary>
         /// The content shown in the rendering swap button tooltip. Changes depending on the current rendering mode
         /// </summary>
-        public string ButtonRenderToolTip { get; set; }
+        public string ButtonRenderToolTip { get; private set; }
+
+        /// <summary>
+        /// The direction of the button. Default left = 1, right = -1
+        /// </summary>
+        public string ButtonSidebarDirection { get; private set; }
+
+        /// <summary>
+        /// Controls the visibility of the sidebar elements to make a custom expander
+        /// </summary>
+        public Visibility SidebarVisibility { get; private set; }
 
         #endregion
+
+        #region Constructor
 
         /// <summary>
         /// Constructor
@@ -82,15 +101,22 @@ namespace LocalImageTagger.ViewModels
             SetRenderingModeHighQuality = new RelayCommand(setRenderingModeHQ);
             SetRenderingModeNormal = new RelayCommand(setRenderingModeDefault);
             SwapRenderingMode = new RelayCommand(swapRenderingMode);
+            OpenCloseSidebar = new RelayCommand(swapSideBar);
 
             //TODO: Temporary image. This should be passed in instead when this is opened
             Image = new BitmapImage(new Uri(Path.Join("C:", "Users", "Colin", "Pictures", "untitled.png")));
 
             //Default Settings
             ImageStretch = Stretch.Uniform;
-            RenderingBitmapScalingMode = BitmapScalingMode.NearestNeighbor; //So that it is linear once immediately swapped
+            //Rendering and sidebar start opposite, so that the swap functions can set things up properly. 
+            //TODO: Probably should split stuuff into more functions.
+            RenderingBitmapScalingMode = BitmapScalingMode.NearestNeighbor;
             swapRenderingMode();
+            sideBarOpen = false;
+            swapSideBar();
         }
+
+        #endregion
 
         #region Methods
 
@@ -159,7 +185,28 @@ namespace LocalImageTagger.ViewModels
             }
         }
 
+        /// <summary>
+        /// Opens or closes the sidebar
+        /// </summary>
+
         #endregion
+
+        public void swapSideBar()
+        {
+            //Do the swap first
+            sideBarOpen = !sideBarOpen;
+            //The content inside matches the if statement (open controls first, then closed)
+            if (sideBarOpen)
+            {
+                ButtonSidebarDirection = "1";
+                SidebarVisibility = Visibility.Visible;
+            }
+            else
+            {
+                ButtonSidebarDirection = "-1";
+                SidebarVisibility = Visibility.Collapsed;
+            }
+        }
 
         #endregion
     }

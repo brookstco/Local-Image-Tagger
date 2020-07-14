@@ -7,10 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\arrow.png" />
     <None Remove="Images\unknownFile.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\arrow.png" />
     <Resource Include="Images\unknownFile.png" />
   </ItemGroup>
 

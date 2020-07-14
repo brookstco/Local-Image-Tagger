@@ -38,12 +38,11 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="5"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         
         <DockPanel>
-            <StackPanel DockPanel.Dock="Left">
+            <StackPanel DockPanel.Dock="Left" Visibility="{Binding SidebarVisibility}">
                 <TextBlock>Tag</TextBlock>
                 <TextBlock>Tag</TextBlock>
                 <TextBlock>Tag</TextBlock>
@@ -55,6 +54,15 @@
             </StackPanel>
             <!--<ContentControl Content="{Binding SelectedDisplayType}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>-->
         </DockPanel>
+
+        <Button Command="{Binding OpenCloseSidebar}"  HorizontalAlignment="Right" VerticalAlignment="Top" Background="Transparent" BorderBrush="{x:Null}">
+            <Image Source="/Images/arrow.png" Stretch="None" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <ScaleTransform ScaleX="{Binding ButtonSidebarDirection}"/>
+                </Image.RenderTransform>
+            </Image>
+        </Button>
+        
         <local:ZoomBorder ClipToBounds="True"
                         VerticalAlignment="Stretch" HorizontalAlignment="Stretch" 
                         Grid.Column="2">
