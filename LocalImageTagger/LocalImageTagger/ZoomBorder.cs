@@ -6,6 +6,9 @@ using System.Windows.Media;
 
 namespace LocalImageTagger
 {
+    /// <summary>
+    /// A custom border for zooming and panning content created by Wiesław Šoltés and posted on Stack exchange and customized to fit the needs of this program.
+    /// </summary>
     public class ZoomBorder : Border
     {
         private UIElement child = null;
@@ -47,12 +50,12 @@ namespace LocalImageTagger
                 group.Children.Add(tt);
                 child.RenderTransform = group;
                 child.RenderTransformOrigin = new Point(0.0, 0.0);
-                this.MouseWheel += child_MouseWheel;
-                this.MouseLeftButtonDown += child_MouseLeftButtonDown;
-                this.MouseLeftButtonUp += child_MouseLeftButtonUp;
+                this.MouseWheel += child_Zoom;
+                this.MouseLeftButtonDown += child_CaptureMouse;
+                this.MouseLeftButtonUp += child_ReleaseMouseCapture;
                 this.MouseMove += child_MouseMove;
                 this.PreviewMouseRightButtonDown += new MouseButtonEventHandler(
-                  child_PreviewMouseRightButtonDown);
+                  child_ResetButton);
             }
         }
 
@@ -74,7 +77,10 @@ namespace LocalImageTagger
 
         #region Child Events
 
-        private void child_MouseWheel(object sender, MouseWheelEventArgs e)
+        /// <summary>
+        /// Zooms in or out of the image relative to the mouse
+        /// </summary>
+        private void child_Zoom(object sender, MouseWheelEventArgs e)
         {
             if (child != null)
             {
@@ -100,7 +106,10 @@ namespace LocalImageTagger
             }
         }
 
-        private void child_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        /// <summary>
+        /// Captures the mouses movement
+        /// </summary>
+        private void child_CaptureMouse(object sender, MouseButtonEventArgs e)
         {
             if (child != null)
             {
@@ -112,7 +121,10 @@ namespace LocalImageTagger
             }
         }
 
-        private void child_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        /// <summary>
+        /// Releases the mouse that was captured
+        /// </summary>
+        private void child_ReleaseMouseCapture(object sender, MouseButtonEventArgs e)
         {
             if (child != null)
             {
@@ -121,11 +133,17 @@ namespace LocalImageTagger
             }
         }
 
-        void child_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        /// <summary>
+        /// Allows a button to reset the image zoom and pan
+        /// </summary>
+        void child_ResetButton(object sender, MouseButtonEventArgs e)
         {
             this.Reset();
         }
 
+        /// <summary>
+        /// Pans the image when the mouse is captured
+        /// </summary>
         private void child_MouseMove(object sender, MouseEventArgs e)
         {
             if (child != null)
