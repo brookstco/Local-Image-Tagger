@@ -7,13 +7,31 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Images\arrow.png" />
+    <None Remove="Images\arrow_black_left.png" />
+    <None Remove="Images\arrow_black_up.png" />
+    <None Remove="Images\arrow_white_left.png" />
+    <None Remove="Images\arrow_white_up.png" />
+    <None Remove="Images\bar_black.png" />
+    <None Remove="Images\bar_white.png" />
+    <None Remove="Images\box_black.png" />
+    <None Remove="Images\box_white.png" />
     <None Remove="Images\unknownFile.png" />
+    <None Remove="Images\x_black.png" />
+    <None Remove="Images\x_white.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Images\arrow.png" />
+    <Resource Include="Images\arrow_black_left.png" />
+    <Resource Include="Images\arrow_black_up.png" />
+    <Resource Include="Images\arrow_white_left.png" />
+    <Resource Include="Images\arrow_white_up.png" />
+    <Resource Include="Images\bar_black.png" />
+    <Resource Include="Images\bar_white.png" />
+    <Resource Include="Images\box_black.png" />
+    <Resource Include="Images\box_white.png" />
     <Resource Include="Images\unknownFile.png" />
+    <Resource Include="Images\x_black.png" />
+    <Resource Include="Images\x_white.png" />
   </ItemGroup>
 
   <ItemGroup>

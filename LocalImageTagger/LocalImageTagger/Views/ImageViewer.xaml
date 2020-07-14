@@ -9,30 +9,6 @@
         WindowStyle="{Binding WindowStyle}"
         WindowState="{Binding WindowState}">
 
-    <!--<Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="5"/>
-            <ColumnDefinition Width="4*"/>
-        </Grid.ColumnDefinitions>
-        <StackPanel>
-            <Button Name="btnSizeSwap"  Click="BtnSizeSwap_Click">
-                _Swap Size
-            </Button>
-        </StackPanel>
-        <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" ShowsPreview="True" Grid.RowSpan="2"/>
-        <Image x:Name="largeImage" HorizontalAlignment="Left" Grid.Column="2" VerticalAlignment="Top" Margin="5" Stretch="Uniform" Grid.ColumnSpan="2"/>
-        <MediaElement x:Name="videoPlayer" LoadedBehavior="Manual" Stretch="None" HorizontalAlignment="Left" Grid.Column="2" VerticalAlignment="Top" Margin="5" Grid.ColumnSpan="2"/>
-        -->
-    <!--stretch=none displays images at normal size-->
-    <!--
-        <Button Content="Open Image" ToolTip="Open an image"  HorizontalAlignment="Stretch" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Center" Click="File_Open_Click"/>
-
-    </Grid>-->
     <Grid>
 
         <Grid.RowDefinitions>
@@ -51,15 +27,13 @@
                 <TextBlock>Tag</TextBlock>
                 <TextBlock>Tag</TextBlock>
                 <TextBlock>Tag</TextBlock>
-                <!--<Button Content="_Open Image" ToolTip="Open an image" Click="File_Open_Click"/>-->
                 <Button Content="{Binding ButtonRenderContent}" ToolTip="{Binding ButtonRenderToolTip}" Command="{Binding SwapRenderingMode}" Width="90"/>
                 <Button Content="_Fullscreen" ToolTip="Toggle Fullscreen" Command="{Binding ToggleFullscreen}" Width="90"/>
             </StackPanel>
-            <!--<ContentControl Content="{Binding SelectedDisplayType}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>-->
         </DockPanel>
 
         <Button Command="{Binding OpenCloseSidebar}"  HorizontalAlignment="Right" VerticalAlignment="Top" Background="Transparent" BorderBrush="{x:Null}">
-            <Image Source="/Images/arrow.png" Stretch="None" RenderTransformOrigin="0.5,0.5">
+            <Image Source="/Images/arrow_black_left.png" Stretch="None" RenderTransformOrigin="0.5,0.5">
                 <Image.RenderTransform>
                     <ScaleTransform ScaleX="{Binding ButtonSidebarDirection}"/>
                 </Image.RenderTransform>
