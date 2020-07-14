@@ -98,6 +98,16 @@ namespace LocalImageTagger.ViewModels
         public string ButtonSidebarDirection { get; private set; }
 
         /// <summary>
+        /// Controls the column of the sidebar button, so that space isn't unnecesarily reserved
+        /// </summary>
+        public string ButtonSidebarColumn { get; private set; }
+
+        /// <summary>
+        /// Controls the H alignment of the sidebar button, so it is on the correct side
+        /// </summary>
+        public HorizontalAlignment ButtonSidebarHorizontalAlignment { get; private set; }
+
+        /// <summary>
         /// Controls the visibility of the sidebar elements to make a custom expander
         /// </summary>
         public Visibility SidebarVisibility { get; private set; }
@@ -248,11 +258,15 @@ namespace LocalImageTagger.ViewModels
             {
                 ButtonSidebarDirection = "1";
                 SidebarVisibility = Visibility.Visible;
+                ButtonSidebarColumn = "0";
+                ButtonSidebarHorizontalAlignment = HorizontalAlignment.Right;
             }
             else
             {
                 ButtonSidebarDirection = "-1";
                 SidebarVisibility = Visibility.Collapsed;
+                ButtonSidebarColumn = "1";
+                ButtonSidebarHorizontalAlignment = HorizontalAlignment.Left;
             }
         }
 
