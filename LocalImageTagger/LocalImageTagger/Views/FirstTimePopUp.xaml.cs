@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Diagnostics;
 using System.Windows.Navigation;
+using LocalImageTagger.ViewModels;
 
 namespace LocalImageTagger
 {
@@ -22,12 +23,12 @@ namespace LocalImageTagger
         public FirstTimePopUp()
         {
             InitializeComponent();
+            DataContext = new FirstTimePopUpViewModel();
         }
         private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
         {
-            //TODO: Broken Hyperlinks 
-            //Apparently this breaks because this is a .core type project. Not sure important, so will be ignored for now.
-            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            //Without the UseShellExecute, this breaks.
+            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri) { UseShellExecute = true });
             e.Handled = true;
         }
 

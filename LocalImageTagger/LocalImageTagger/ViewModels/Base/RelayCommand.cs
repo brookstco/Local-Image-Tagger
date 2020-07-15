@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Input;
+using System.Windows.Navigation;
 
 namespace LocalImageTagger
 {
@@ -32,6 +33,7 @@ namespace LocalImageTagger
         {
             this.action = relayedAction;
         }
+
 
         #endregion
 

@@ -6,19 +6,27 @@
         xmlns:local="clr-namespace:LocalImageTagger"
         mc:Ignorable="d"
         Title="Welcome" Height="400" Width="300"
-        WindowStartupLocation="CenterOwner" >
+        WindowStartupLocation="CenterOwner" 
+        ResizeMode="NoResize">
     <Grid>
-        <TextBlock HorizontalAlignment="Center" Margin="30,20,30,0"  TextWrapping="Wrap" VerticalAlignment="Top">
-            Welcome!
-        </TextBlock>
-        <TextBlock HorizontalAlignment="Center" Margin="30,100,30,0"  TextWrapping="Wrap" VerticalAlignment="Top">
-            Thank you for downloading Local Image Tagger! Instructions can be found at
-            <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://www.google.com">LINK
-            </Hyperlink> . This is a personal project, so updates may be slow, but please report any bugs or issues on <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://github.com/brookstco/Local-Image-Tagger/issues">
-            GitHub</Hyperlink>.
-        </TextBlock>
-        <Button Name="btnOk"  Content="OK" IsCancel="True" IsDefault="True" Margin="114,323,114,0" Click="BtnOk_Click" VerticalAlignment="Top"/>
-        <CheckBox Content="Do Not Show on Startup" IsChecked="True" HorizontalAlignment="Center" Margin="0,295,0,0" VerticalAlignment="Top"/>
+        <StackPanel>
+            <TextBlock FontWeight="Bold" HorizontalAlignment="Center" Margin="30"  TextWrapping="Wrap" VerticalAlignment="Top">
+                Welcome!
+            </TextBlock>
+            <TextBlock HorizontalAlignment="Center" Margin="30"  TextWrapping="Wrap" VerticalAlignment="Top">
+                Thank you for downloading Local Image Tagger!<LineBreak/><LineBreak/>
+                Instructions can be found on
+                <Hyperlink Command="{Binding HyperlinkRequest}" 
+                      CommandParameter={Binding } >GitHub
+                </Hyperlink>. <LineBreak/><LineBreak/>
+                I am a solo developer, so updates may be slow, but please report any bugs or issues at the <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri=>
+                GitHub Issue Page</Hyperlink>.
+            </TextBlock>
 
+        </StackPanel>
+        <StackPanel VerticalAlignment="Bottom">
+            <CheckBox Content="Do Not Show on Startup" IsChecked="True" HorizontalAlignment="Center" Margin="10" VerticalAlignment="Top"/>
+            <Button Name="btnOk"  Content="OK" IsCancel="True" IsDefault="True" Margin="10" Click="BtnOk_Click" HorizontalAlignment="Center" MinWidth="60"/>
+        </StackPanel>
     </Grid>
 </Window>
