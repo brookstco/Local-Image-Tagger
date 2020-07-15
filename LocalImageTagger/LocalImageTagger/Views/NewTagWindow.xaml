@@ -26,7 +26,7 @@
 
         <Label Content="_Category" Style="{StaticResource StandardStyleLabelBold}" Grid.Row="1" Target="{Binding ElementName=txtBoxCat}" HorizontalAlignment="Right" Margin="10,0,0,0" VerticalAlignment="Top"/><!--comboBoxCategory-->
         <!--<TextBox Name="txtBoxCat" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Top" Width="250" ToolTip="(Required) Enter the category that the tag belongs to."/> --><!--TODO: Have a popup if the category is new to check if they want to add it as a new category-->
-        <ComboBox Name="comboBoxCategory" Grid.Column="1" Grid.Row="1" Margin="10,0,10,10" IsEditable="True" ToolTip="(Required) Select the category that the tag belongs to"/>
+        <TextBox Name="comboBoxCategory" Grid.Column="1" Grid.Row="1" Margin="10,0,10,10" ToolTip="(Required) Select the category that the tag belongs to"/> <!--IsEditable="True"-->
         <Button Content="_New" Grid.Column="2" HorizontalAlignment="Left" Margin="0,0,10,0" VerticalAlignment="Top" ToolTip="Add a new category" Grid.Row="1"/>
 
         <Label Content="_Description" Target="{Binding ElementName=txtBoxDesc}" Grid.Row="2" HorizontalAlignment="Right" Margin="10,0,0,0" VerticalAlignment="Top"/>

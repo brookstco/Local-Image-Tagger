@@ -24,7 +24,7 @@
 
         </StackPanel>
         <StackPanel VerticalAlignment="Bottom">
-            <CheckBox Content="Do Not Show on Startup" IsChecked="{Binding checkboxChecked}" HorizontalAlignment="Center" Margin="10" VerticalAlignment="Top"/>
+            <CheckBox Content="Do Not Show on Startup" IsChecked="{Binding CheckboxChecked, Mode=TwoWay}" HorizontalAlignment="Center" Margin="10" VerticalAlignment="Top"/>
             <Button Name="btnOk"  Content="OK" IsCancel="True" IsDefault="True" Margin="10" Click="BtnOk_Click" HorizontalAlignment="Center" MinWidth="60"/>
         </StackPanel>
     </Grid>

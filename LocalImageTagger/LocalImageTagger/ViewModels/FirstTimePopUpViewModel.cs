@@ -5,7 +5,7 @@ namespace LocalImageTagger.ViewModels
 {
     class FirstTimePopUpViewModel
     {
-        public bool checkboxChecked { get; private set; } = true;
+        public bool CheckboxChecked { get; set; } = true;
 
         //
         //These cannot be databound for some reason. Couldn't find any info online about it, so they are here for if I figure it out

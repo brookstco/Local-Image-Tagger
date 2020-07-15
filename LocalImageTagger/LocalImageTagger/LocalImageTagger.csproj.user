@@ -15,6 +15,9 @@
     <Compile Update="Views\ImageViewer.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\NewCategoryWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\NewTagWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -35,6 +38,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\NewCategoryWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\NewTagWindow.xaml">

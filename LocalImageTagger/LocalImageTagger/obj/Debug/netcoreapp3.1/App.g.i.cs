@@ -41,7 +41,7 @@ namespace LocalImageTagger {
     /// <summary>
     /// App
     /// </summary>
-    public partial class App : System.Windows.Application, System.Windows.Markup.IComponentConnector {
+    public partial class App : System.Windows.Application {
         
         private bool _contentLoaded;
         
@@ -51,16 +51,16 @@ namespace LocalImageTagger {
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "4.8.1.0")]
         public void InitializeComponent() {
+            if (_contentLoaded) {
+                return;
+            }
+            _contentLoaded = true;
             
             #line 7 "..\..\..\App.xaml"
             this.Startup += new System.Windows.StartupEventHandler(this.Application_Startup);
             
             #line default
             #line hidden
-            if (_contentLoaded) {
-                return;
-            }
-            _contentLoaded = true;
             System.Uri resourceLocater = new System.Uri("/LocalImageTagger;component/app.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\App.xaml"
@@ -70,14 +70,16 @@ namespace LocalImageTagger {
             #line hidden
         }
         
+        /// <summary>
+        /// Application Entry Point.
+        /// </summary>
+        [System.STAThreadAttribute()]
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "4.8.1.0")]
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
-        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Design", "CA1033:InterfaceMethodsShouldBeCallableByChildTypes")]
-        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
-        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1800:DoNotCastUnnecessarily")]
-        void System.Windows.Markup.IComponentConnector.Connect(int connectionId, object target) {
-            this._contentLoaded = true;
+        public static void Main() {
+            LocalImageTagger.App app = new LocalImageTagger.App();
+            app.InitializeComponent();
+            app.Run();
         }
     }
 }
