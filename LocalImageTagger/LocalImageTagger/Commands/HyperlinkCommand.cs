@@ -27,7 +27,7 @@ namespace LocalImageTagger
 
         public void Execute(object parameter)
         {
-            Hyperlink_RequestNavigate
+            //Hyperlink_RequestNavigate
         }
 
 
