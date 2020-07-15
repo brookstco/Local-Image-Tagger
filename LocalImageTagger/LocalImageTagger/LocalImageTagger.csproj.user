@@ -18,9 +18,6 @@
     <Compile Update="Views\NewTagWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Test.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Views\VideoViewer.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -41,9 +38,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\NewTagWindow.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Test.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\VideoViewer.xaml">
