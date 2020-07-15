@@ -6,9 +6,18 @@ namespace LocalImageTagger.ViewModels
 {
     class NewFileLocationWindowViewModel : BaseViewModel
     {
+
+        #region Commands
+        /// <summary>
+        /// Opends a dialog to select a directory
+        /// </summary>
+        public ICommand ChooseDirectory { get; set; }
+
+        #endregion
         public string ChosenDirectory { get; set; }
 
-        public ICommand ChooseDirectory { get; set; }
+        public bool CheckboxChecked {get; set;}
+
 
         public NewFileLocationWindowViewModel()
         {
@@ -23,7 +32,6 @@ namespace LocalImageTagger.ViewModels
             dialog.IsFolderPicker = true;
             if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                //MessageBox.Show("You selected: " + dialog.FileName);
                 ChosenDirectory = dialog.FileName;
             }
         }

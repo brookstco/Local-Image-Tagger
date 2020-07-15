@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LocalImageTagger"
         mc:Ignorable="d"
-        Title="Add New Tag" SizeToContent="WidthAndHeight"
-        WindowStartupLocation="CenterOwner">
+        Title="Add New Tag" Height="300" Width="400"
+        WindowStartupLocation="CenterOwner" 
+        ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

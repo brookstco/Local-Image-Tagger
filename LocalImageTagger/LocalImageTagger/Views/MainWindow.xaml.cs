@@ -27,7 +27,7 @@ namespace LocalImageTagger
         {
             InitializeComponent();
             DataContext = new MainWindowViewModel();
-            //TODO: When closing this main window, close al other windows too.
+
             //TODO: When closing, prompt about closing, and have a checkbox for not having that warning anymore
         }
 
@@ -47,7 +47,7 @@ namespace LocalImageTagger
         }
         private void Dir_Button_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new NewDirectoryWindow
+            var dialog = new NewFileLocationWindow
             {
                 Owner = this //Make this window the owner of the popup, so that it will show in the center.
             };

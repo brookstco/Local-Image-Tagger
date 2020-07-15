@@ -9,7 +9,15 @@ namespace LocalImageTagger
     /// </summary>
     class FileLocation
     {
+        /// <summary>
+        /// The directory's uri
+        /// </summary>
+        private string uri;
 
+        /// <summary>
+        /// Only the contents of this folder (False) or inclusing all subdirectories too(true)
+        /// </summary>
+        private bool subdirectoriesIncluded;
 
     }
 }
