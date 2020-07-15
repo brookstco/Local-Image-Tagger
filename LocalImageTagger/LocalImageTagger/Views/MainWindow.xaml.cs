@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LocalImageTagger.ViewModels;
+using LocalImageTagger.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,6 +26,7 @@ namespace LocalImageTagger
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new MainWindowViewModel();
             //TODO: When closing this main window, close al other windows too.
             //TODO: When closing, prompt about closing, and have a checkbox for not having that warning anymore
         }
@@ -37,6 +40,14 @@ namespace LocalImageTagger
         private void Tag_Button_Click(object sender, RoutedEventArgs e)
         {
             NewTagWindow dialog = new NewTagWindow
+            {
+                Owner = this //Make this window the owner of the popup, so that it will show in the center.
+            };
+            dialog.Show();
+        }
+        private void Dir_Button_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new NewDirectoryWindow
             {
                 Owner = this //Make this window the owner of the popup, so that it will show in the center.
             };

@@ -1,0 +1,36 @@
+﻿<Window x:Class="LocalImageTagger.Views.NewFileLocationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LocalImageTagger.Views"
+        mc:Ignorable="d"
+        Title="Add New Directory" Height="400" Width="300"
+        WindowStartupLocation="CenterOwner" >
+
+    <Grid>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Select File Location" Padding="3,0,3,0" Margin="10" Command="{Binding ChooseDirectory}"></Button>
+                <TextBlock Text="{Binding ChosenDirectory}"  Margin="0,12,10,10"></TextBlock>
+            </StackPanel>
+
+            <!--Choosing specific filetypes if the program supports more than images-->
+            <!--<TextBlock Margin="10,10,10,5">Filetypes to include:</TextBlock>
+            <WrapPanel Background="LightGray">
+                <CheckBox Content="Images" Margin="10"></CheckBox>
+                <CheckBox Content="Video" Margin="10"></CheckBox>
+                <CheckBox Content="Other Files" Margin="10"></CheckBox>
+            </WrapPanel>-->
+
+
+            <CheckBox Content="Include Subdirectories" Margin="10,20,10,10"></CheckBox>
+
+        </StackPanel>
+        <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal">
+            <Button Content="_OK" Margin="10" MinWidth="60"></Button>
+            <Button Content="_Cancel" IsCancel="True" Margin="10" MinWidth="60"></Button>
+        </StackPanel>
+    </Grid>
+
+</Window>

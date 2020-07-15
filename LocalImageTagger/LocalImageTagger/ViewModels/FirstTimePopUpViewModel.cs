@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace LocalImageTagger.ViewModels
 {
-    class FirstTimePopUpViewModel
+    class FirstTimePopUpViewModel : BaseViewModel
     {
         public bool CheckboxChecked { get; set; } = true;
 

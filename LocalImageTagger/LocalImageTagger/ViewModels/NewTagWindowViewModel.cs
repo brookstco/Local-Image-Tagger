@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LocalImageTagger.ViewModels
 {
-    class NewTagWindowViewModel
+    class NewTagWindowViewModel : BaseViewModel
     {
     }
 }

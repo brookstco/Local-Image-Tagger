@@ -13,5 +13,14 @@ namespace LocalImageTagger.UserControls
         //Suggested tags should prioritize 1: categories, 2: tags, 3: aliases
         //Option to have only 1 tag or many (if one, add
 
+        #region Properties
+
+        /// <summary>
+        /// Determines whether the tag search bar accepts only 1 (true) or many (false) tags.
+        /// </summary>
+        public bool isSingleTag { get; set; } = false;
+
+        #endregion
+
     }
 }

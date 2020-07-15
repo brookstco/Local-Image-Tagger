@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "ka1mC2TL0TsxpCKYaz0s6HWOwGYSLIAnJS96mWIeEghn4rlYfn4teSoaWmYx5C2rL4biIRy27nxJkq6+HIY1qA==",
+  "dgSpecHash": "B78VYShqGxYhS2pu/HpLv7av4yO74G+ml44cZcUBbCKEE3r9iEuhaY/CTxBixHXYaCsHTLgIN3XC4lkFGmMXCQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Colin\\Desktop\\image tagger\\Local-Image-Tagger\\LocalImageTagger\\LocalImageTagger\\LocalImageTagger.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Colin\\.nuget\\packages\\fody\\6.1.1\\fody.6.1.1.nupkg.sha512",
+    "C:\\Users\\Colin\\.nuget\\packages\\microsoft-windowsapicodepack-core\\1.1.4\\microsoft-windowsapicodepack-core.1.1.4.nupkg.sha512",
+    "C:\\Users\\Colin\\.nuget\\packages\\microsoft-windowsapicodepack-shell\\1.1.4\\microsoft-windowsapicodepack-shell.1.1.4.nupkg.sha512",
     "C:\\Users\\Colin\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\Colin\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\Colin\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",

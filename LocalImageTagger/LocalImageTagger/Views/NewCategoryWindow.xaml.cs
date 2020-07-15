@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LocalImageTagger.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -20,6 +21,7 @@ namespace LocalImageTagger.Views
         public NewCategoryWindow()
         {
             InitializeComponent();
+            DataContext = new NewCategoryWindowViewModel();
         }
     }
 }

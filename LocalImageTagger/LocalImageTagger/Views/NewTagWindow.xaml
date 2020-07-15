@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LocalImageTagger"
         mc:Ignorable="d"
-        Title="NewTagWindow" SizeToContent="WidthAndHeight"
-        WindowStartupLocation="CenterOwner" >
+        Title="Add New Tag" SizeToContent="WidthAndHeight"
+        WindowStartupLocation="CenterOwner">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -39,8 +39,8 @@
         <TextBox Name="txtBoxParent" Padding="2" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Top" Width="250" ToolTip="(Optional) Enter any other tags that this tag implies exists. Those tag will be automatically added to an image when it is given this tag.&#x0a;For example, if &quot;flower&quot; is a parent of &quot;rose&quot;, when you tag an image with &quot;rose&quot; that image can be found with both the tags &quot;rose&quot; and &quot;flower&quot;"/>
         
         <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.ColumnSpan="3" HorizontalAlignment="Center">
-            <Button Content="Add Ta_g" Margin="10" VerticalAlignment="Bottom" Width="50"/>
-            <Button Name="btnCancel" Content="Ca_ncel" IsCancel="True" IsDefault="True" Margin="0,10,10,10" VerticalAlignment="Bottom" Width="50" Click="BtnCancel_Click"/>
+            <Button Content="Add Ta_g" Margin="10" VerticalAlignment="Bottom" MinWidth="60"/>
+            <Button Name="btnCancel" Content="Ca_ncel" IsCancel="True" IsDefault="True" Margin="0,10,10,10" VerticalAlignment="Bottom" MinWidth="60" Click="BtnCancel_Click"/>
         </StackPanel>
         <!--<DockPanel Grid.Row="4" Grid.ColumnSpan="2">
             <Button DockPanel.Dock="Bottom" Content="Add" Margin="0,0,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="50"/>
