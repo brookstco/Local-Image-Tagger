@@ -16,6 +16,9 @@ namespace LocalImageTagger.ViewModels
         #endregion
         public string ChosenDirectory { get; set; }
 
+        /// <summary>
+        /// The status of the checkbox. True=checked
+        /// </summary>
         public bool CheckboxChecked {get; set;}
 
 

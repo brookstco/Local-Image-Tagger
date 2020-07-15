@@ -28,6 +28,7 @@
             <CheckBox Content="Include Subdirectories" IsChecked="{Binding CheckboxChecked, Mode=TwoWay}" Margin="10,20,10,10"></CheckBox>
 
         </StackPanel>
+        
         <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal">
             <Button Content="_OK" Margin="10" MinWidth="60"></Button>
             <Button Content="_Cancel" IsCancel="True" Margin="10" MinWidth="60"></Button>

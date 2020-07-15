@@ -43,6 +43,7 @@
                 <Button Content="Open Test Image Viewer" ToolTip="Opens new window with test image loading" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Test_Button_Click"/>
                 <Button Content="Add New Tag Test" ToolTip="Opens new tag dialog, but doesn't actually work" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Tag_Button_Click"/>
                 <Button Content="Add New Dir Test" ToolTip="Opens new Dir dialog, but doesn't actually work" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Dir_Button_Click"/>
+                <Button Content="Add New Cat Test" ToolTip="Opens new Cat dialog, but doesn't actually work" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Cat_Button_Click"/>
             </StackPanel>
             <GridSplitter Grid.Row="1" Grid.Column="1" Width="5" HorizontalAlignment="Stretch" Grid.RowSpan="10" ShowsPreview="True"/>
         </Grid>

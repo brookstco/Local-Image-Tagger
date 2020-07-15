@@ -5,10 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LocalImageTagger.Views"
         mc:Ignorable="d"
-        Title="NewCategoryWindow" Height="300" Width="400"
+        Title="Add New Category" Height="300" Width="400"
         WindowStartupLocation="CenterOwner" 
         ResizeMode="NoResize">
     <Grid>
-        
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="_Category" Style="{StaticResource StandardStyleLabelBold}" Target="{Binding ElementName=txtBoxCat}" Margin="10,5,0,0"/>
+                <TextBox Margin="10" Width="250"/>
+
+            </StackPanel>
+
+
+            <CheckBox Content="Set as Default Category" IsChecked="{Binding CheckboxChecked, Mode=TwoWay}" Margin="10,20,10,10"></CheckBox>
+            <TextBlock FontWeight="Bold" Foreground="Red" Visibility="{Binding WarningVisibility}" Margin="10,0,0,0">WARNING: There can only be one default. <LineBreak/> This will replace the previous default category: <TextBlock Text="{Binding CurrentDefaultCategory}"/></TextBlock>
+
+        </StackPanel>
+
+        <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal">
+            <Button Content="_OK" Margin="10" MinWidth="60"></Button>
+            <Button Content="_Cancel" IsCancel="True" Margin="10" MinWidth="60"></Button>
+        </StackPanel>
     </Grid>
 </Window>
