@@ -16,9 +16,9 @@
             <TextBlock HorizontalAlignment="Center" Margin="30"  TextWrapping="Wrap" VerticalAlignment="Top">
                 Thank you for downloading Local Image Tagger!<LineBreak/><LineBreak/>
                 Instructions can be found on
-                <local:HyperlinkExternal NavigateUri="{Binding hyperlinkWiki}">GitHub
+                <local:HyperlinkExternal NavigateUri="https://github.com/brookstco/Local-Image-Tagger">GitHub
                 </local:HyperlinkExternal>. <LineBreak/><LineBreak/>
-                I am a solo developer, so updates may be slow, but please report any bugs or issues at the <Hyperlink  NavigateUri="{Binding hyperlinkReport}" local:HyperlinkExtensions.IsExternal="true">
+                I am a solo developer, so updates may be slow, but please report any bugs or issues at the <Hyperlink NavigateUri="https://github.com/brookstco/Local-Image-Tagger/issues" local:HyperlinkExtensions.IsExternal="True">
                 GitHub Issue Page</Hyperlink>.
             </TextBlock>
 

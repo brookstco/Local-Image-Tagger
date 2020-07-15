@@ -1,0 +1,20 @@
+﻿LocalImageTagger
+1.0.0.0
+
+winexe
+C#
+.cs
+C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\obj\Debug\netcoreapp3.1\
+LocalImageTagger
+none
+false
+TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
+C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\App.xaml
+6-963939587
+
+271693039410
+196-1004061197
+Test.xaml;Views\FirstTimePopUp.xaml;Views\ImageViewer.xaml;Views\MainWindow.xaml;Views\NewTagWindow.xaml;Views\VideoViewer.xaml;
+
+True
+
