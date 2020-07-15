@@ -31,12 +31,10 @@ namespace LocalImageTagger.ViewModels
                 if (CheckboxChecked)
                 {
                     WarningVisibility = Visibility.Visible;
-                    Debug.Write(checkboxDefault);
                 }
                 else
                 {
                     WarningVisibility = Visibility.Collapsed;
-                    Debug.Write(checkboxDefault);
                 }
             }
         }
