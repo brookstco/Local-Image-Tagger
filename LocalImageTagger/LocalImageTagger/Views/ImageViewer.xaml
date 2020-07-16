@@ -35,7 +35,7 @@
         <Button Command="{Binding OpenCloseSidebar}"  HorizontalAlignment="{Binding ButtonSidebarHorizontalAlignment}" VerticalAlignment="Top" 
                 Background="Transparent" BorderBrush="{x:Null}" Grid.Column="{Binding ButtonSidebarColumn}"
                 Width="15" Height="15" Panel.ZIndex="3">
-            <Image Source="/Images/arrow_black_left.png" Stretch="None" RenderTransformOrigin="0.5,0.5">
+            <Image Source="/Images/arrows/arrow_black_left.png" Stretch="None" RenderTransformOrigin="0.5,0.5">
                 <Image.RenderTransform>
                     <ScaleTransform ScaleX="{Binding ButtonSidebarDirection}"/>
                 </Image.RenderTransform>

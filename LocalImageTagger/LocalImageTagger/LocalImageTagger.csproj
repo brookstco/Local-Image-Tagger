@@ -4,6 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Images\Logo\local_image_tagger_logo_icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,23 +16,29 @@
     <None Remove="Images\bar_white.png" />
     <None Remove="Images\box_black.png" />
     <None Remove="Images\box_white.png" />
+    <None Remove="Images\Logo\Local Image Tagger Logo small.png" />
+    <None Remove="Images\Logo\Local Image Tagger Logo.png" />
+    <None Remove="Images\Logo\local_image_tagger_logo_icon.ico" />
     <None Remove="Images\unknownFile.png" />
     <None Remove="Images\x_black.png" />
     <None Remove="Images\x_white.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Images\arrow_black_left.png" />
-    <Resource Include="Images\arrow_black_up.png" />
-    <Resource Include="Images\arrow_white_left.png" />
-    <Resource Include="Images\arrow_white_up.png" />
-    <Resource Include="Images\bar_black.png" />
-    <Resource Include="Images\bar_white.png" />
-    <Resource Include="Images\box_black.png" />
-    <Resource Include="Images\box_white.png" />
-    <Resource Include="Images\unknownFile.png" />
-    <Resource Include="Images\x_black.png" />
-    <Resource Include="Images\x_white.png" />
+    <Resource Include="Images\arrows\arrow_black_left.png" />
+    <Resource Include="Images\arrows\arrow_black_up.png" />
+    <Resource Include="Images\arrows\arrow_white_left.png" />
+    <Resource Include="Images\arrows\arrow_white_up.png" />
+    <Resource Include="Images\Logo\Local Image Tagger Logo small.png" />
+    <Resource Include="Images\Logo\Local Image Tagger Logo.png" />
+    <Resource Include="Images\Logo\local_image_tagger_logo_icon.ico" />
+    <Resource Include="Images\TitleBar\bar_black.png" />
+    <Resource Include="Images\TitleBar\bar_white.png" />
+    <Resource Include="Images\TitleBar\box_black.png" />
+    <Resource Include="Images\TitleBar\box_white.png" />
+    <Resource Include="Images\Files\unknownFile.png" />
+    <Resource Include="Images\TitleBar\x_black.png" />
+    <Resource Include="Images\TitleBar\x_white.png" />
   </ItemGroup>
 
   <ItemGroup>
