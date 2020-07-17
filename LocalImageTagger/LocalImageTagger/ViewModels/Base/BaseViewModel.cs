@@ -11,5 +11,16 @@ namespace LocalImageTagger.ViewModels
         /// Fires to update the property when a child property changes
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged = (sender, e) => {};
+
+
+        /// <summary>
+        /// Call this to fire a <see cref="PropertyChanged"/> event
+        /// </summary>
+        /// <param name="name"></param>
+        public void OnPropertyChanged(string name)
+        {
+            PropertyChanged(this, new PropertyChangedEventArgs(name));
+        }
+
     }
 }
