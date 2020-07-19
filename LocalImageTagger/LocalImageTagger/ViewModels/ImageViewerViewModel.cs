@@ -62,12 +62,12 @@ namespace LocalImageTagger.ViewModels
         /// <summary>
         /// The minimum width that the windows can be adjusted to.
         /// </summary>
-        public double WindowMinimumWidth { get; set; } = 200;
+        public double WindowMinimumWidth { get; set; } = 100;
 
         /// <summary>
         /// The minimum height that the windows can be adjusted to.
         /// </summary>
-        public double WindowMinimumHeight { get; set; } = 200;
+        public double WindowMinimumHeight { get; set; } = 100;
 
         /// <summary>
         /// The current width of the window. Used for perserving window adjustments.

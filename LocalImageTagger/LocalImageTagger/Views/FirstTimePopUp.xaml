@@ -6,8 +6,7 @@
         xmlns:local="clr-namespace:LocalImageTagger"
         mc:Ignorable="d"
         Title="Welcome" 
-        Height="{Binding Path=WindowHeight, Mode=TwoWay}" Width="{Binding Path=WindowWidth, Mode=TwoWay}"
-        MinHeight="{Binding WindowMinimumHeight}" MinWidth="{Binding WindowMinimumWidth}"
+        Height="400" Width="300"
         WindowStartupLocation="CenterOwner" 
         ResizeMode="NoResize">
     <Grid>
