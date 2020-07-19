@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using System.Globalization;
 using System.Windows.Media.Imaging;
 
@@ -8,12 +7,19 @@ namespace LocalImageTagger.Converter
     /// <summary>
     /// Returns a BitmapImage for the given FileItem
     /// </summary>
-    class ItemImageDisplayValueConverter : BaseValueConverter<ItemImageDisplayValueConverter>
+    class FileItemImageDisplayValueConverter : BaseValueConverter<FileItemImageDisplayValueConverter>
     {
+        /// <summary>
+        /// Converts from a FileItem to a BitmapImage for display
+        /// </summary>
+        /// <param name="value">A FileItem object</param>
+        /// <returns></returns>
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             //Value is an FileItem Object
             FileItem FileItem = (FileItem)value;
+
+            //Changes depending on the file type of the item
             switch (FileItem.Type)
             {
                 case FileCategoryType.Image:

@@ -7,6 +7,7 @@ namespace LocalImageTagger
 {
     /// <summary>
     /// A base value converter than can be directly used in XAML instead of importing as a resource
+    /// Call it with Converter={local:ConverterName} directly in the XAML data binding
     /// </summary>
     /// <typeparam name="T">The type of the converter</typeparam>
     public abstract class BaseValueConverter<T> : MarkupExtension, IValueConverter
