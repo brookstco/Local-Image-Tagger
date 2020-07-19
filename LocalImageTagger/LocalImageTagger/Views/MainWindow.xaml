@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:LocalImageTagger"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Local Image Tagger" Height="600" Width="1000">
+        Title="Local Image Tagger" 
+        Height="{Binding Path=WindowHeight, Mode=TwoWay}" Width="{Binding Path=WindowWidth, Mode=TwoWay}"
+        MinHeight="{Binding WindowMinimumHeight}" MinWidth="{Binding WindowMinimumWidth}">
 
     <DockPanel>
         <Menu DockPanel.Dock="Top">

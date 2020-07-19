@@ -1,5 +1,4 @@
-﻿using LocalImageTagger.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -11,22 +10,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace LocalImageTagger
+namespace LocalImageTagger.Views
 {
     /// <summary>
-    /// Interaction logic for NewTagWindow.xaml
+    /// Interaction logic for TEST.xaml
     /// </summary>
-    public partial class NewTagWindow : Window
+    public partial class TEST : Window
     {
-        public NewTagWindow()
+        public TEST()
         {
             InitializeComponent();
-            DataContext = new NewTagWindowViewModel();
-        }
-
-        private void BtnCancel_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
         }
     }
 }

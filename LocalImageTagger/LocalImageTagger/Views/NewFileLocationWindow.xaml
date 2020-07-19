@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LocalImageTagger.Views"
         mc:Ignorable="d"
-        Title="Add New Directory" Height="300" Width="400"
+        Title="Add New Directory" 
+        Height="{Binding Path=WindowHeight, Mode=TwoWay}" Width="{Binding Path=WindowWidth, Mode=TwoWay}"
+        MinHeight="{Binding WindowMinimumHeight}" MinWidth="{Binding WindowMinimumWidth}"
         WindowStartupLocation="CenterOwner" 
         ResizeMode="NoResize">
 
