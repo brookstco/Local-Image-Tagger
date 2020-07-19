@@ -17,6 +17,11 @@ namespace LocalImageTagger
         /// </summary>
         private static T converter = null;
 
+        /// <summary>
+        /// Provides a static instance of the converter
+        /// </summary>
+        /// <param name="serviceProvider">The service provider</param>
+        /// <returns></returns>
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
             //Visual studio is recommending a combined assignment, but I am not used to the ?? system well enough to use abbreviations yet
