@@ -29,7 +29,6 @@ namespace LocalImageTagger
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new MainWindowViewModel();
 
             //TODO: When closing, prompt about closing, and have a checkbox for not having that warning anymore
         }

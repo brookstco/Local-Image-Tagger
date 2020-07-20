@@ -4,7 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LocalImageTagger"
-        xmlns:ct="clr-namespace:ChromeTabs;assembly=ChromeTabs"
+        xmlns:ct="clr-namespace:ChromeTabs;assembly=ChromeTabs" 
+        xmlns:views="clr-namespace:LocalImageTagger.Views"
+        xmlns:viewmodels="clr-namespace:LocalImageTagger.ViewModels"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="Local Image Tagger" 
@@ -39,11 +41,58 @@
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
 
-            <ct:ChromeTabControl ItemsSource="{Binding ItemCollection}"
+            <ct:ChromeTabControl ItemsSource="{Binding TabCollection}"
                              SelectedItem="{Binding SelectedTab}"
                              AddTabCommand="{Binding AddTabCommand}"
                              CloseTabCommand="{Binding CloseTabCommand}">
                 
+                <!--In app.xaml resources-->
+                <!--<ct:ChromeTabControl.Resources>
+                    <DataTemplate DataType="{x:Type viewmodels:SearchTabViewModel}">
+                        <views:SearchTab/>
+                    </DataTemplate>
+                </ct:ChromeTabControl.Resources>-->
+                
+                <!--This was directly copied from the original demo to check functionality. We must override the item template to show our tab name in the header. Here we use a simple
+                textblock, but you could put any combination of controls here. Uncomment the orange border to show
+                the bounds of the header content presenter-->
+                <ct:ChromeTabControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Tag="{Binding RelativeSource={RelativeSource AncestorType={x:Type ct:ChromeTabItem}}}">
+
+                            <!--<Border BorderBrush="Orange"
+                                BorderThickness="1">-->
+                            <StackPanel Orientation="Horizontal"
+                                    Background="Transparent">
+                                <Image Source="{Binding TabIcon}"
+                                   Stretch="Fill"
+                                       Margin="5,5,5,5" />
+                                <TextBlock Text="{Binding TabName}"
+                                       TextWrapping="NoWrap"
+                                       TextTrimming="CharacterEllipsis"
+                                       VerticalAlignment="Center" />
+                            </StackPanel>
+                            <!--</Border>-->
+
+                            <!--We can implement a context menu for the header here. The ChromeTabItems expose for convenience the following commands, "CloseTabCommand: close the current tab, "CloseAllTabsCommand", and "CloseOtherTabsCommand", which closes all tabs except the current.-->
+                            <Grid.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="Close"
+                                          Command="{Binding Path=PlacementTarget.Tag.CloseTabCommand, RelativeSource={RelativeSource AncestorType=ContextMenu}}"
+                                          CommandTarget="{Binding Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
+                                    <MenuItem Header="Close all"
+                                          Command="{Binding Path=PlacementTarget.Tag.CloseAllTabsCommand, RelativeSource={RelativeSource AncestorType=ContextMenu}}"
+                                          CommandTarget="{Binding Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
+                                    <MenuItem Header="Close other tabs"
+                                          Command="{Binding Path=PlacementTarget.Tag.CloseOtherTabsCommand, RelativeSource={RelativeSource AncestorType=ContextMenu}}"
+                                          CommandTarget="{Binding Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                          CommandParameter="{Binding}" />
+
+                                </ContextMenu>
+                            </Grid.ContextMenu>
+                        </Grid>
+                    </DataTemplate>
+                </ct:ChromeTabControl.ItemTemplate>
             </ct:ChromeTabControl>
             
             <!--Now included in a page: <StackPanel Orientation="Horizontal" Grid.ColumnSpan="10">

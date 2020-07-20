@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LocalImageTagger.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -24,15 +25,17 @@ namespace LocalImageTagger
         private void Application_Startup(object sender, StartupEventArgs e)
         {
 
-            MainWindow window = new MainWindow();
-            //Test window = new Test();
-            if (e.Args.Length >= 1)
+            MainWindow mainWindow = new MainWindow();
+            /*if (e.Args.Length >= 1)
             {
                 //TODO: Command Line Searches
                 //This will enable searching and other effects from the command line by adding the search terms as parameters on bootup
                 //Open immediately in new tab if ones are saved from before?
-            }
-            window.Show();
+            }*/
+
+            mainWindow.DataContext = new MainWindowViewModel();
+
+            mainWindow.Show();
 
             #region Globalization
             /*Globalization controls. Unneeded for now.
@@ -50,7 +53,7 @@ namespace LocalImageTagger
             //If firstTimeOpen setting is true
             FirstTimePopUp popup = new FirstTimePopUp
             {
-                Owner = window //The popup will load in the center of the main window of the window
+                Owner = mainWindow //The popup will load in the center of the main window of the window
             };
             popup.Show();
             #endregion

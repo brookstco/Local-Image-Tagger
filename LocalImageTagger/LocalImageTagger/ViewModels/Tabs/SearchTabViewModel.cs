@@ -1,10 +1,13 @@
 ﻿
 namespace LocalImageTagger.ViewModels
 {
-    class SearchTabViewModel : BaseTabViewModel
+    public class SearchTabViewModel : BaseTabViewModel
     {
 
-
+        public SearchTabViewModel()
+        {
+            TabName = "Search";
+        }
 
     }
 }

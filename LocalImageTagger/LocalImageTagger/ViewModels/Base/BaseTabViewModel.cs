@@ -2,7 +2,7 @@
 
 namespace LocalImageTagger.ViewModels
 {
-    class BaseTabViewModel : BaseViewModel
+    public class BaseTabViewModel : BaseViewModel
     {
         /// <summary>
         /// The name of the tab.

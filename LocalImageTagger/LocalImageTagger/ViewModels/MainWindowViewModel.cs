@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Windows.Input;
 
@@ -71,11 +72,13 @@ namespace LocalImageTagger.ViewModels
 
         public MainWindowViewModel()
         {
+            TabCollection = new ObservableCollection<BaseTabViewModel>();
             //Default with a single search tab open
             TabCollection.Add(new SearchTabViewModel());
+            //Set the original selected tab to the first one there
+            SelectedTab = TabCollection.FirstOrDefault();
 
             AddTabCommand = new RelayCommand(AddNewSearchTab);
-
         }
 
         #endregion
@@ -99,6 +102,7 @@ namespace LocalImageTagger.ViewModels
         {
             TabCollection.Add(new SearchTabViewModel());
         }
+
 
         #endregion
     }
