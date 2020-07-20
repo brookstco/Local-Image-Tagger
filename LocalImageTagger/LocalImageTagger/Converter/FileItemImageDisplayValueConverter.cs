@@ -27,7 +27,7 @@ namespace LocalImageTagger.Converter
                 default:
                     //IDEA: https://stackoverflow.com/questions/347614/storing-wpf-image-resources suggests storing the image resource seperately and referencing it to reduce mem use. This is only useful if I allow adding of files besides imgs, so a problem for future me.
                     //UNTESTED
-                    return new BitmapImage(new Uri("Images/Files/unknownFiles.png", UriKind.Relative));
+                    return new BitmapImage(new Uri("/Images/Files/unknownFiles.png", UriKind.Relative));
             }
         }
 

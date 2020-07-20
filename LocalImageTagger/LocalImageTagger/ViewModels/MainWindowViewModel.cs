@@ -9,6 +9,8 @@ namespace LocalImageTagger.ViewModels
 
         #region Properties
 
+
+        #region Window information
         /// <summary>
         /// The minimum width that the windows can be adjusted to.
         /// </summary>
@@ -28,6 +30,25 @@ namespace LocalImageTagger.ViewModels
         /// The current height of the window. Used for perserving window adjustments.
         /// </summary>
         public double WindowHeight { get; set; }
+
+        #endregion
+
+        #region Tabs
+
+        public ObservableCollection<MyTabClass> ItemCollection { get; set; }
+        public MyTabClass SelectedTab { get; set; }
+        (...)
+        void CloseTabCommandAction(MyTabClass tab)
+        {
+            ItemCollection.Remove(tab);
+        }
+        void AddTabCommandAction()
+        {
+            ItemCollection.Add(New MyTabClass());
+        }
+
+        #endregion
+
 
         #endregion
 

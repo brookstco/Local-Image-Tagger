@@ -24,6 +24,9 @@
     <Compile Update="Views\NewTagWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\Pages\SearchPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\TEST.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -53,6 +56,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\NewTagWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Pages\SearchPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\TEST.xaml">

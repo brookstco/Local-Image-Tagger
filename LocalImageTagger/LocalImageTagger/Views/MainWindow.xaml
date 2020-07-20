@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LocalImageTagger"
+        xmlns:ct="clr-namespace:ChromeTabs;assembly=ChromeTabs"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="Local Image Tagger" 
@@ -28,30 +29,34 @@
         </Menu>
         
         <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+            <!--<Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+            </Grid.RowDefinitions>-->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="5*"/>
                 <ColumnDefinition Width="5"/>
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
 
-            <StackPanel Orientation="Horizontal" Grid.ColumnSpan="10">
+            <ct:ChromeTabControl ItemsSource="{Binding ItemCollection}"
+                             SelectedItem="{Binding SelectedTab}"
+                             AddTabCommand="{Binding AddTabCommand}"
+                             CloseTabCommand="{Binding CloseTabCommand}">
+            
+            <!--Now included in a page: <StackPanel Orientation="Horizontal" Grid.ColumnSpan="10">
                 <TextBox HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Width="448" MinHeight="20"/>
                 <Button x:Name="btnSearch" Content="Search" ToolTip="Searches Tagged Images by Tag"  HorizontalAlignment="Left" Margin="0,10,10,10" VerticalAlignment="Top" VerticalContentAlignment="Center" MinWidth="50" MinHeight="20"/>
-            </StackPanel>
+            </StackPanel>-->
+            <GridSplitter Grid.Row="1" Grid.Column="1" Width="5" HorizontalAlignment="Stretch" Grid.RowSpan="10" ShowsPreview="True"/>
 
-            <StackPanel Grid.Row="1">
+            <!--Temporary buttons to test the windows-->
+            <StackPanel Grid.Column="2">
                 <Button Content="Open Test Image Viewer" ToolTip="Opens new window with test image loading" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Test_Button_Click"/>
                 <Button Content="Add New Tag Test" ToolTip="Opens new tag dialog, but doesn't actually work" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Tag_Button_Click"/>
                 <Button Content="Add New Dir Test" ToolTip="Opens new Dir dialog, but doesn't actually work" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Dir_Button_Click"/>
                 <Button Content="Add New Cat Test" ToolTip="Opens new Cat dialog, but doesn't actually work" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Cat_Button_Click"/>
             </StackPanel>
-            <GridSplitter Grid.Row="1" Grid.Column="1" Width="5" HorizontalAlignment="Stretch" Grid.RowSpan="10" ShowsPreview="True"/>
         </Grid>
     </DockPanel>
     

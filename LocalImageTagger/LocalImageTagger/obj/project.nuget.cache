@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "B78VYShqGxYhS2pu/HpLv7av4yO74G+ml44cZcUBbCKEE3r9iEuhaY/CTxBixHXYaCsHTLgIN3XC4lkFGmMXCQ==",
+  "dgSpecHash": "C6/JxaXBS6UU3ma4PxTOrucQ9MevjlHmiaA3emC3xuOYGdQGtJnLzavoEK+85ylckDeVcofi/4LNRMeZGY7qcg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Colin\\Desktop\\image tagger\\Local-Image-Tagger\\LocalImageTagger\\LocalImageTagger\\LocalImageTagger.csproj",
   "expectedPackageFiles": [
@@ -83,7 +83,8 @@
     "C:\\Users\\Colin\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\Colin\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\Colin\\.nuget\\packages\\wpf.controls.panandzoom\\2.3.3\\wpf.controls.panandzoom.2.3.3.nupkg.sha512",
-    "C:\\Users\\Colin\\.nuget\\packages\\wpf.matrixextensions\\2.3.3\\wpf.matrixextensions.2.3.3.nupkg.sha512"
+    "C:\\Users\\Colin\\.nuget\\packages\\wpf.matrixextensions\\2.3.3\\wpf.matrixextensions.2.3.3.nupkg.sha512",
+    "C:\\Users\\Colin\\.nuget\\packages\\wpfchrometabsmvvm\\1.3.4\\wpfchrometabsmvvm.1.3.4.nupkg.sha512"
   ],
   "logs": []
 }

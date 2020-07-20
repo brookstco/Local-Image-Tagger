@@ -50,6 +50,10 @@
               "target": "Package",
               "version": "[3.2.8, )"
             },
+            "WPFChromeTabsMVVM": {
+              "target": "Package",
+              "version": "[1.3.4, )"
+            },
             "Wpf.Controls.PanAndZoom": {
               "target": "Package",
               "version": "[2.3.3, )"

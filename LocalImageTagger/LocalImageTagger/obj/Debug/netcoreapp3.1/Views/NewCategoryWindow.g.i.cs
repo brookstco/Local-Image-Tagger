@@ -9,6 +9,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using ChromeTabs;
+using LocalImageTagger;
 using LocalImageTagger.Views;
 using System;
 using System.Diagnostics;

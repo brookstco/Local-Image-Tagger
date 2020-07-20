@@ -9,12 +9,15 @@ C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalIma
 C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\bin\Debug\netcoreapp3.1\PanAndZoom.dll
 C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\bin\Debug\netcoreapp3.1\Wpf.Controls.PanAndZoom.dll
 C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\bin\Debug\netcoreapp3.1\Wpf.MatrixExtensions.dll
+C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\bin\Debug\netcoreapp3.1\ChromeTabs.dll
 C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\obj\Debug\netcoreapp3.1\Views\FirstTimePopUp.g.cs
 C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\obj\Debug\netcoreapp3.1\Views\ImageViewer.g.cs
 C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\obj\Debug\netcoreapp3.1\Views\MainWindow.g.cs
 C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\obj\Debug\netcoreapp3.1\Views\NewCategoryWindow.g.cs
 C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\obj\Debug\netcoreapp3.1\Views\NewFileLocationWindow.g.cs
 C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\obj\Debug\netcoreapp3.1\Views\NewTagWindow.g.cs
+C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\obj\Debug\netcoreapp3.1\Views\Pages\SearchPage.g.cs
+C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\obj\Debug\netcoreapp3.1\Views\TEST.g.cs
 C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\obj\Debug\netcoreapp3.1\Views\VideoViewer.g.cs
 C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\obj\Debug\netcoreapp3.1\App.g.cs
 C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
@@ -27,6 +30,8 @@ C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalIma
 C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\obj\Debug\netcoreapp3.1\Views\NewCategoryWindow.baml
 C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\obj\Debug\netcoreapp3.1\Views\NewFileLocationWindow.baml
 C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\obj\Debug\netcoreapp3.1\Views\NewTagWindow.baml
+C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\obj\Debug\netcoreapp3.1\Views\Pages\SearchPage.baml
+C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\obj\Debug\netcoreapp3.1\Views\TEST.baml
 C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\obj\Debug\netcoreapp3.1\Views\VideoViewer.baml
 C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\obj\Debug\netcoreapp3.1\LocalImageTagger.g.resources
 C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\obj\Debug\netcoreapp3.1\LocalImageTagger.AssemblyInfoInputs.cache
@@ -37,6 +42,3 @@ C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalIma
 C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\obj\Debug\netcoreapp3.1\LocalImageTagger.dll
 C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\obj\Debug\netcoreapp3.1\LocalImageTagger.pdb
 C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\obj\Debug\netcoreapp3.1\LocalImageTagger.genruntimeconfig.cache
-C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\obj\Debug\netcoreapp3.1\Views\TEST.g.cs
-C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\obj\Debug\netcoreapp3.1\Views\TEST.baml
-C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\obj\Debug\netcoreapp3.1\LocalImageTagger.csprojAssemblyReference.cache
