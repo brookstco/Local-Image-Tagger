@@ -43,6 +43,8 @@
                              SelectedItem="{Binding SelectedTab}"
                              AddTabCommand="{Binding AddTabCommand}"
                              CloseTabCommand="{Binding CloseTabCommand}">
+                
+            </ct:ChromeTabControl>
             
             <!--Now included in a page: <StackPanel Orientation="Horizontal" Grid.ColumnSpan="10">
                 <TextBox HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Width="448" MinHeight="20"/>

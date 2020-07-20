@@ -11,14 +11,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace LocalImageTagger.Views.Pages
+namespace LocalImageTagger.UserControls
 {
     /// <summary>
-    /// Interaction logic for SearchPage.xaml
+    /// Interaction logic for SearchTab.xaml
     /// </summary>
-    public partial class SearchPage : Page
+    public partial class SearchTab : UserControl
     {
-        public SearchPage()
+        public SearchTab()
         {
             InitializeComponent();
         }

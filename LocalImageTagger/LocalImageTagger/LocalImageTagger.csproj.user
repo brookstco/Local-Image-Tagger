@@ -9,6 +9,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="UserControls\SearchTab.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\FirstTimePopUp.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -24,9 +27,6 @@
     <Compile Update="Views\NewTagWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Pages\SearchPage.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Views\TEST.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -40,6 +40,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="UserControls\SearchTab.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\FirstTimePopUp.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -56,9 +59,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\NewTagWindow.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\Pages\SearchPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\TEST.xaml">
