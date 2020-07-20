@@ -19,12 +19,18 @@
         <!--#endregion-->
 
         <!--#region ViewModel DataTemplates-->
+        
         <!--<DataTemplate DataType="{x:Type viewmodels:ImageDisplayViewModel}">
             <views:ImageDisplay/>
         </DataTemplate>
         <DataTemplate DataType="{x:Type viewmodels:VideoDisplayViewModel}">
             <views:VideoDisplay/>
         </DataTemplate>-->
+
+        <DataTemplate DataType="{x:Type viewmodels:SearchTabViewModel}">
+            <views:SearchTab/>
+        </DataTemplate>
+
         <!--#endregion-->
 
     </Application.Resources>

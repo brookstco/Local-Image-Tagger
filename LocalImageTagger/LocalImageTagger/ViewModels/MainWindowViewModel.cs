@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Windows.Input;
 
 namespace LocalImageTagger.ViewModels
 {
@@ -50,10 +51,31 @@ namespace LocalImageTagger.ViewModels
 
         #endregion
 
+        #region Commands
+
+        /// <summary>
+        /// Adds a new tab
+        /// </summary>
+        public ICommand AddTabCommand { get; private set; }
+
+        //TODO: Relay commands need to accept parameters. I should improve them significantly.
+        /// <summary>
+        /// Removes a tab.
+        /// </summary>
+        public ICommand RemoveTabCommand { get; private set; }
+
+        #endregion
+
+
         #region Constructor
 
         public MainWindowViewModel()
         {
+            //Default with a single search tab open
+            TabCollection.Add(new SearchTabViewModel());
+
+            AddTabCommand = new RelayCommand(AddNewSearchTab);
+
         }
 
         #endregion
@@ -64,17 +86,16 @@ namespace LocalImageTagger.ViewModels
         /// <summary>
         /// Closes the selected tab by removing it from the tab list.
         /// </summary>
-        /// <param name="tab"></param>
-        void CloseTabCommandAction(BaseTabViewModel tab)
+        /// <param name="tab">The tab to remove.</param>
+        public void CloseTab(BaseTabViewModel tab)
         {
             TabCollection.Remove(tab);
         }
 
         /// <summary>
-        /// Adds a new tab to the tab list.
-        /// Specifically adds a new <see cref="SearchTabViewModel"/>.
+        /// Adds a new <see cref="SearchTabViewModel"/> to the tab list.
         /// </summary>
-        void AddTabCommandAction()
+        public void AddNewSearchTab()
         {
             TabCollection.Add(new SearchTabViewModel());
         }
