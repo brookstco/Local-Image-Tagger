@@ -16,46 +16,7 @@ namespace LocalImageTagger.ViewModels
         /// <summary>
         /// Bool for whether the sidebar with tags is open (true) or not (false)
         /// </summary>
-        private bool sideBarOpen = true;
-
-        #region Commands
-
-        /// <summary>
-        /// Toggles fullscreen
-        /// </summary>
-        public ICommand ToggleFullscreen { get; private set; }
-
-        /// <summary>
-        /// Command to swap the stretch property for the window
-        /// </summary>
-        public ICommand SwapSize { get; private set; }
-
-        /// <summary>
-        /// Command to set the rendering mode to NearestNeighbor
-        /// </summary>
-        public ICommand SetRenderingModeNearestNeighbor { get; private set; }
-
-        /// <summary>
-        /// Command to set the rendering mode to High Quality
-        /// </summary>
-        public ICommand SetRenderingModeHighQuality { get; private set; }
-
-        /// <summary>
-        /// Command to set the rendering mode to Normal
-        /// </summary>
-        public ICommand SetRenderingModeNormal { get; private set; }
-
-        /// <summary>
-        /// Swaps between NN and Normal rendering modes
-        /// </summary>
-        public ICommand SwapRenderingMode { get; private set; }
-
-        /// <summary>
-        /// Swaps whether the sidebar is open or closed
-        /// </summary>
-        public ICommand OpenCloseSidebar { get; private set; }
-
-        #endregion
+        //private bool sideBarOpen = true;
 
         #region Properties
 
@@ -130,9 +91,48 @@ namespace LocalImageTagger.ViewModels
         public HorizontalAlignment ButtonSidebarHorizontalAlignment { get; private set; }
 
         /// <summary>
-        /// Controls the visibility of the sidebar elements to make a custom expander
+        /// Bool for whether the sidebar with tags is open (true) or not (false).
         /// </summary>
-        public Visibility SidebarVisibility { get; private set; }
+        public bool SidebarVisible { get; private set; }
+
+        #endregion
+
+        #region Commands
+
+        /// <summary>
+        /// Toggles fullscreen
+        /// </summary>
+        public ICommand ToggleFullscreen { get; private set; }
+
+        /// <summary>
+        /// Command to swap the stretch property for the window
+        /// </summary>
+        public ICommand SwapSize { get; private set; }
+
+        /// <summary>
+        /// Command to set the rendering mode to NearestNeighbor
+        /// </summary>
+        public ICommand SetRenderingModeNearestNeighbor { get; private set; }
+
+        /// <summary>
+        /// Command to set the rendering mode to High Quality
+        /// </summary>
+        public ICommand SetRenderingModeHighQuality { get; private set; }
+
+        /// <summary>
+        /// Command to set the rendering mode to Normal
+        /// </summary>
+        public ICommand SetRenderingModeNormal { get; private set; }
+
+        /// <summary>
+        /// Swaps between NN and Normal rendering modes
+        /// </summary>
+        public ICommand SwapRenderingMode { get; private set; }
+
+        /// <summary>
+        /// Swaps whether the sidebar is open or closed
+        /// </summary>
+        public ICommand OpenCloseSidebar { get; private set; }
 
         #endregion
 
@@ -159,10 +159,10 @@ namespace LocalImageTagger.ViewModels
             ImageStretch = Stretch.Uniform;
 
             //Rendering and sidebar start opposite, so that the swap functions can set things up properly. 
-            //TODO: Probably should split stuuff into more functions.
+            //TODO: Probably should split stuff into more functions.
             RenderingBitmapScalingMode = BitmapScalingMode.NearestNeighbor;
             swapRenderingMode();
-            sideBarOpen = false;
+            SidebarVisible = false;
             toggleSideBar();
             //Use revert to set not fullscreen at the start
             revertFullscreen();
@@ -283,19 +283,17 @@ namespace LocalImageTagger.ViewModels
         public void toggleSideBar()
         {
             //Do the swap first
-            sideBarOpen = !sideBarOpen;
+            SidebarVisible = !SidebarVisible;
             //The content inside matches the if statement (open controls first, then closed)
-            if (sideBarOpen)
+            if (SidebarVisible)
             {
                 ButtonSidebarDirection = "1";
-                SidebarVisibility = Visibility.Visible;
                 ButtonSidebarColumn = "0";
                 ButtonSidebarHorizontalAlignment = HorizontalAlignment.Right;
             }
             else
             {
                 ButtonSidebarDirection = "-1";
-                SidebarVisibility = Visibility.Collapsed;
                 ButtonSidebarColumn = "1";
                 ButtonSidebarHorizontalAlignment = HorizontalAlignment.Left;
             }

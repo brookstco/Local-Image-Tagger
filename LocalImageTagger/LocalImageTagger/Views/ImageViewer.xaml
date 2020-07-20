@@ -11,6 +11,10 @@
         WindowStyle="{Binding WindowStyle}"
         WindowState="{Binding WindowState}">
 
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+    </Window.Resources>
+    
     <Grid>
 
         <Grid.RowDefinitions>
@@ -22,7 +26,7 @@
         </Grid.ColumnDefinitions>
         
         <DockPanel>
-            <StackPanel DockPanel.Dock="Left" Visibility="{Binding SidebarVisibility}">
+            <StackPanel DockPanel.Dock="Left" Visibility="{Binding SidebarVisible, Converter={StaticResource BoolToVisibility}}">
                 <TextBlock>Tag</TextBlock>
                 <TextBlock>Tag</TextBlock>
                 <TextBlock>Tag</TextBlock>
