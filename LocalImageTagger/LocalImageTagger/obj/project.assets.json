@@ -1275,18 +1275,6 @@
         "frameworkReferences": [
           "Microsoft.WindowsDesktop.App.WPF"
         ]
-      },
-      "WPFChromeTabsMVVM/1.3.4": {
-        "type": "package",
-        "compile": {
-          "lib/netcoreapp3.1/ChromeTabs.dll": {}
-        },
-        "runtime": {
-          "lib/netcoreapp3.1/ChromeTabs.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.WindowsDesktop.App.WPF"
-        ]
       }
     }
   },
@@ -4703,26 +4691,12 @@
         "wpf.matrixextensions.2.3.3.nupkg.sha512",
         "wpf.matrixextensions.nuspec"
       ]
-    },
-    "WPFChromeTabsMVVM/1.3.4": {
-      "sha512": "udxhmMELKc/MBg2XlNiergUWon/VxKA1R+sVY/5rIKalDxdbaae9FlV+yyyLHjMOHMwPYwfisoEZfOkkoqbJlw==",
-      "type": "package",
-      "path": "wpfchrometabsmvvm/1.3.4",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net40/ChromeTabs.dll",
-        "lib/netcoreapp3.1/ChromeTabs.dll",
-        "wpfchrometabsmvvm.1.3.4.nupkg.sha512",
-        "wpfchrometabsmvvm.nuspec"
-      ]
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "Microsoft-WindowsAPICodePack-Shell >= 1.1.4",
       "PropertyChanged.Fody >= 3.2.8",
-      "WPFChromeTabsMVVM >= 1.3.4",
       "Wpf.Controls.PanAndZoom >= 2.3.3"
     ]
   },
@@ -4775,10 +4749,6 @@
           "PropertyChanged.Fody": {
             "target": "Package",
             "version": "[3.2.8, )"
-          },
-          "WPFChromeTabsMVVM": {
-            "target": "Package",
-            "version": "[1.3.4, )"
           },
           "Wpf.Controls.PanAndZoom": {
             "target": "Package",
