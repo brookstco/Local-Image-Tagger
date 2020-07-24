@@ -30,6 +30,10 @@
         <DataTemplate DataType="{x:Type viewmodels:SearchTabViewModel}">
             <views:SearchTab/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:ThumbnailViewModel}">
+            <views:Thumbnail/>
+        </DataTemplate>
+
 
         <!--#endregion-->
 

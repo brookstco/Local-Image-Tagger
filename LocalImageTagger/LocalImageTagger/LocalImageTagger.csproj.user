@@ -30,6 +30,9 @@
     <Compile Update="Views\TEST.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\UserControls\Thumbnail.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\VideoViewer.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -62,6 +65,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\TEST.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\UserControls\Thumbnail.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\VideoViewer.xaml">
