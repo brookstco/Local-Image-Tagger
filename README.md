@@ -10,8 +10,9 @@
 Can natively work with the filetypes: BMP, JPEG, PNG, TIFF, Windows Media Photo, GIF, and ICON. Other codecs will also be added, but are less critical. Eventually, also video files will load, and tags can be loaded from standard metadata forms.
 
 
-## Technical Details:
+### Technical Details:
 
-The program was created using C# in visual studio 2019 as a wpf project in the MVVM style. The MVVM is not strict in the interest of actually finishing the project, since I am learning as I go. Small amounts of code behind are used, and the solution is not properly split into projects to make this easier for me for now. This also means that it will stay windows exclusive until I fix this up, but if anyone greatly wants this for a different OS, you can submit an [Feature Request](https://github.com/brookstco/Local-Image-Tagger/issues), and I might start work on that.
+The program was created using C# in visual studio 2019 as a wpf project. The MVVM style is used, but not kept strictly. That is in the interest of actually finishing the project, since I am learning as I go. To make this easier on myself, small amounts of code behind are used (primarily for open/close behaviors that get unwieldy in MVVM), and the solution is not properly split into projects that seperate the WPF dependancy. This also means that it will stay windows exclusive until I fix this up, but if anyone greatly wants this for a different OS, you can submit an [Feature Request](https://github.com/brookstco/Local-Image-Tagger/issues), and I might start work on that.
 
 The tag database is a three-table system that is based on the system that is often called Toxi. Speed for adding and editing is sacrificed for search speed, but ti is not fully denormalised. 
+
