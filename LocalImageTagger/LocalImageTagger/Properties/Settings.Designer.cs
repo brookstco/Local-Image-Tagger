@@ -85,9 +85,11 @@ namespace LocalImageTagger.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Colin\\Desktop\\image" +
-            " tagger\\Local-Image-Tagger\\LocalImageTagger\\LocalImageTagger\\Database\\TagDatabas" +
-            "e.mdf\";Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
+<SerializableConnectionString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
+  <ConnectionString>Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\Database\TagDatabase.mdf"";Integrated Security=True</ConnectionString>
+  <ProviderName />
+</SerializableConnectionString>")]
         public string DatabaseConnectionString {
             get {
                 return ((string)(this["DatabaseConnectionString"]));
@@ -139,6 +141,102 @@ namespace LocalImageTagger.Properties {
             }
             set {
                 this["ImageViewerLeft"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double MainWindowTop {
+            get {
+                return ((double)(this["MainWindowTop"]));
+            }
+            set {
+                this["MainWindowTop"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double MainWindowLeft {
+            get {
+                return ((double)(this["MainWindowLeft"]));
+            }
+            set {
+                this["MainWindowLeft"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Tabs {
+            get {
+                return ((string)(this["Tabs"]));
+            }
+            set {
+                this["Tabs"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Unspecified")]
+        public global::System.Windows.Media.BitmapScalingMode SelectedTab {
+            get {
+                return ((global::System.Windows.Media.BitmapScalingMode)(this["SelectedTab"]));
+            }
+            set {
+                this["SelectedTab"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public double ThumbnailHeight {
+            get {
+                return ((double)(this["ThumbnailHeight"]));
+            }
+            set {
+                this["ThumbnailHeight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public double ThumbnailWidth {
+            get {
+                return ((double)(this["ThumbnailWidth"]));
+            }
+            set {
+                this["ThumbnailWidth"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        public uint ThumbnailsPerPage {
+            get {
+                return ((uint)(this["ThumbnailsPerPage"]));
+            }
+            set {
+                this["ThumbnailsPerPage"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public string ThumbnailColumns {
+            get {
+                return ((string)(this["ThumbnailColumns"]));
+            }
+            set {
+                this["ThumbnailColumns"] = value;
             }
         }
     }
