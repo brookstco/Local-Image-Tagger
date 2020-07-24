@@ -41,6 +41,16 @@ namespace LocalImageTagger.ViewModels
         public double WindowHeight { get; set; }
 
         /// <summary>
+        /// The position of the window's left side.
+        /// </summary>
+        public double WindowLeft { get; set; }
+
+        /// <summary>
+        /// The position of the window's top side.
+        /// </summary>
+        public double WindowTop { get; set; }
+
+        /// <summary>
         /// Window Style used for full screening the app
         /// </summary>
         public WindowStyle WindowStyle { get; set; }
@@ -158,20 +168,22 @@ namespace LocalImageTagger.ViewModels
             //Default Settings
             ImageStretch = Stretch.Uniform;
 
-            //RenderingBitmapScalingMode = BitmapScalingMode.NearestNeighbor;
+            //Set up the non-binded settings. These should update on close, but not actively
             RenderingBitmapScalingMode = Properties.Settings.Default.ImageViewerRenderingMode;
             setRenderingButtonText();
 
             SidebarVisible = true;
-            SidebarVisible = Properties.Settings.Default.ImageViewerSide;
+            SidebarVisible = Properties.Settings.Default.ImageViewerSideMenuVisibile;
             setSidebarVisibility();
+
+            WindowHeight = Properties.Settings.Default.ImageViewerHeight;
+            WindowWidth = Properties.Settings.Default.ImageViewerWidth;
+
+            WindowLeft = Properties.Settings.Default.ImageViewerLeft;
+            WindowTop = Properties.Settings.Default.ImageViewerTop;
 
             //Use revert to set not fullscreen at the start
             revertFullscreen();
-
-            //Set the window size when opening
-            //WindowWidth = 800;
-            //WindowHeight = 450;
         }
 
         #endregion
@@ -318,5 +330,22 @@ namespace LocalImageTagger.ViewModels
         }
 
         #endregion
+
+        /// <summary>
+        /// Updates the settings files with the variables used locally
+        /// </summary>
+        private void updateSettings()
+        {
+            Properties.Settings.Default.ImageViewerRenderingMode = RenderingBitmapScalingMode;
+            Properties.Settings.Default.ImageViewerSideMenuVisibile = SidebarVisible;
+            Properties.Settings.Default.ImageViewerWidth = WindowWidth;
+            Properties.Settings.Default.ImageViewerHeight = WindowHeight;
+            Properties.Settings.Default.ImageViewerLeft = WindowLeft;
+            Properties.Settings.Default.ImageViewerTop = WindowTop;
+
+            //Must manually save if not binding
+            Properties.Settings.Default.Save();
+        }
+
     }
 }
