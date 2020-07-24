@@ -2,8 +2,27 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="LocalImageTagger.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
+    <Setting Name="DatabaseConnectionString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename="C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\Database\TagDatabase.mdf";Integrated Security=True&lt;/ConnectionString&gt;
+  &lt;ProviderName /&gt;
+&lt;/SerializableConnectionString&gt;</Value>
+    </Setting>
     <Setting Name="FirstTimePopUpDisplays" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="MainWindowHeight" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">600</Value>
+    </Setting>
+    <Setting Name="MainWindowWidth" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">1000</Value>
+    </Setting>
+    <Setting Name="MainWindowTop" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="MainWindowLeft" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="ImageViewerRenderingMode" Type="System.Windows.Media.BitmapScalingMode" Scope="User">
       <Value Profile="(Default)">Unspecified</Value>
@@ -17,36 +36,17 @@
     <Setting Name="ImageViewerHeight" Type="System.Double" Scope="User">
       <Value Profile="(Default)">500</Value>
     </Setting>
-    <Setting Name="DatabaseConnectionString" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename="C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\Database\TagDatabase.mdf";Integrated Security=True&lt;/ConnectionString&gt;
-  &lt;ProviderName /&gt;
-&lt;/SerializableConnectionString&gt;</Value>
-    </Setting>
-    <Setting Name="MainWindowHeight" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">600</Value>
-    </Setting>
-    <Setting Name="MainWindowWidth" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">1000</Value>
-    </Setting>
     <Setting Name="ImageViewerTop" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="ImageViewerLeft" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="MainWindowTop" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
-    <Setting Name="MainWindowLeft" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
     <Setting Name="Tabs" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="SelectedTab" Type="System.Windows.Media.BitmapScalingMode" Scope="User">
-      <Value Profile="(Default)">Unspecified</Value>
+    <Setting Name="SelectedTab" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="ThumbnailHeight" Type="System.Double" Scope="User">
       <Value Profile="(Default)">100</Value>
