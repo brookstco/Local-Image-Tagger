@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LocalImageTagger"
-        xmlns:ct="clr-namespace:ChromeTabs;assembly=ChromeTabs" 
         xmlns:views="clr-namespace:LocalImageTagger.Views"
         xmlns:viewmodels="clr-namespace:LocalImageTagger.ViewModels"
         mc:Ignorable="d"
@@ -53,8 +52,10 @@
                         <views:SearchTab/>
                     </DataTemplate>
                 </ct:ChromeTabControl.Resources>-->
-                
-                <!--This was directly copied from the original demo to check functionality. We must override the item template to show our tab name in the header. Here we use a simple
+            
+            <!--xmlns:ct="clr-namespace:ChromeTabs;assembly=ChromeTabs"-->
+
+            <!--This was directly copied from the original demo to check functionality. We must override the item template to show our tab name in the header. Here we use a simple
                 textblock, but you could put any combination of controls here. Uncomment the orange border to show
                 the bounds of the header content presenter--><!--
                 <ct:ChromeTabControl.ItemTemplate>

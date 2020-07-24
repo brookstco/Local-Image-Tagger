@@ -158,18 +158,20 @@ namespace LocalImageTagger.ViewModels
             //Default Settings
             ImageStretch = Stretch.Uniform;
 
-            //Rendering and sidebar start opposite, so that the swap functions can set things up properly. 
-            //TODO: Probably should split stuff into more functions.
-            RenderingBitmapScalingMode = BitmapScalingMode.NearestNeighbor;
-            swapRenderingMode();
-            SidebarVisible = false;
-            toggleSideBar();
+            //RenderingBitmapScalingMode = BitmapScalingMode.NearestNeighbor;
+            RenderingBitmapScalingMode = Properties.Settings.Default.ImageViewerRenderingMode;
+            setRenderingButtonText();
+
+            SidebarVisible = true;
+            SidebarVisible = Properties.Settings.Default.ImageViewerSide;
+            setSidebarVisibility();
+
             //Use revert to set not fullscreen at the start
             revertFullscreen();
 
             //Set the window size when opening
-            WindowWidth = 800;
-            WindowHeight = 450;
+            //WindowWidth = 800;
+            //WindowHeight = 450;
         }
 
         #endregion
@@ -226,7 +228,7 @@ namespace LocalImageTagger.ViewModels
         /// Set the rendering mode of the image to NearestNeighbor for Pixel Art
         /// </summary>
         /// <param name="mode">BitmapScalingMode enum</param>
-        public void setRenderingModeNN()
+        private void setRenderingModeNN()
         {
             RenderingBitmapScalingMode = BitmapScalingMode.NearestNeighbor;
         }
@@ -235,7 +237,7 @@ namespace LocalImageTagger.ViewModels
         /// Set the rendering mode of the image to Default
         /// </summary>
         /// <param name="mode">BitmapScalingMode enum</param>
-        public void setRenderingModeDefault()
+        private void setRenderingModeDefault()
         {
             RenderingBitmapScalingMode = BitmapScalingMode.Unspecified;
         }
@@ -244,7 +246,7 @@ namespace LocalImageTagger.ViewModels
         /// Set the rendering mode of the image to high Quality
         /// </summary>
         /// <param name="mode">BitmapScalingMode enum</param>
-        public void setRenderingModeHQ()
+        private void setRenderingModeHQ()
         {
             RenderingBitmapScalingMode = BitmapScalingMode.HighQuality;
         }
@@ -258,21 +260,32 @@ namespace LocalImageTagger.ViewModels
             //Otherwise, it checks the current, and changes everything to the other
             if(RenderingBitmapScalingMode == BitmapScalingMode.Unspecified)
             {
+                setRenderingModeNN();
+            }
+            else //if (RenderingBitmapScalingMode == BitmapScalingMode.NearestNeighbor) //If there are more options, don't have this be the default
+            {
+                setRenderingModeDefault();
+            }
+            setRenderingButtonText();
+        }
+
+        /// <summary>
+        /// Sets the buttons to have text appropratie for the current rendering mode
+        /// </summary>
+        private void setRenderingButtonText()
+        {
+            if (RenderingBitmapScalingMode == BitmapScalingMode.NearestNeighbor)
+            {
                 ButtonRenderContent = "Render Linear";
                 ButtonRenderToolTip = "Changes the image to render Linear (smooth) instead of the current Nearest Neighbor (pixel-perfect)";
-                setRenderingModeNN();
             }
             else //if (RenderingBitmapScalingMode == BitmapScalingMode.NearestNeighbor) //If there are more options, don't have this be the default
             {
                 ButtonRenderContent = "Render with NN";
                 ButtonRenderToolTip = "Changes the image to render with Nearest Neighbor (pixel-perfect) instead of the current Linear (smooth)";
-                setRenderingModeDefault();
             }
-        }
 
-        /// <summary>
-        /// Opens or closes the sidebar
-        /// </summary>
+        }
 
         #endregion
 
@@ -282,8 +295,12 @@ namespace LocalImageTagger.ViewModels
         /// </summary>
         public void toggleSideBar()
         {
-            //Do the swap first
             SidebarVisible = !SidebarVisible;
+            setSidebarVisibility();
+        }
+
+        private void setSidebarVisibility()
+        {
             //The content inside matches the if statement (open controls first, then closed)
             if (SidebarVisible)
             {
@@ -297,6 +314,7 @@ namespace LocalImageTagger.ViewModels
                 ButtonSidebarColumn = "1";
                 ButtonSidebarHorizontalAlignment = HorizontalAlignment.Left;
             }
+
         }
 
         #endregion
