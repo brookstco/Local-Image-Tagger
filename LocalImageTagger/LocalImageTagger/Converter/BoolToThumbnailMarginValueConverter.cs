@@ -9,7 +9,7 @@ namespace LocalImageTagger.Converter
     class BoolToThumbnailMarginValueConverter : BaseValueConverter<BoolToThumbnailMarginValueConverter>
     {
         /// <summary>
-        /// Converts from a Bool to a BitmapImage for display
+        /// Converts from a Bool to a Thickness for a thumbnail border
         /// </summary>
         /// <param name="value">A bool</param>
         /// <returns>A <see cref="Thickness"/></returns>
