@@ -6,8 +6,9 @@
              xmlns:viewmodels="clr-namespace:LocalImageTagger.ViewModels"
              xmlns:convert="clr-namespace:LocalImageTagger.Converter"
              Startup="Application_Startup" ShutdownMode="OnMainWindowClose">
-             <!--StartupUri="ImageViewer.xaml"--> 
+             <!--StartupUri="ImageViewer.xaml"-->
     <Application.Resources>
+        
         <!--#region Text Styles-->
         <Style  x:Key="StandardStyleTextBlock" TargetType="TextBlock">
             <Setter Property="Foreground" Value="Black" />
@@ -32,6 +33,8 @@
         
         <!--#region Converters-->
         <convert:FileItemImageDisplayValueConverter x:Key="FileToImage"/>
+        <convert:BoolToThumbnailMarginValueConverter x:Key="BoolToMargin"/>
+        
         <!--#endregion-->
 
     </Application.Resources>

@@ -48,15 +48,25 @@ namespace LocalImageTagger
             #endregion
 
             #region First-Time pop-up
-            //TODO: Open popup based on settings
             //Show a popup on the first time opening the program, or if the setting is toggled.
-            //If firstTimeOpen setting is true
-            FirstTimePopUp popup = new FirstTimePopUp
+
+            //Have to Specify LIT since properties also belongs to app
+            if (LocalImageTagger.Properties.Settings.Default.FirstTime == true || LocalImageTagger.Properties.Settings.Default.FirstTimePopUpDisplays == true)
             {
-                Owner = mainWindow //The popup will load in the center of the main window of the window
-            };
-            popup.Show();
+                FirstTimePopUp popup = new FirstTimePopUp
+                {
+                    Owner = mainWindow //The popup will load in the center of the main window of the window
+                };
+                popup.Show();
+
+            }
             #endregion
+
+            if (LocalImageTagger.Properties.Settings.Default.FirstTime == true)
+            {
+                LocalImageTagger.Properties.Settings.Default.FirstTime = false;
+                LocalImageTagger.Properties.Settings.Default.Save();
+            }
 
         }
     }

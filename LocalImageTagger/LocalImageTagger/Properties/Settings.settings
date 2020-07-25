@@ -10,7 +10,7 @@
 &lt;/SerializableConnectionString&gt;</Value>
     </Setting>
     <Setting Name="FirstTimePopUpDisplays" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="MainWindowHeight" Type="System.Double" Scope="User">
       <Value Profile="(Default)">600</Value>
@@ -61,7 +61,22 @@
       <Value Profile="(Default)">3</Value>
     </Setting>
     <Setting Name="ThumbnailImageBorderColor" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">White</Value>
+      <Value Profile="(Default)">Black</Value>
+    </Setting>
+    <Setting Name="ThumbnailAnimatedImageBoderColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Cyan</Value>
+    </Setting>
+    <Setting Name="ThumbnailImageBorderVisible" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="ThumbnailAnimatedImageBorderVisible" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="FirstTime" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="ThumbnailMarginSize" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">3</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -9,12 +9,12 @@ namespace LocalImageTagger.ViewModels
         /// <summary>
         /// The current width of the window. Used for perserving window adjustments.
         /// </summary>
-        public double WindowWidth { get; set; }
+        public double WindowWidth { get; set; } = 300;
 
         /// <summary>
         /// The current height of the window. Used for perserving window adjustments.
         /// </summary>
-        public double WindowHeight { get; set; }
+        public double WindowHeight { get; set; } = 400;
 
         public bool CheckboxChecked { get; set; } = true;
 
@@ -31,21 +31,7 @@ namespace LocalImageTagger.ViewModels
         public FirstTimePopUpViewModel()
         {
             //HyperlinkRequest = new HyperlinkCommand.Hyperlink_RequestNavigate();
-            //Set the window size when opening
-            WindowWidth = 300;
-            WindowHeight = 400;
         }
-
-        /// <summary>
-        /// Sets the status of the pop-up window opening or not iun the user settings
-        /// </summary>
-        /// <param name="value"></param>
-        private void setPopUpSetting()
-        {
-            //TODO: SETTINGS NOT IMPLEMENTED
-            //setting = checkboxChecked
-        }
-
 
     }
 }

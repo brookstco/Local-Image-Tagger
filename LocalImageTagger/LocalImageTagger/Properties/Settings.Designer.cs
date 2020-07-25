@@ -38,7 +38,7 @@ namespace LocalImageTagger.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool FirstTimePopUpDisplays {
             get {
                 return ((bool)(this["FirstTimePopUpDisplays"]));
@@ -241,13 +241,73 @@ namespace LocalImageTagger.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("White")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
         public global::System.Drawing.Color ThumbnailImageBorderColor {
             get {
                 return ((global::System.Drawing.Color)(this["ThumbnailImageBorderColor"]));
             }
             set {
                 this["ThumbnailImageBorderColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Cyan")]
+        public global::System.Drawing.Color ThumbnailAnimatedImageBoderColor {
+            get {
+                return ((global::System.Drawing.Color)(this["ThumbnailAnimatedImageBoderColor"]));
+            }
+            set {
+                this["ThumbnailAnimatedImageBoderColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ThumbnailImageBorderVisible {
+            get {
+                return ((bool)(this["ThumbnailImageBorderVisible"]));
+            }
+            set {
+                this["ThumbnailImageBorderVisible"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ThumbnailAnimatedImageBorderVisible {
+            get {
+                return ((bool)(this["ThumbnailAnimatedImageBorderVisible"]));
+            }
+            set {
+                this["ThumbnailAnimatedImageBorderVisible"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FirstTime {
+            get {
+                return ((bool)(this["FirstTime"]));
+            }
+            set {
+                this["FirstTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public double ThumbnailMarginSize {
+            get {
+                return ((double)(this["ThumbnailMarginSize"]));
+            }
+            set {
+                this["ThumbnailMarginSize"] = value;
             }
         }
     }
