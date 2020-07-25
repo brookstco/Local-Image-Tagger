@@ -12,16 +12,17 @@ namespace LocalImageTagger.ViewModels
         /// <summary>
         /// The <see cref="FileItem" that is displayed in the fileItem/>
         /// </summary>
-        FileItem file;
+        public FileItem FileItem { get; private set; }
+
 
         //TODO: Colored border?
-        //TODO: Click actions - Make the entire thumbnail a button instead? Will need to differentiate clicks and double clicks
+        //TODO: Click actions? - Click via the item control instead of the thumbnail probably. Make the entire thumbnail a button instead? Will need to differentiate clicks and double clicks
         //Click to tag, double click to view
 
 
         public ThumbnailViewModel(FileItem fileItem)
         {
-            file = fileItem;
+            FileItem = fileItem;
         }
 
     }

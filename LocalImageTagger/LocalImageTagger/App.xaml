@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:LocalImageTagger" 
              xmlns:views="clr-namespace:LocalImageTagger.Views"
              xmlns:viewmodels="clr-namespace:LocalImageTagger.ViewModels"
+             xmlns:convert="clr-namespace:LocalImageTagger.Converter"
              Startup="Application_Startup" ShutdownMode="OnMainWindowClose">
              <!--StartupUri="ImageViewer.xaml"--> 
     <Application.Resources>
@@ -19,13 +20,6 @@
         <!--#endregion-->
 
         <!--#region ViewModel DataTemplates-->
-        
-        <!--<DataTemplate DataType="{x:Type viewmodels:ImageDisplayViewModel}">
-            <views:ImageDisplay/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodels:VideoDisplayViewModel}">
-            <views:VideoDisplay/>
-        </DataTemplate>-->
 
         <DataTemplate DataType="{x:Type viewmodels:SearchTabViewModel}">
             <views:SearchTab/>
@@ -34,7 +28,10 @@
             <views:Thumbnail/>
         </DataTemplate>
 
-
+        <!--#endregion-->
+        
+        <!--#region Converters-->
+        <convert:FileItemImageDisplayValueConverter x:Key="FileToImage"/>
         <!--#endregion-->
 
     </Application.Resources>

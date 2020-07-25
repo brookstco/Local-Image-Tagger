@@ -238,5 +238,17 @@ namespace LocalImageTagger.Properties {
                 this["ThumbnailColumns"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("White")]
+        public global::System.Drawing.Color ThumbnailImageBorderColor {
+            get {
+                return ((global::System.Drawing.Color)(this["ThumbnailImageBorderColor"]));
+            }
+            set {
+                this["ThumbnailImageBorderColor"] = value;
+            }
+        }
     }
 }
