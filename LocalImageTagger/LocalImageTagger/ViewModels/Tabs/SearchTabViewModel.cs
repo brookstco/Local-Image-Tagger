@@ -26,7 +26,7 @@ namespace LocalImageTagger.ViewModels
             //Take will not break if the number is greater than the amount in the collection
             //Skip and take are LINQ which break with OBservable collections
             //{
-                //return FileItems.Skip(CurrentPageNumber - 1).Take(Properties.Settings.Default.ThumbnailsPerPage);
+            //return FileItems.Skip((CurrentPageNumber - 1) * Properties.Settings.Default.ThumbnailsPerPage).Take(Properties.Settings.Default.ThumbnailsPerPage);
             //}
         }
 
