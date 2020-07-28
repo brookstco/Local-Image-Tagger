@@ -8,6 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Database\TagDatabase.mdf" />
+    <None Remove="Database\TagDatabaseDataSet.xsd" />
+    <None Remove="Database\TagDatabase_log.ldf" />
     <None Remove="Images\arrow_black_left.png" />
     <None Remove="Images\arrow_black_up.png" />
     <None Remove="Images\arrow_white_left.png" />
@@ -22,6 +25,20 @@
     <None Remove="Images\unknownFile.png" />
     <None Remove="Images\x_black.png" />
     <None Remove="Images\x_white.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Database\TagDatabase.mdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Database\TagDatabaseDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TagDatabaseDataSet.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Database\TagDatabase_log.ldf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -42,11 +59,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Database\TagDatabaseDataSet.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>TagDatabaseDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Update="Properties\Settings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
@@ -55,10 +67,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Database\TagDatabaseDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>TagDatabaseDataSet.Designer.cs</LastGenOutput>
-    </None>
     <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
