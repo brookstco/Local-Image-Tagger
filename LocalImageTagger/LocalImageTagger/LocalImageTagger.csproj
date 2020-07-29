@@ -8,9 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Database\TagDatabase.mdf" />
-    <None Remove="Database\TagDatabaseDataSet.xsd" />
-    <None Remove="Database\TagDatabase_log.ldf" />
+    <None Remove="Database\TagDatabase.db" />
     <None Remove="Images\arrow_black_left.png" />
     <None Remove="Images\arrow_black_up.png" />
     <None Remove="Images\arrow_white_left.png" />
@@ -28,15 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Database\TagDatabase.mdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Database\TagDatabaseDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>TagDatabaseDataSet.Designer.cs</LastGenOutput>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Database\TagDatabase_log.ldf">
+    <Content Include="Database\TagDatabase.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -59,6 +49,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Database\Old\TagDatabaseDataSet.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TagDatabaseDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Update="Properties\Settings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
@@ -67,6 +62,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Database\Old\TagDatabase.mdf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Database\Old\TagDatabaseDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TagDatabaseDataSet.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Database\Old\TagDatabase_log.ldf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
     <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

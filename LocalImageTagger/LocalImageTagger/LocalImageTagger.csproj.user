@@ -39,9 +39,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Update="Database\TagDatabaseDataSet.xsd">
+    <None Update="Database\Old\TagDatabaseDataSet.xsd">
       <SubType>Designer</SubType>
-    </Content>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\UserControls\SearchTab.xaml">

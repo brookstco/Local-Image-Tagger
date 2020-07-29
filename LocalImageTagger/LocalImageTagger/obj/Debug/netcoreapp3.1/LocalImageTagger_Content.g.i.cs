@@ -8,8 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("database/tagdatabase.mdf")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("database/tagdatabasedataset.xsd")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("database/tagdatabase_log.ldf")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("database/tagdatabase.db")]
 
 
