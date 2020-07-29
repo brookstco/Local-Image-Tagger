@@ -28,7 +28,9 @@ This is not a roadmap, since there is no timeline or direction, but these are th
 
 - Tags that change program settings. I want this so I can give a rendering tag to pixel art images, so that the image viewer will automatically have them render NN and everything else linear. 
 
-- Profiles. Have seperate tag databases and settings based on the selected profile. Benefits seperate user, different use cases, and really bad computers that can't handle a massive DB.
+- Import tag/file information through some file type. Like importing a .txt. Would allow for faster tagging for files if the user know exactly how they should be tagged, and opens a way to auto tag images imported from online.
+
+- Database Backup. This can already be backup just by copying the DB somewhere else, but giving an in-app way to do it, as well as an automatic/ easy way to do it would help. Along with that, give a way to import databases.
 
 
 ### Alternatives:
