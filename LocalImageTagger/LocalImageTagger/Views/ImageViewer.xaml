@@ -30,14 +30,13 @@
         
         <DockPanel>
             <StackPanel DockPanel.Dock="Left" Visibility="{Binding SidebarVisible, Converter={StaticResource BoolToVisibility}}">
+                
+                <!-- Replace with a list collection thingy for the tags. Make them links to create a new tab with the tag as a search. Include the total number and a link to the Dictionary-->
                 <TextBlock>Tag</TextBlock>
-                <TextBlock>Tag</TextBlock>
-                <TextBlock>Tag</TextBlock>
-                <TextBlock>Tag</TextBlock>
-                <TextBlock>Tag</TextBlock>
-                <TextBlock>Tag</TextBlock>
+                
                 <Button Content="{Binding ButtonRenderContent}" ToolTip="{Binding ButtonRenderToolTip}" Command="{Binding SwapRenderingMode}" Width="90"/>
                 <Button Content="_Fullscreen" ToolTip="Toggle Fullscreen" Command="{Binding ToggleFullscreen}" Width="90"/>
+                <Button Content="_Open With" ToolTip="Open in another application." Command="{Binding OpenWith}" Width="90"/>
             </StackPanel>
         </DockPanel>
 

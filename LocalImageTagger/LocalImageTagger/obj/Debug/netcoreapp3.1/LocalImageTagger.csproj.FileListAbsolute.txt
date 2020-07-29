@@ -44,7 +44,5 @@ C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalIma
 C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\obj\Debug\netcoreapp3.1\LocalImageTagger.genruntimeconfig.cache
 C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\obj\Debug\netcoreapp3.1\Views\UserControls\Thumbnail.g.cs
 C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\obj\Debug\netcoreapp3.1\Views\UserControls\Thumbnail.baml
-C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\bin\Debug\netcoreapp3.1\Database\TagDatabase.mdf
-C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\bin\Debug\netcoreapp3.1\Database\TagDatabaseDataSet.xsd
-C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\bin\Debug\netcoreapp3.1\Database\TagDatabase_log.ldf
 C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\obj\Debug\netcoreapp3.1\LocalImageTagger_Content.g.cs
+C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\bin\Debug\netcoreapp3.1\Database\TagDatabase.db
