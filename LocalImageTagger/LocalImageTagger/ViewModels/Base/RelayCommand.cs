@@ -5,6 +5,7 @@ using System.Windows.Navigation;
 namespace LocalImageTagger
 {
     // Modified from various stackoverflow posts
+    //Create an ICommand or RelayCommand and set it to = new RelayCommand(func) or = new RelayCommand(func, condFunc) or = new RelayCommand<Parameter>(func) or = new RelayCommand<Parameter>(func, CondFunc)
 
     /// <summary>
     /// A command that runs an Action.
