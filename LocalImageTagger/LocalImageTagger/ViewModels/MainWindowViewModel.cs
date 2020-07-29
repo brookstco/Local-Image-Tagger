@@ -57,13 +57,13 @@ namespace LocalImageTagger.ViewModels
         /// <summary>
         /// Adds a new tab
         /// </summary>
-        public ICommand AddTabCommand { get; private set; }
+        public RelayCommand AddTabCommand { get; private set; }
 
         //TODO: Relay commands need to accept parameters. I should improve them significantly.
         /// <summary>
         /// Removes a tab.
         /// </summary>
-        public ICommand RemoveTabCommand { get; private set; }
+        public RelayCommand RemoveTabCommand { get; private set; }
 
         #endregion
 

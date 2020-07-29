@@ -11,7 +11,7 @@ namespace LocalImageTagger.ViewModels
         /// <summary>
         /// Opends a dialog to select a directory
         /// </summary>
-        public ICommand ChooseDirectory { get; set; }
+        public RelayCommand ChooseDirectory { get; set; }
 
         #endregion
 
@@ -54,6 +54,7 @@ namespace LocalImageTagger.ViewModels
 
         private void SelectDirectory()
         {
+            //TODO: Use settings to remember the last used location. Do this for at least adding new images
             CommonOpenFileDialog dialog = new CommonOpenFileDialog();
             dialog.InitialDirectory = "C:\\Users";
             dialog.IsFolderPicker = true;

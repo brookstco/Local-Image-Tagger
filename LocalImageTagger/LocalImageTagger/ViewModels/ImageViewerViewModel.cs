@@ -112,37 +112,37 @@ namespace LocalImageTagger.ViewModels
         /// <summary>
         /// Toggles fullscreen
         /// </summary>
-        public ICommand ToggleFullscreen { get; private set; }
+        public RelayCommand ToggleFullscreen { get; private set; }
 
         /// <summary>
         /// Command to swap the stretch property for the window
         /// </summary>
-        public ICommand SwapSize { get; private set; }
+        public RelayCommand SwapSize { get; private set; }
 
         /// <summary>
         /// Command to set the rendering mode to NearestNeighbor
         /// </summary>
-        public ICommand SetRenderingModeNearestNeighbor { get; private set; }
+        public RelayCommand SetRenderingModeNearestNeighbor { get; private set; }
 
         /// <summary>
         /// Command to set the rendering mode to High Quality
         /// </summary>
-        public ICommand SetRenderingModeHighQuality { get; private set; }
+        public RelayCommand SetRenderingModeHighQuality { get; private set; }
 
         /// <summary>
         /// Command to set the rendering mode to Normal
         /// </summary>
-        public ICommand SetRenderingModeNormal { get; private set; }
+        public RelayCommand SetRenderingModeNormal { get; private set; }
 
         /// <summary>
         /// Swaps between NN and Normal rendering modes
         /// </summary>
-        public ICommand SwapRenderingMode { get; private set; }
+        public RelayCommand SwapRenderingMode { get; private set; }
 
         /// <summary>
         /// Swaps whether the sidebar is open or closed
         /// </summary>
-        public ICommand OpenCloseSidebar { get; private set; }
+        public RelayCommand OpenCloseSidebar { get; private set; }
 
         #endregion
 

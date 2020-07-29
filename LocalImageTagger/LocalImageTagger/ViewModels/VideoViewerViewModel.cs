@@ -1,6 +1,7 @@
 ﻿
 namespace LocalImageTagger.ViewModels
 {
+    //Currently Unused
     class VideoViewerViewModel : BaseViewModel
     {
         #region Properties
