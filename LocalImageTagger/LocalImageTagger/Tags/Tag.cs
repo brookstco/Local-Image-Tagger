@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices.ComTypes;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace LocalImageTagger.Tags
 {
     //There are 3 forms of tag in order to save space when details are unneeded. All 3 are below, since they are related
 
     /// <summary>
-    /// A tag and the details that will be needed when viewing it.
+    /// A tag with the details that will be needed when viewing it.
     /// </summary>
     public class Tag
     {
@@ -30,6 +27,14 @@ namespace LocalImageTagger.Tags
         /// </summary>
         public int Count { get; private set; }
 
+        public TagType Type
+        {
+            get
+            {
+                return TagType.Standard;
+            }
+        }
+
         #endregion
 
         public Tag(string name, int id, int count)
@@ -42,7 +47,7 @@ namespace LocalImageTagger.Tags
     }
 
     /// <summary>
-    /// A tag with the extra details needed for searching with it
+    /// A tag with the extra details needed for searching with it.
     /// </summary>
     class SearchTag : Tag
     {
@@ -50,7 +55,7 @@ namespace LocalImageTagger.Tags
         #region Properties
 
         /// <summary>
-        /// A list of tagIDs for the children of this tag
+        /// A list of tagIDs for the children of this tag.
         /// </summary>
         public List<int> Children { get; private set; }
 
@@ -66,15 +71,15 @@ namespace LocalImageTagger.Tags
     }
 
     /// <summary>
-    /// A tag with all of its information
+    /// A tag with all of its information.
     /// </summary>
-    class FullTag : Tag
+    class FullTag : SearchTag
     {
 
         #region Properties
 
         /// <summary>
-        /// A list of tagIDs for the parents of this tag
+        /// A list of tagIDs for the parents of this tag.
         /// 
         /// </summary>
         public List<int> Parents { get; private set; }

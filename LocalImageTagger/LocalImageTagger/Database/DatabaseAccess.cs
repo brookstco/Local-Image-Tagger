@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualBasic;
+﻿using LocalImageTagger.Tags;
+using Microsoft.VisualBasic;
 using System.Collections.Generic;
 using System.Text;
 
