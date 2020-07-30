@@ -1,4 +1,6 @@
-﻿namespace LocalImageTagger
+﻿using System.IO;
+
+namespace LocalImageTagger.Files
 {
     /// <summary>
     /// Information about taggable items
@@ -6,51 +8,30 @@
     public class FileItem
     {
         /// <summary>
-        /// The category of the file
-        /// </summary>
-        public FileCategoryType Type { get; set; }
-
-        /// <summary>
-        /// The absolute path to the file
-        /// </summary>
-        public string FullPath { get; set; }
-
-        /// <summary>
-        /// The name of the item
-        /// </summary>
-        public string Name { get { return getFileFolderName(FullPath); } }
-
-        /// <summary>
-        /// Database ID
+        /// The Database ID for the file.
         /// </summary>
         public int ID { get; set; }
 
         /// <summary>
-        /// Returns the name from a full path
+        /// The category of the file based on its type.
         /// </summary>
-        /// <param name="path">The Full Path</param>
-        /// <returns></returns>
-        public static string getFileFolderName (string path)
-        {
-            //Return an empty string if the path is empty
-            if (string.IsNullOrEmpty(path))
-            {
-                return string.Empty;
-            }
+        public FileTypeCategory Type { get { return FileTypeHelper.DetermineFileTypeCategory(FullPath); } }
 
-            //Make all slashes backslashes
-            var normalizedPath = path.Replace('/', '\\');
+        /// <summary>
+        /// The absolute path to the file.
+        /// </summary>
+        public string FullPath { get; set; }
 
-            //Find the last \ of the path
-            var lastIndex = normalizedPath.LastIndexOf('\\');
-            //If one was not found
-            if(lastIndex <= 0)
-            {
-                return path;
-            }
+        /// <summary>
+        /// The filename of the item.
+        /// </summary>
+        public string Name { get { return PathHelper.GetFileName(FullPath); } }
 
-            //Return what is after the last index
-            return path.Substring(lastIndex + 1);
-        }
+        /// <summary>
+        /// The file extension of the item.
+        /// </summary>
+        public string Extension { get { return PathHelper.GetExtension(FullPath); }  }
+
+
     }
 }

@@ -3,7 +3,7 @@
     /// <summary>
     /// The category of file. Determines how it is displayed and behaves.
     /// </summary>
-    public enum FileCategoryType
+    public enum FileTypeCategory
     {
         /// <summary>
         /// The enum was created erroneously.
@@ -34,5 +34,5 @@
         /// </summary>
         Other
     }
-    
+
 }

@@ -31,7 +31,7 @@ namespace LocalImageTagger
             var item = (FileItem)value;
 
             //Returns 
-            if(item.Type == FileCategoryType.Image)
+            if(item.Type == FileTypeCategory.Image)
             {
                 return new BitmapImage(new Uri(item.FullPath));
             }
