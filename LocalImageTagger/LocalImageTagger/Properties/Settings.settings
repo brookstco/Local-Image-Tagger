@@ -2,9 +2,8 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="LocalImageTagger.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="DatabaseConnectionString" Type="(Connection string)" Scope="Application">
-      <DesignTimeValue Profile="(Default)" />
-      <Value Profile="(Default)" />
+    <Setting Name="DatabaseConnectionString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">&lt;add name="Default" connectionString="Data Source=./DataBase/TagDataBase.db;Version=3;" providerName="System.Data.SqlClient"/&gt;</Value>
     </Setting>
     <Setting Name="FirstTimePopUpDisplays" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>

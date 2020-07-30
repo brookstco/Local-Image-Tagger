@@ -25,7 +25,8 @@ namespace LocalImageTagger.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("<add name=\"Default\" connectionString=\"Data Source=./DataBase/TagDataBase.db;Versi" +
+            "on=3;\" providerName=\"System.Data.SqlClient\"/>")]
         public string DatabaseConnectionString {
             get {
                 return ((string)(this["DatabaseConnectionString"]));
