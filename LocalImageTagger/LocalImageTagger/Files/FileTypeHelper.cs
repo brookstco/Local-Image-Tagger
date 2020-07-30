@@ -4,6 +4,10 @@ using System.Text;
 
 namespace LocalImageTagger.Files
 {
+    /// <summary>
+    /// Determines how each file behaves in the program. 
+    /// This should be updated when more filetypes are supported.
+    /// </summary>
     public static class FileTypeHelper
     {
         /// <summary>
