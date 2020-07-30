@@ -42,6 +42,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.35, )"
+            },
             "Microsoft-WindowsAPICodePack-Shell": {
               "target": "Package",
               "version": "[1.1.4, )"
@@ -49,6 +53,10 @@
             "PropertyChanged.Fody": {
               "target": "Package",
               "version": "[3.2.8, )"
+            },
+            "System.Data.SQLite.Core": {
+              "target": "Package",
+              "version": "[1.0.113.1, )"
             },
             "Wpf.Controls.PanAndZoom": {
               "target": "Package",
