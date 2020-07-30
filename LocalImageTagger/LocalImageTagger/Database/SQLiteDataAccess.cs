@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LocalImageTagger.Files;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -14,7 +15,7 @@ namespace LocalImageTagger.Database
         /// <returns></returns>
         private static string LoadConnectionString()
         {
-
+            return "ERROR";
         }
 
         /// <summary>

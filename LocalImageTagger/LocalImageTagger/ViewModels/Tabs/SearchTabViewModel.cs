@@ -1,4 +1,5 @@
 ﻿
+using LocalImageTagger.Files;
 using System.Collections.ObjectModel;
 using System.Linq;
 

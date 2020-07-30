@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LocalImageTagger.Files;
+using System;
 using System.Globalization;
 using System.Windows.Media.Imaging;
 
@@ -17,13 +18,13 @@ namespace LocalImageTagger.Converter
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             //Value is an FileItem Object
-            FileItem FileItem = (FileItem)value;
+            FileItem File = (FileItem)value;
 
             //Changes depending on the file type of the item
-            switch (FileItem.Type)
+            switch (File.Type)
             {
                 case FileTypeCategory.Image:
-                    return new BitmapImage(new Uri(FileItem.FullPath));
+                    return new BitmapImage(File.Uri);
                 default:
                     //IDEA: https://stackoverflow.com/questions/347614/storing-wpf-image-resources suggests storing the image resource seperately and referencing it to reduce mem use. This is only useful if I allow adding of files besides imgs, so a problem for future me.
                     //UNTESTED

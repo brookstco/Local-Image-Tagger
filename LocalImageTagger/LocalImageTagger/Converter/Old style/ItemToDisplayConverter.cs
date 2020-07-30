@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LocalImageTagger.Files;
+using System;
 using System.Globalization;
 using System.Windows.Data;
 using System.Windows.Media.Imaging;
@@ -33,7 +34,7 @@ namespace LocalImageTagger
             //Returns 
             if(item.Type == FileTypeCategory.Image)
             {
-                return new BitmapImage(new Uri(item.FullPath));
+                return new BitmapImage(item.Uri);
             }
             else
             {
