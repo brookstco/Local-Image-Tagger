@@ -79,21 +79,15 @@ namespace LocalImageTagger.Tags
         #region Properties
 
         /// <summary>
-        /// A list of tagIDs for the parents of this tag.
-        /// 
-        /// </summary>
-        public List<int> Parents { get; private set; }
-
-        /// <summary>
         /// The text description of the tag shown in the tag dictionary.
         /// </summary>
         public string Description { get; private set; }
 
         #endregion
 
-        public FullTag(string name, int id, int count, List<int> children, List<int> parents, string desc) : base(name, id, count, children)
+        public FullTag(string name, int id, int count, List<int> children,  string desc) : base(name, id, count, children)
         {
-
+            Description = desc;
         }
 
     }
