@@ -16,8 +16,6 @@ namespace LocalImageTagger.Files
         /// </summary>
         public int ID { get; private set; }
 
-        //TODO: Would saving this improve perforamce at the cost of space, or is performance negligible for the space benefit?
-
         /// <summary>
         /// The category of the file based on its type.
         /// </summary>
