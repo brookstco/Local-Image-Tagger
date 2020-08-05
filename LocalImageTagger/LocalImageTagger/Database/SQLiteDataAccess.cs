@@ -40,7 +40,7 @@ namespace LocalImageTagger.Database
         /// Adds a new File to the DB.
         /// </summary>
         /// <param name="Uri">The full path to the file.</param>
-        public static void AddFile(string Uri)
+        public static void AddFiles(string Uri)
         {
             using (IDbConnection db = new SQLiteConnection(LoadConnectionString()))
             {
