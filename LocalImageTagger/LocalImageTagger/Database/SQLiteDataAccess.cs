@@ -50,31 +50,40 @@ namespace LocalImageTagger.Database
             var results = new List<int>();
             string sqlInsertFile = @"INSERT INTO Files (FullPath) VALUES (@Path);";
 
-            using (var cn = new SQLiteConnection(LoadConnectionString()))
-            {
-                //OPening shoiuld be implicit in the using
-                //cn.Open();
-                //Transatctions always happen in SQLite and doing a transaction per insert is terribly slow
-                using (var transaction = cn.BeginTransaction())
+            try { 
+
+                //Closing is automatic with a using and will happen even on an error.
+                using (var cn = new SQLiteConnection(LoadConnectionString()))
                 {
-                    using (var cmd = cn.CreateCommand())
+                    //Opening shoiuld be implicit in the using
+                    //cn.Open();
+                    //Transatctions always happen in SQLite and doing a transaction per insert is terribly slow
+                    using (var transaction = cn.BeginTransaction())
                     {
-                        cmd.CommandText = sqlInsertFile;
-                        cmd.Parameters.AddWithValue("@Path", SqliteType.Text);
-
-                        //Insert each file in the list
-                        foreach (var file in files)
+                        using (var cmd = cn.CreateCommand())
                         {
-                            cmd.Parameters["@Path"] = file.FullPath;
-                            results.Add(cmd.ExecuteNonQuery());
-                        }
-                    }
-                    //Finishes and commits the transaction
-                    transaction.Commit();
-                }
-            }
-            return results.Sum();
-        }
+                            cmd.CommandText = sqlInsertFile;
+                            cmd.Parameters.AddWithValue("@Path", SqliteType.Text);
 
+                            //Insert each file in the list
+                            foreach (var file in files)
+                            {
+                                cmd.Parameters["@Path"] = file.FullPath;
+                                results.Add(cmd.ExecuteNonQuery());
+                            }
+                        }
+                        //Finishes and commits the transaction
+                        transaction.Commit();
+                    }
+                }
+                return results.Sum();
+            }
+            catch(SqliteException ex){
+                DatabaseError.DatabaseErrorUnknownMessage(ex);
+            }
+
+
+
+        }
     }
 }
