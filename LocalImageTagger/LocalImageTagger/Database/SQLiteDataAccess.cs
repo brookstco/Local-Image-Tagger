@@ -45,7 +45,8 @@ namespace LocalImageTagger.Database
         /// <returns>The <see cref="int"/> amount of modified records or -1 if there was an error.</returns>
         public static int AddNewFiles(IEnumerable<NewFile> files)
         {
-            //Used code from https://www.codeproject.com/Articles/853842/Csharp-Avoiding-Performance-Issues-with-Inserts-in to ensure that SQLITE will insert efficiently
+            //Used code from https://www.codeproject.com/Articles/853842/Csharp-Avoiding-Performance-Issues-with-Inserts-in 
+            //and https://stackoverflow.com/questions/9006604/improve-performance-of-sqlite-bulk-inserts-using-dapper-orm to ensure that SQLITE will insert efficiently
 
             var results = new List<int>();
             string sqlInsertFile = @"INSERT INTO Files (FullPath) VALUES (@Path);";
@@ -55,7 +56,7 @@ namespace LocalImageTagger.Database
                 //Closing is automatic with a using and will happen even on an error.
                 using (var cn = new SQLiteConnection(LoadConnectionString()))
                 {
-                    //Opening shoiuld be implicit in the using
+                    //Opening should be implicit in the using
                     //cn.Open();
                     //Transatctions always happen in SQLite and doing a transaction per insert is terribly slow
                     using (var transaction = cn.BeginTransaction())
