@@ -42,7 +42,7 @@ namespace LocalImageTagger.Database
         /// Due to the nature of SQLITE, passing them all in and using 1 transaction is vastly more efficient that calling this func many times.
         /// </summary>
         /// <param name="files">List of 1 or more <see cref="NewFile"/> files.</param>
-        /// <returns>The <see cref="int"/> amount of modified records.</returns>
+        /// <returns>The <see cref="int"/> amount of modified records or -1 if there was an error.</returns>
         public static int AddNewFiles(IEnumerable<NewFile> files)
         {
             //Used code from https://www.codeproject.com/Articles/853842/Csharp-Avoiding-Performance-Issues-with-Inserts-in to ensure that SQLITE will insert efficiently
@@ -60,15 +60,16 @@ namespace LocalImageTagger.Database
                     //Transatctions always happen in SQLite and doing a transaction per insert is terribly slow
                     using (var transaction = cn.BeginTransaction())
                     {
+                        //Commmands with parameters prevent sql injection, and prevent the overhead in SQLite when doing a batch in one transaction
                         using (var cmd = cn.CreateCommand())
                         {
                             cmd.CommandText = sqlInsertFile;
-                            cmd.Parameters.AddWithValue("@Path", SqliteType.Text);
+                            cmd.Parameters.Add("@Path");
 
                             //Insert each file in the list
                             foreach (var file in files)
                             {
-                                cmd.Parameters["@Path"] = file.FullPath;
+                                cmd.Parameters["@Path"].Value = file.FullPath;
                                 results.Add(cmd.ExecuteNonQuery());
                             }
                         }
@@ -80,6 +81,12 @@ namespace LocalImageTagger.Database
             }
             catch(SqliteException ex){
                 DatabaseError.DatabaseErrorUnknownMessage(ex);
+                return -1;
+            }
+            catch(Exception ex)
+            {
+                DatabaseError.OtherErrorMessage(ex);
+                return -1;
             }
 
 
