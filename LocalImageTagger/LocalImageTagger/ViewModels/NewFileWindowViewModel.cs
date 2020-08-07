@@ -1,12 +1,10 @@
 ﻿using LocalImageTagger.Database;
 using LocalImageTagger.Files;
-using Microsoft.WindowsAPICodePack.Dialogs;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
-using System.Windows.Input;
 
 namespace LocalImageTagger.ViewModels
 {
@@ -42,21 +40,38 @@ namespace LocalImageTagger.ViewModels
         /// <summary>
         /// The user-selected files in NewFile form in a observable collection so that the UI updates.
         /// </summary>
-        public ObservableCollection<NewFile> Files { get; private set; } = new ObservableCollection<NewFile>();
+        public ObservableCollection<NewFile> Files { get; private set; }
 
         /// <summary>
         /// Returns true if Files has 1 or more files in it and false if it is empty.
         /// </summary>
-        public bool FilesSelected { get { return Files.Any(); } }
+        public bool FilesSelected { get; private set; } // originally this, but wouldn't update UI. { get { return Files.Any(); } }
 
         #endregion
 
+        #region constructor
 
         public NewFileWindowViewModel()
         {
             AddNewFilesCommand = new RelayCommand(addNewFiles);
-            AddMoreFilesCommand = new RelayCommand(addNewFiles);
+            AddMoreFilesCommand = new RelayCommand(addMoreFiles);
 
+            Files = new ObservableCollection<NewFile>();
+
+            //Listen for changes to update the UI
+            Files.CollectionChanged += OnCollectionChanged;
+        }
+
+        #endregion
+
+        #region Methods
+
+        void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            //Simply having the notify property go seems to be broken due to using Fody Weaver.
+            //Removing Fody weaver and manually fixing this all would improve efficiency in a few places probably.
+            //PropertyChanged(new PropertyChangedEventArgs(nameof(FilesSelected)));
+            FilesSelected = Files.Any();
         }
 
         //Open the dialog and add new files, but delete the old ones first.
@@ -79,7 +94,7 @@ namespace LocalImageTagger.ViewModels
         }
 
         //Open the dialog and add new files to the list.
-        private void addMorewFiles()
+        private void addMoreFiles()
         {
             var fileDialog = selectFiles();
 
@@ -117,6 +132,7 @@ namespace LocalImageTagger.ViewModels
             SQLiteDataAccess.AddNewFiles(Files);
         }
 
+        #endregion
 
     }
 }
