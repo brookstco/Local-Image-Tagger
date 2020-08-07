@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace LocalImageTagger.Database
@@ -23,18 +24,89 @@ namespace LocalImageTagger.Database
         }
 
         /// <summary>
-        /// Returns a list of FileItems based on the given IDs from the DB.
+        /// Returns a list of FileItems based on the given DB FileIDs.
+        /// If no FileIds are in the IEnumerable<int>, returns everything. 
+        /// If there is no IEnumerable<int> or there is an error, return null.
         /// </summary>
-        /// <returns>A List of FileItems.</returns>
-        public static List<FileItem> LoadFiles()
+        /// <param name="ids">A list of integer FileIds to return the file data for.</param>
+        /// <returns>returns a List of FileItems or null on failure.</returns>
+        public static List<FileItem> LoadFilesByID(IEnumerable<int> ids)
         {
-            //The using will ensure that the DB is closed, even on a crash
-            using (IDbConnection cn = new SQLiteConnection(LoadConnectionString()))
+            if (ids is null) //There is no IEnumerable<int>
             {
-                //Returns an enumerabe
-                var output = cn.Query<FileItem>("select * from Files", new DynamicParameters());
-                return output.ToList();
+                return null;
             }
+            else if (!ids.Any()) //The IEnumerable<int> is empty
+            {
+                return LoadAllFiles();
+            }
+
+            //The IEnumerable<int> exists and has values, so proceed as normal.
+            List<FileItem> output = null;
+
+            try
+            {
+                //Closing is automatic with a using and will happen even on an error.
+                using (var cn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    string sqlGetFilesByID = "SELECT * FROM Files WHERE ID IN @IDs";
+                    //The IDs are converted into a string for the sql parameter
+                    string IdString = string.Join(", ", ids);
+
+                    //TODO: A query with no results should still return an empty list, not null or something else. Confirm this is the case.
+
+                    //Queries using Dapper, subs in the string as the parameter and returns the results as a list
+                    output = cn.Query<FileItem>(sqlGetFilesByID, new { IDs = IdString}).ToList();
+                }
+            }
+            catch (SqliteException ex)
+            {
+                DatabaseError.DatabaseErrorUnknownMessage(ex);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                DatabaseError.OtherErrorMessage(ex);
+                return null;
+            }
+
+            return output;
+        }
+
+
+        /// <summary>
+        /// Returns all files in a List of FileItems.
+        /// </summary>
+        /// <returns>Reeturns a List of FileItems or null on failure.</returns>
+        public static List<FileItem> LoadAllFiles()
+        {
+            List<FileItem> output = null;
+
+            try
+            {
+                //Closing is automatic with a using and will happen even on an error.
+                using (var cn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    string sqlGetFilesByID = "SELECT * FROM Files";
+
+                    //TODO: A query with no results should still return an empty list, not null or something else. Confirm this is the case.
+
+                    //Queries using Dapper, subs in the string as the parameter and returns the results as a list
+                    output = cn.Query<FileItem>(sqlGetFilesByID).ToList();
+                }
+            }
+            catch (SqliteException ex)
+            {
+                DatabaseError.DatabaseErrorUnknownMessage(ex);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                DatabaseError.OtherErrorMessage(ex);
+                return null;
+            }
+
+            return output;
         }
 
         /// <summary>
@@ -48,11 +120,8 @@ namespace LocalImageTagger.Database
             //Used code from https://www.codeproject.com/Articles/853842/Csharp-Avoiding-Performance-Issues-with-Inserts-in 
             //and https://stackoverflow.com/questions/9006604/improve-performance-of-sqlite-bulk-inserts-using-dapper-orm to ensure that SQLITE will insert efficiently
 
-            var results = new List<int>();
-            string sqlInsertFile = @"INSERT INTO Files (FullPath) VALUES (@Path);";
 
             try { 
-
                 //Closing is automatic with a using and will happen even on an error.
                 using (var cn = new SQLiteConnection(LoadConnectionString()))
                 {
@@ -64,6 +133,10 @@ namespace LocalImageTagger.Database
                         //Commmands with parameters prevent sql injection, and prevent the overhead in SQLite when doing a batch in one transaction
                         using (var cmd = cn.CreateCommand())
                         {
+                            //Define in here to prevent mem use on failure
+                            var results = new List<int>();
+                            string sqlInsertFile = @"INSERT INTO Files (FullPath) VALUES (@Path);";
+
                             cmd.CommandText = sqlInsertFile;
                             cmd.Parameters.Add("@Path");
 
@@ -89,9 +162,10 @@ namespace LocalImageTagger.Database
                 DatabaseError.OtherErrorMessage(ex);
                 return -1;
             }
-
-
-
         }
+
+
+
+
     }
 }
