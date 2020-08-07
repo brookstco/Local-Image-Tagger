@@ -5,20 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LocalImageTagger.Views"
         mc:Ignorable="d"
-        Title="NewFileWindow"
+        Title="Import New Files"
         Height="300" Width="400"
         WindowStartupLocation="CenterOwner" 
         ResizeMode="NoResize">
-    <Grid>
-        <StackPanel>
-            <Button Content="Select File Location" Padding="3,0,3,0" Margin="10" Command="{Binding ChooseDirectory}" HorizontalAlignment="Left"></Button>
 
-            <TextBlock Text="{Binding ChosenDirectory}"  Margin="10,0,10,10"></TextBlock>
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+    </Window.Resources>
 
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top">
+            <StackPanel Orientation="Horizontal">
+                <Button Content="{Binding ButtonTextReplaceFiles}" Padding="3,0,3,0" Margin="10" Command="{Binding AddNewFilesCommand}" HorizontalAlignment="Left" MinWidth="60"/>
+
+                <Button Content="{Binding ButtonTextAddMoreFiles}" Padding="3,0,3,0" Margin="10" Command="{Binding AddMoreFilesCommand}" HorizontalAlignment="Left" MinWidth="60" Visibility="{Binding FilesSelected, Converter={StaticResource BoolToVisibility}}"/>
+            </StackPanel>
+
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                <ListView Margin="10" ItemsSource="{Binding Files}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding FileName}" />
+                                <TextBlock Text=" ("/>
+                                <TextBlock Text="{Binding FullPath}" />
+                                <TextBlock Text=")"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollViewer>
         </StackPanel>
-        <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal">
-            <Button Content="_OK" Margin="10" MinWidth="60"></Button>
-            <Button Content="_Cancel" IsCancel="True" Margin="10" MinWidth="60"></Button>
+        <StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Right" Orientation="Horizontal" VerticalAlignment="Bottom">
+            <Button Content="_OK" Margin="10" MinWidth="60"/>
+            <Button Content="_Cancel" IsCancel="True" Margin="10" MinWidth="60"/>
         </StackPanel>
-    </Grid>
+    </DockPanel>
 </Window>

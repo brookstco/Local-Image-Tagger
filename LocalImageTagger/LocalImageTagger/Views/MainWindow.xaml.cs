@@ -63,5 +63,13 @@ namespace LocalImageTagger
             };
             dialog.Show();
         }
+        private void File_Button_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new NewFileWindow
+            {
+                Owner = this //Make this window the owner of the popup, so that it will show in the center.
+            };
+            dialog.Show();
+        }
     }
 }

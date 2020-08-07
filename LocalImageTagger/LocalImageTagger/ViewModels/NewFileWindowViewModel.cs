@@ -3,6 +3,7 @@ using LocalImageTagger.Files;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Input;
 
@@ -30,12 +31,7 @@ namespace LocalImageTagger.ViewModels
         /// <summary>
         /// String for the button.
         /// </summary>
-        public string ButtonTextAddNewFiles { get { return "Add New Files"; } }
-
-        /// <summary>
-        /// String for the button.
-        /// </summary>
-        public string ButtonTextReplaceFiles { get { return "Replace New Files"; } }
+        public string ButtonTextReplaceFiles { get { return FilesSelected ? "Replace New Files" : "Add New Files"; } }
 
         /// <summary>
         /// String for the button.
@@ -46,6 +42,11 @@ namespace LocalImageTagger.ViewModels
         /// The user-selected files in NewFile form in a list
         /// </summary>
         public List<NewFile> Files { get; private set; } = new List<NewFile>();
+
+        /// <summary>
+        /// Returns true if Files has 1 or more files in it and false if it is empty.
+        /// </summary>
+        public bool FilesSelected { get { return Files.Any(); } }
 
         #endregion
 

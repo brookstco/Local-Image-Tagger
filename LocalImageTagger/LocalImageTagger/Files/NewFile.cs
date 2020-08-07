@@ -36,7 +36,7 @@ namespace LocalImageTagger.Files
         /// <summary>
         /// The filename of the item.
         /// </summary>
-        public string Name { get { return PathHelper.GetFileName(FullPath); } }
+        public string FileName { get { return PathHelper.GetFileName(FullPath); } }
 
         /// <summary>
         /// The file extension of the item.

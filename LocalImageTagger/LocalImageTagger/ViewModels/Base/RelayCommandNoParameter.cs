@@ -4,8 +4,11 @@ using System.Windows.Navigation;
 
 namespace LocalImageTagger
 {
+    //TODO: Combine with RelayCommand<parameter>?
+
     /// <summary>
     /// Basic command that runs an Action
+    /// Does not require a parameter. I doubt this is a good way, but it ended up working like this, so leaving for now.
     /// </summary>
     public class RelayCommand : ICommand
     {
