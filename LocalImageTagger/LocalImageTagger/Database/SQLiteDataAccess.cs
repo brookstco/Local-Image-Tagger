@@ -32,7 +32,7 @@ namespace LocalImageTagger.Database
         /// <returns>returns a List of FileItems or null on failure.</returns>
         public static List<FileItem> LoadFilesByID(IEnumerable<int> ids)
         {
-            if (ids is null) //There is no IEnumerable<int>
+            if (ids == null) //There is no IEnumerable<int>
             {
                 return null;
             }
@@ -42,6 +42,8 @@ namespace LocalImageTagger.Database
             }
 
             //The IEnumerable<int> exists and has values, so proceed as normal.
+
+            //Defined early to allow a null return at the end.
             List<FileItem> output = null;
 
             try
@@ -120,6 +122,7 @@ namespace LocalImageTagger.Database
             //Used code from https://www.codeproject.com/Articles/853842/Csharp-Avoiding-Performance-Issues-with-Inserts-in 
             //and https://stackoverflow.com/questions/9006604/improve-performance-of-sqlite-bulk-inserts-using-dapper-orm to ensure that SQLITE will insert efficiently
 
+            var results = new List<int>();
 
             try { 
                 //Closing is automatic with a using and will happen even on an error.
@@ -134,7 +137,6 @@ namespace LocalImageTagger.Database
                         using (var cmd = cn.CreateCommand())
                         {
                             //Define in here to prevent mem use on failure
-                            var results = new List<int>();
                             string sqlInsertFile = @"INSERT INTO Files (FullPath) VALUES (@Path);";
 
                             cmd.CommandText = sqlInsertFile;
