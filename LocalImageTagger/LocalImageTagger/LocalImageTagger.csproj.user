@@ -10,6 +10,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Views\NewFileWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\UserControls\SearchTab.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -41,6 +44,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Views\NewFileWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\UserControls\SearchTab.xaml">
       <SubType>Designer</SubType>
     </Page>

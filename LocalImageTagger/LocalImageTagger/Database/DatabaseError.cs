@@ -12,7 +12,7 @@ namespace LocalImageTagger.Database
         /// <param name="ex">The exception. </param>
         public static void DatabaseErrorUnknownMessage(Exception ex)
         {
-            MessageBox.Show($"The error [ {ex} ] occured with the database. Ensure that the database exists at ./Database and is named TagDatabase.db then retry the operation.", "Database Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show($"The error [ {ex.Message} ] occured with the database. Ensure that the database exists at ./Database and is named TagDatabase.db then retry the operation.", "Database Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         /// <summary>
@@ -21,7 +21,7 @@ namespace LocalImageTagger.Database
         /// <param name="ex">The exception. </param>
         public static void OtherErrorMessage(Exception ex)
         {
-            MessageBox.Show($"An error occured: {ex}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show($"An error occured during database access and is not a database error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 }

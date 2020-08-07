@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\App.xaml
-9-1282208429
+10-285479766
 1919875736
-52-2013357076
+54-2068707887
 2091383813059
-Views\FirstTimePopUp.xaml;Views\ImageViewer.xaml;Views\MainWindow.xaml;Views\NewCategoryWindow.xaml;Views\NewFileLocationWindow.xaml;Views\NewTagWindow.xaml;Views\TEST.xaml;Views\UserControls\SearchTab.xaml;Views\VideoViewer.xaml;
+Views\FirstTimePopUp.xaml;Views\ImageViewer.xaml;Views\MainWindow.xaml;Views\NewCategoryWindow.xaml;Views\NewFileLocationWindow.xaml;Views\NewFileWindow.xaml;Views\NewTagWindow.xaml;Views\TEST.xaml;Views\UserControls\SearchTab.xaml;Views\VideoViewer.xaml;
 
 False
 
