@@ -10,7 +10,7 @@ Can currently open the filetypes: BMP, JPEG, PNG, TIFF, Windows Media Photo, GIF
 
 ### Planned Features:
 
-This is not a roadmap, since there is no timeline or direction, but these are things I plan to add. They are in no particular order.
+This is not a roadmap, since there is no timeline or direction, but these are things I plan to add in the future after that basic program is done. Standard features, setting, hotkeys, etc. are not included since I will be adding those before I consider the basic program done, so these can be considered as more of a long-term but potentially reachable goal. They are in no particular order.
 
 - Other image filetypes. I would like this to work with any common filetype at least, but it is most of the way there with just the major ones right now.
 
@@ -22,15 +22,17 @@ This is not a roadmap, since there is no timeline or direction, but these are th
 
 - Make the image viewer able to open image files outside of the program like any other viewer app. I work with pixel art a lot, so the viewer has benefits, and it is already installed, so making it more versatile is good.
 
+- Import tag/file information through some file type. Like importing a .txt. Would allow for faster tagging for files if the user know exactly how they should be tagged, and opens a way to auto tag images imported from online.
+
 - Read in image metadata. It should be easy just a bit time consuming, but it wasn't critical, so I haven't supported it yet.
 
 - Allow for basic file editing. Changing file/directory names. This makes keeping the DB updated easier if you do it in-app rather than outside.
 
 - Tags that change program settings. I want this so I can give a rendering tag to pixel art images, so that the image viewer will automatically have them render NN and everything else linear. 
 
-- Import tag/file information through some file type. Like importing a .txt. Would allow for faster tagging for files if the user know exactly how they should be tagged, and opens a way to auto tag images imported from online.
-
 - Database Backup. This can already be backup just by copying the DB somewhere else, but giving an in-app way to do it, as well as an automatic/ easy way to do it would help. Along with that, give a way to import databases.
+
+- Multi-platform. I have never planned to make this for mobile, but making MacOS and Linux versions would be good. This is not possible with the current WPF, but there are options, so it should be possible without much difficulty, just time consuming.
 
 
 ### Alternatives:
@@ -42,7 +44,9 @@ There are already several good free options for tagging and searching photograph
 
 ### Technical Details:
 
-The program was created using C# in visual studio 2019 as a wpf project. The MVVM style is used, but not kept strictly. Since the project is still fairly small in scale, MVVM is broken to help move the project to complettion faster over rigidly following it. For example, some code behind is used for behaviors that get unwieldy in MVVM, and the solution is not properly split into projects that seperate the WPF dependency. This also means that it will stay windows exclusive until I fix that up (or convert to somethings multiplatform), but if anyone greatly wants this for a different OS, you can submit an [Feature Request](https://github.com/brookstco/Local-Image-Tagger/issues), and I might start work on that, but no guarantees.
+The program was created using C# in visual studio 2019 as a wpf project. The MVVM style is used, but not kept strictly. Since the project is still fairly small in scale, MVVM is broken to help move the project to complettion faster rather than rigidly following it. For example, some code behind is used for behaviors that get unwieldy in MVVM, and the solution is not properly split into projects that seperate the WPF dependency. This also means that it will stay windows exclusive until I fix that up or convert to something multiplatform. If anyone greatly wants this for a different OS, you can submit an [Feature Request](https://github.com/brookstco/Local-Image-Tagger/issues), and I might start work on that earlier.
 
 The tag database uses SQLite to prevent the need for user installations and the server overhead. The database design is primarily a three-table system that is based on the system often called Toxi. Speed for adding and editing is slightly sacrificed for search speed, and some extra space is used to speed up searches but it is not fully denormalised. Speeds should be extrememly fast for any reasonable amount of tags and files for a single user with a reasonable amount of images and tags (even several thousand images shouldn't exceed a second on a decent computer). 
+
+All code that I did not write (packages and other code) is licensed either under [Public Domain](https://fairuse.stanford.edu/overview/public-domain/welcome/#:~:text=The%20term%20%E2%80%9Cpublic%20domain%E2%80%9D%20refers,one%20can%20ever%20own%20it.), the MIT licence (which Local Image Tagger is also licensed under), or [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0).
 
