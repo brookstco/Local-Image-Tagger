@@ -51,6 +51,8 @@ namespace LocalImageTagger.Database
                 //Closing is automatic with a using and will happen even on an error.
                 using (var cn = new SQLiteConnection(LoadConnectionString()))
                 {
+                    cn.Open();
+
                     string sqlGetFilesByID = "SELECT * FROM Files WHERE ID IN @IDs";
                     //The IDs are converted into a string for the sql parameter
                     string IdString = string.Join(", ", ids);
@@ -89,6 +91,8 @@ namespace LocalImageTagger.Database
                 //Closing is automatic with a using and will happen even on an error.
                 using (var cn = new SQLiteConnection(LoadConnectionString()))
                 {
+                    cn.Open();
+
                     string sqlGetFilesByID = "SELECT * FROM Files";
 
                     //TODO: A query with no results should still return an empty list, not null or something else. Confirm this is the case.
@@ -128,24 +132,28 @@ namespace LocalImageTagger.Database
                 //Closing is automatic with a using and will happen even on an error.
                 using (var cn = new SQLiteConnection(LoadConnectionString()))
                 {
-                    //Opening should be implicit in the using
+                    //Opening is not implicit
                     cn.Open();
+
                     //Transatctions always happen in SQLite and doing a transaction per insert is terribly slow
                     using (var transaction = cn.BeginTransaction())
                     {
                         //Commmands with parameters prevent sql injection, and prevent the overhead in SQLite when doing a batch in one transaction
                         using (var cmd = cn.CreateCommand())
                         {
-                            //Define in here to prevent mem use on failure
-                            string sqlInsertFile = @"INSERT INTO Files (FullPath) VALUES (@Path);";
+                            //Switching from @path to ? as a test, since the params weren't working
+                            //string sqlInsertFile = @"INSERT INTO Files (FullPath) VALUES (@Path);";
 
-                            cmd.CommandText = sqlInsertFile;
-                            cmd.Parameters.Add("@Path");
+                            cmd.CommandText = "INSERT OR IGNORE INTO Files (FullPath) VALUES (?);"; //sqlInsertFile;
+
+                            SQLiteParameter param = new SQLiteParameter();
+                            cmd.Parameters.Add(param); //"@Path"
 
                             //Insert each file in the list
                             foreach (var file in files)
                             {
-                                cmd.Parameters["@Path"].Value = file.FullPath;
+                                //cmd.Parameters["@Path"].Value = file.FullPath;
+                                param.Value = file.FullPath;
                                 results.Add(cmd.ExecuteNonQuery());
                             }
                         }
