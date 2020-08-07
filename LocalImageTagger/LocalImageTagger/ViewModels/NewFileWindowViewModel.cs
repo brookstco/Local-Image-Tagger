@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
+using System.Windows;
 using System.Windows.Forms;
 
 namespace LocalImageTagger.ViewModels
@@ -19,9 +20,19 @@ namespace LocalImageTagger.ViewModels
         public RelayCommand AddNewFilesCommand { get; private set; }
 
         /// <summary>
-        /// Opends a dialog to select new File(s) to import to the program. Clears previous selections
+        /// Opens a dialog to select new File(s) to import to the program. Clears previous selections
         /// </summary>
         public RelayCommand AddMoreFilesCommand { get; private set; }
+
+        /// <summary>
+        /// Closes the window (using MVVM).
+        /// </summary>
+        public RelayCommand<Window> Close { get; private set; }
+
+        /// <summary>
+        /// Saves the Files to the DB then closes the window.
+        /// </summary>
+        public RelayCommand<Window> SaveAndClose { get; private set; }
 
         #endregion
 
@@ -55,6 +66,8 @@ namespace LocalImageTagger.ViewModels
         {
             AddNewFilesCommand = new RelayCommand(addNewFiles);
             AddMoreFilesCommand = new RelayCommand(addMoreFiles);
+            Close = new RelayCommand<Window>(CloseHelper.CloseWindow);
+            SaveAndClose = new RelayCommand<Window>(saveAndClose);
 
             Files = new ObservableCollection<NewFile>();
 
@@ -125,11 +138,21 @@ namespace LocalImageTagger.ViewModels
         }
 
         //Adds the list of files to the database
-        private void AddFilesToDB()
+        private void addFilesToDB()
         {
             //This will return error codes, but right now it has its own popups, so nothing needed afaik
             //It needs an IEnumerable, so observable collection is all good
             SQLiteDataAccess.AddNewFiles(Files);
+        }
+
+        /// <summary>
+        /// Saves the Files to the DB then closes the window.
+        /// </summary>
+        /// <param name="window">The window doing the closing.</param>
+        private void saveAndClose(Window window)
+        {
+            addFilesToDB();
+            CloseHelper.CloseWindow(window);
         }
 
         #endregion

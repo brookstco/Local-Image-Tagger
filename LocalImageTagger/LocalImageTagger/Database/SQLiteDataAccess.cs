@@ -129,7 +129,7 @@ namespace LocalImageTagger.Database
                 using (var cn = new SQLiteConnection(LoadConnectionString()))
                 {
                     //Opening should be implicit in the using
-                    //cn.Open();
+                    cn.Open();
                     //Transatctions always happen in SQLite and doing a transaction per insert is terribly slow
                     using (var transaction = cn.BeginTransaction())
                     {

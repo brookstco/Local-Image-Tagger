@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LocalImageTagger.Views"
         mc:Ignorable="d"
+        x:Name="FileWindow"
         Title="Import New Files"
         Height="300" Width="400"
         MinHeight="200" MinWidth="200"
@@ -26,8 +27,10 @@
         </StackPanel>
         
         <StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Right" Orientation="Horizontal" VerticalAlignment="Bottom">
-            <Button Content="_OK" Margin="10" MinWidth="60"/>
-            <Button Content="_Cancel" IsCancel="True" Margin="10" MinWidth="60"/>
+            <Button Content="_OK" Margin="10" MinWidth="60"
+                    Command="{Binding SaveAndClose}" CommandParameter="{Binding ElementName=FileWindow}"/>
+            <Button Content="_Cancel" IsCancel="True" Margin="10" MinWidth="60" 
+                    Command="{Binding Close}" CommandParameter="{Binding ElementName=FileWindow}"/>
         </StackPanel>
         
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
