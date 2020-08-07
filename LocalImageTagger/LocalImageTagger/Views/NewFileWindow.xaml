@@ -7,39 +7,43 @@
         mc:Ignorable="d"
         Title="Import New Files"
         Height="300" Width="400"
-        WindowStartupLocation="CenterOwner" 
-        ResizeMode="NoResize">
+        MinHeight="200" MinWidth="200"
+        WindowStartupLocation="CenterOwner">
 
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
     </Window.Resources>
 
     <DockPanel>
+        
+        
         <StackPanel DockPanel.Dock="Top">
             <StackPanel Orientation="Horizontal">
                 <Button Content="{Binding ButtonTextReplaceFiles}" Padding="3,0,3,0" Margin="10" Command="{Binding AddNewFilesCommand}" HorizontalAlignment="Left" MinWidth="60"/>
 
                 <Button Content="{Binding ButtonTextAddMoreFiles}" Padding="3,0,3,0" Margin="10" Command="{Binding AddMoreFilesCommand}" HorizontalAlignment="Left" MinWidth="60" Visibility="{Binding FilesSelected, Converter={StaticResource BoolToVisibility}}"/>
             </StackPanel>
-
-            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-                <ListView Margin="10" ItemsSource="{Binding Files}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding FileName}" />
-                                <TextBlock Text=" ("/>
-                                <TextBlock Text="{Binding FullPath}" />
-                                <TextBlock Text=")"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </ScrollViewer>
         </StackPanel>
+        
         <StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Right" Orientation="Horizontal" VerticalAlignment="Bottom">
             <Button Content="_OK" Margin="10" MinWidth="60"/>
             <Button Content="_Cancel" IsCancel="True" Margin="10" MinWidth="60"/>
         </StackPanel>
+        
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <ItemsControl Margin="10" ItemsSource="{Binding Files}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding FileName}" />
+                            <TextBlock Text=" ("/>
+                            <TextBlock Text="{Binding FullPath}" />
+                            <TextBlock Text=")"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+        
     </DockPanel>
 </Window>

@@ -3,6 +3,7 @@ using LocalImageTagger.Files;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Input;
@@ -39,9 +40,9 @@ namespace LocalImageTagger.ViewModels
         public string ButtonTextAddMoreFiles { get { return "Add More New Files"; } }
 
         /// <summary>
-        /// The user-selected files in NewFile form in a list
+        /// The user-selected files in NewFile form in a observable collection so that the UI updates.
         /// </summary>
-        public List<NewFile> Files { get; private set; } = new List<NewFile>();
+        public ObservableCollection<NewFile> Files { get; private set; } = new ObservableCollection<NewFile>();
 
         /// <summary>
         /// Returns true if Files has 1 or more files in it and false if it is empty.
@@ -112,6 +113,7 @@ namespace LocalImageTagger.ViewModels
         private void AddFilesToDB()
         {
             //This will return error codes, but right now it has its own popups, so nothing needed afaik
+            //It needs an IEnumerable, so observable collection is all good
             SQLiteDataAccess.AddNewFiles(Files);
         }
 
