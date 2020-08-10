@@ -8,6 +8,17 @@
 Can currently open the filetypes: BMP, JPEG, PNG, TIFF, Windows Media Photo, GIF, and ICON. However, animations and multiimage files will only display the base image.
 
 
+### Warnings:
+
+Users should take note of these warning to prevent catastrophic results. Hopefully as many of these warning can be removed as possible as the program develops.
+
+- Since this program does not connect ot the internet, user information is not automatically backed up. All tag information is saved in ./Database/TagDatabase.db, so it is recommended that you back this database up to at least another drive if not to the cloud or a seperate storage device frequently. While unlikely, this program is a small project from a new developer, so corruption is probably just a matter of time. Having backups is always good, but even more so when the database might be buggy.
+
+- Files are not checked to see if they match their filetype in their filename. This will not cause an issue if a .jpg is named as .png, but if the program attemts to display a filetype that is not an image and is totally different (for example, an .exe that was renamed to .jpg), it may behave very badly. This behavior is undefined, so it could be inconsequential or crash the program. Either way, avoid loading non-image files with image file extensions.
+
+- Occasionally if you close the application while it is on a second monitor, the application will reopen offscreen and be unreachable. This is likely due to how window location is saved and will hopefully be fixed soon. If your screen configuration does not change, or you only use the program on your primary monitor, you should not experience any issues even in the event of this bug.
+
+
 ### Planned Features:
 
 This is not a roadmap, since there is no timeline or direction, but these are things I plan to add in the future after that basic program is done. Standard features, setting, hotkeys, etc. are not included since I will be adding those before I consider the basic program done, so these can be considered as more of a long-term but potentially reachable goal. They are in no particular order.
@@ -35,18 +46,17 @@ This is not a roadmap, since there is no timeline or direction, but these are th
 - Multi-platform. I have never planned to make this for mobile, but making MacOS and Linux versions would be good. This is not possible with the current WPF, but there are options, so it should be possible without much difficulty, just time consuming.
 
 
-### Alternatives:
-
-This program is small, unfinished and written by a fairly new programmer. While I am trying to get it working robustly and efficiently, a more developed solution might be better if you don't need the particular features that I am making this for. 
-
-There are already several good free options for tagging and searching photographs that I found before deciding to make my own. Notably there is [Adobe Bridge](https://helpx.adobe.com/bridge/using/keywords-adobe-bridge.html), [FastPhotoTagger](https://sourceforge.net/projects/fastphototagger/), and [Hydrus](https://github.com/hydrusnetwork/hydrus). However, these are good for keeping photos in check or working as a gallery, they aren't very easy or intuitive for my purposes, and all of them have undesirable behaviors for a reference art utility. Bridge is very powerful and its integration with the other adobe products can make many creative purposes easier, but its primary purpose is not tag based searching, and all adobe software is relatively heavy, so it is quite inconvienent for rapid use or use outside of Adobe. FastPhotoTagger seems to be made for dealing with large numbers of photos, such as dumping the memory of a camera, and does that well; however, it has limited filetype support and is slow and restrictive for rapidly finding results. Hydrus is focused on being a local version of online tag based image boards, so it does an excellent job at dealing with many images and importing from other sources, but it saves files only in its own location (which is probably a deal breaker if you are an artist including your own working files), and has a restrictive interface to increase its own power due to its focus on bulk.
-
-
 ### Technical Details:
 
 The program was created using C# in visual studio 2019 as a wpf project. The MVVM style is used, but not kept strictly. Since the project is still fairly small in scale, MVVM is broken to help move the project to complettion faster rather than rigidly following it. For example, some code behind is used for behaviors that get unwieldy in MVVM, and the solution is not properly split into projects that seperate the WPF dependency. This also means that it will stay windows exclusive until I fix that up or convert to something multiplatform. If anyone greatly wants this for a different OS, you can submit an [Feature Request](https://github.com/brookstco/Local-Image-Tagger/issues), and I might start work on that earlier.
 
 The tag database uses SQLite to prevent the need for user installations and the server overhead. The database design is primarily a three-table system that is based on the system often called Toxi. Speed for adding and editing is slightly sacrificed for search speed, and some extra space is used to speed up searches but it is not fully denormalised. Speeds should be extrememly fast for any reasonable amount of tags and files for a single user with a reasonable amount of images and tags (even several thousand images shouldn't exceed a second on a decent computer). 
 
-All code that I did not write (packages and other code) is licensed either under [Public Domain](https://fairuse.stanford.edu/overview/public-domain/welcome/#:~:text=The%20term%20%E2%80%9Cpublic%20domain%E2%80%9D%20refers,one%20can%20ever%20own%20it.), the MIT licence (which Local Image Tagger is also licensed under), or [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+All code that I did not write (packages and other code) is licensed either under [Public Domain](https://fairuse.stanford.edu/overview/public-domain/welcome/#:~:text=The%20term%20%E2%80%9Cpublic%20domain%E2%80%9D%20refers,one%20can%20ever%20own%20it.), the MIT licence (which Local Image Tagger is also licensed under), [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0), or [CPOL](https://www.codeproject.com/info/cpol10.aspx), all of which permit my usage of the code. Individual creators are credited in comments in the code if an entire package was not used.
 
+
+### Alternatives:
+
+This program is small, unfinished and written by a fairly new programmer. While I am trying to get it working robustly and efficiently, a more developed solution might be better if you don't need the particular features that I am making this for. 
+
+There are already several good free options for tagging and searching photographs that I found before deciding to make my own. Notably there is [Adobe Bridge](https://helpx.adobe.com/bridge/using/keywords-adobe-bridge.html), [FastPhotoTagger](https://sourceforge.net/projects/fastphototagger/), and [Hydrus](https://github.com/hydrusnetwork/hydrus). However, these are good for keeping photos in check or working as a gallery, they aren't very easy or intuitive for my purposes, and all of them have undesirable behaviors for a reference art utility. Bridge is very powerful and its integration with the other adobe products can make many creative purposes easier, but its primary purpose is not tag based searching, and all adobe software is relatively heavy, so it is quite inconvienent for rapid use or use outside of Adobe. FastPhotoTagger seems to be made for dealing with large numbers of photos, such as dumping the memory of a camera, and does that well; however, it has limited filetype support and is slow and restrictive for rapidly finding results. Hydrus is focused on being a local version of online tag based image boards, so it does an excellent job at dealing with many images and importing from other sources, but it saves files only in its own location (which is probably a deal breaker if you are an artist including your own working files), and has a restrictive interface to increase its own power due to its focus on bulk.
