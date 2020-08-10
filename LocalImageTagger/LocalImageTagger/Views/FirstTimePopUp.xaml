@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:LocalImageTagger"
         xmlns:prop="clr-namespace:LocalImageTagger.Properties" 
         mc:Ignorable="d"
+        x:Name="FirstTimePopup"
         Title="Welcome" 
         Height="400" Width="300"
         WindowStartupLocation="CenterOwner" 
@@ -27,7 +28,7 @@
         </StackPanel>
         <StackPanel VerticalAlignment="Bottom">
             <CheckBox Content="Do Not Show on Startup" IsChecked="{Binding Source={x:Static prop:Settings.Default}, Path=FirstTimePopUpDisplays, Mode=TwoWay}" HorizontalAlignment="Center" Margin="10" VerticalAlignment="Top"/>
-            <Button Content="OK" IsCancel="True" IsDefault="True" Margin="10" Command="{Binding Close}" HorizontalAlignment="Center" MinWidth="60"/>
+            <Button Content="OK" IsCancel="True" IsDefault="True" Margin="10" Command="{Binding Close}" CommandParameter="{Binding ElementName=FirstTimePopup}" HorizontalAlignment="Center" MinWidth="60"/>
         </StackPanel>
     </Grid>
 </Window>

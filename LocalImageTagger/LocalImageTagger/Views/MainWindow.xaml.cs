@@ -33,7 +33,6 @@ namespace LocalImageTagger
 
             //Data Context is set when this is created in App.xaml
 
-            //TODO: When closing, prompt about closing, and have a checkbox for not having that warning anymore
         }
 
         private void Test_Button_Click(object sender, RoutedEventArgs e)

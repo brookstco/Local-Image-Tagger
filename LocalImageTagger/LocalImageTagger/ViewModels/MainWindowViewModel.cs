@@ -62,24 +62,24 @@ namespace LocalImageTagger.ViewModels
         public RelayCommand AddTabCommand { get; private set; }
 
         /// <summary>
-        /// Removes a tab with int ID.
+        /// Removes a specific tab.
         /// </summary>
-        public RelayCommand<int> RemoveTabCommand { get; private set; }
+        public RelayCommand<BaseTabViewModel> RemoveTabCommand { get; private set; }
 
         /// <summary>
         /// Opens a new <see cref="NewFileWindow"/> with this as the owner
         /// </summary>
-        public RelayCommand<Window> OpenNewFileDialog { get; private set; }
+        public RelayCommand<Window> OpenNewFileDialogCommand { get; private set; }
 
         /// <summary>
         /// Opens a new <see cref="NewTagWindow"/> with this as the owner
         /// </summary>
-        public RelayCommand<Window> OpenNewTagDialog { get; private set; }
+        public RelayCommand<Window> OpenNewTagDialogCommand { get; private set; }
 
         /// <summary>
         /// Opens a new <see cref="NewCategoryWindow"/> with this as the owner
         /// </summary>
-        public RelayCommand<Window> OpenNewCatDialog { get; private set; }
+        public RelayCommand<Window> OpenNewCatDialogCommand { get; private set; }
 
         #endregion
 
@@ -97,11 +97,11 @@ namespace LocalImageTagger.ViewModels
             //Set the original selected tab to the first one there
             SelectedTab = TabCollection.FirstOrDefault();
 
-            AddTabCommand = new RelayCommand(AddNewSearchTab);
-
-            OpenNewFileDialog = new RelayCommand<Window>(DialogHelper.OpenNewFileDialog);
-            OpenNewTagDialog = new RelayCommand<Window>(DialogHelper.OpenNewTagDialog);
-            OpenNewCatDialog = new RelayCommand<Window>(DialogHelper.OpenNewCategoryDialog);
+            AddTabCommand = new RelayCommand(addNewSearchTab);
+            RemoveTabCommand = new RelayCommand<BaseTabViewModel>(closeTab);
+            OpenNewFileDialogCommand = new RelayCommand<Window>(DialogHelper.OpenNewFileDialog);
+            OpenNewTagDialogCommand = new RelayCommand<Window>(DialogHelper.OpenNewTagDialog);
+            OpenNewCatDialogCommand = new RelayCommand<Window>(DialogHelper.OpenNewCategoryDialog);
         }
 
         #endregion
@@ -113,7 +113,7 @@ namespace LocalImageTagger.ViewModels
         /// Closes the selected tab by removing it from the tab list.
         /// </summary>
         /// <param name="tab">The tab to remove.</param>
-        public void CloseTab(BaseTabViewModel tab)
+        private void closeTab(BaseTabViewModel tab)
         {
             TabCollection.Remove(tab);
         }
@@ -121,11 +121,19 @@ namespace LocalImageTagger.ViewModels
         /// <summary>
         /// Adds a new <see cref="SearchTabViewModel"/> to the tab list.
         /// </summary>
-        public void AddNewSearchTab()
+        private void addNewSearchTab()
         {
             TabCollection.Add(new SearchTabViewModel());
         }
 
+        private void confirmAndClose()
+        {
+
+            //TODO: When closing, prompt about closing, and have a checkbox for not having that warning anymore
+
+            //Have the popup be ok or cancel. On okay, exit. Nothing otherwise.
+
+        }
 
         #endregion
     }

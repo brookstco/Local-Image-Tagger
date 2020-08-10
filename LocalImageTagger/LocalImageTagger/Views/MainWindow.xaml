@@ -21,20 +21,18 @@
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_System">
-                <MenuItem Command="Settings" />
+                <MenuItem Header="Settings" />
                 <Separator />
                 <MenuItem Header="_Exit" />
             </MenuItem>
             <MenuItem Header="_Tags">
-                <MenuItem Header="Add new Tag" Command="Cut" />
-                <MenuItem Header="Add new Category" Command="Paste" />
-                <MenuItem Header="Add new Alias" Command="Cut" />
-                <MenuItem Header="Edit Tag" Command="Cut" />
+                <MenuItem Header="Add new Tag" Command="{Binding OpenNewTagDialogCommand }" />
+                <MenuItem Header="Add new Category" Command="{Binding OpenNewCatDialogCommand}" />
+                <MenuItem Header="Add new Alias"/>
+                <MenuItem Header="Edit Tag"/>
             </MenuItem>
             <MenuItem Header="_Files">
-                <MenuItem Header="Add new Tag" Command="Cut" />
-                <MenuItem Header="Add new File(s)" Command="Copy" />
-                <MenuItem Header="Add new Category" Command="Paste" />
+                <MenuItem Header="Add new File(s)" Command="{Binding OpenNewFileDialogCommand}" />
             </MenuItem>
         </Menu>
         
