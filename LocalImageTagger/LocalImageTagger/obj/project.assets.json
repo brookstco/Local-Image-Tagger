@@ -1357,6 +1357,15 @@
         "frameworkReferences": [
           "Microsoft.WindowsDesktop.App.WPF"
         ]
+      },
+      "WpfTabControlLibrary/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/WpfTabControlLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/WpfTabControlLibrary.dll": {}
+        }
       }
     }
   },
@@ -4903,6 +4912,11 @@
         "wpf.matrixextensions.2.3.3.nupkg.sha512",
         "wpf.matrixextensions.nuspec"
       ]
+    },
+    "WpfTabControlLibrary/1.0.0": {
+      "type": "project",
+      "path": "../WpfTabControlLibrary/WpfTabControlLibrary.csproj",
+      "msbuildProject": "../WpfTabControlLibrary/WpfTabControlLibrary.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -4912,7 +4926,8 @@
       "Microsoft.Data.Sqlite.Core >= 3.1.6",
       "PropertyChanged.Fody >= 3.2.8",
       "System.Data.SQLite.Core >= 1.0.113.1",
-      "Wpf.Controls.PanAndZoom >= 2.3.3"
+      "Wpf.Controls.PanAndZoom >= 2.3.3",
+      "WpfTabControlLibrary >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -4945,7 +4960,11 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Colin\\Desktop\\image tagger\\Local-Image-Tagger\\LocalImageTagger\\WpfTabControlLibrary\\WpfTabControlLibrary.csproj": {
+              "projectPath": "C:\\Users\\Colin\\Desktop\\image tagger\\Local-Image-Tagger\\LocalImageTagger\\WpfTabControlLibrary\\WpfTabControlLibrary.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -5006,7 +5025,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

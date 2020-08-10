@@ -5,6 +5,8 @@ using System.Windows.Markup;
 
 namespace LocalImageTagger
 {
+    //TODO: I got this form a tut video, but I'm not using it. Either use it or remove it. It prevents the need to decalre as a reference.
+
     /// <summary>
     /// A base value converter than can be directly used in XAML instead of importing as a resource
     /// Call it with Converter={local:ConverterName} directly in the XAML data binding

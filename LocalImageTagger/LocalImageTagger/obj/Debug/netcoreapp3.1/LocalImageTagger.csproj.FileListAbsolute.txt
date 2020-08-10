@@ -58,3 +58,5 @@ C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalIma
 C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\bin\Debug\netcoreapp3.1\SQLitePCLRaw.core.dll
 C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\obj\Debug\netcoreapp3.1\Views\NewFileWindow.g.cs
 C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\obj\Debug\netcoreapp3.1\Views\NewFileWindow.baml
+C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\bin\Debug\netcoreapp3.1\WpfControlLibrary.dll
+C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\bin\Debug\netcoreapp3.1\WpfControlLibrary.pdb

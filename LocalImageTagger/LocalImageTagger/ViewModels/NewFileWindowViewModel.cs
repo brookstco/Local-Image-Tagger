@@ -1,5 +1,6 @@
 ﻿using LocalImageTagger.Database;
 using LocalImageTagger.Files;
+using PropertyChanged;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
@@ -79,7 +80,9 @@ namespace LocalImageTagger.ViewModels
 
         #region Methods
 
-        void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        //Overrules Fody, so needs to supress the unneeded warning.
+        [SuppressPropertyChangedWarnings]
+        private void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             //Simply having the notify property go seems to be broken due to using Fody Weaver.
             //Removing Fody weaver and manually fixing this all would improve efficiency in a few places probably.

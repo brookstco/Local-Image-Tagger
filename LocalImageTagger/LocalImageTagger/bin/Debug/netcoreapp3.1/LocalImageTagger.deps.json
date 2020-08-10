@@ -13,7 +13,8 @@
           "Microsoft.Data.Sqlite.Core": "3.1.6",
           "PropertyChanged.Fody": "3.2.8",
           "System.Data.SQLite.Core": "1.0.113.1",
-          "Wpf.Controls.PanAndZoom": "2.3.3"
+          "Wpf.Controls.PanAndZoom": "2.3.3",
+          "WpfTabControlLibrary": "1.0.0"
         },
         "runtime": {
           "LocalImageTagger.dll": {}
@@ -821,6 +822,11 @@
             "fileVersion": "2.3.3.0"
           }
         }
+      },
+      "WpfTabControlLibrary/1.0.0": {
+        "runtime": {
+          "WpfControlLibrary.dll": {}
+        }
       }
     }
   },
@@ -1424,6 +1430,11 @@
       "sha512": "sha512-VKysC7k1nMz13tj2gNVvd8PERaIlINJXP4+jZH51H0pkDJmwby0MexMhF1WfawpDEFLRb1tIVxwQDTbmp9O09g==",
       "path": "wpf.matrixextensions/2.3.3",
       "hashPath": "wpf.matrixextensions.2.3.3.nupkg.sha512"
+    },
+    "WpfTabControlLibrary/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LocalImageTagger" 
+        xmlns:uc="clr-namespace:LocalImageTagger.UserControls" 
         xmlns:paz="clr-namespace:Wpf.Controls.PanAndZoom;assembly=Wpf.Controls.PanAndZoom"
         mc:Ignorable="d"
         Title="Local Image Tagger Image View" 
@@ -50,11 +51,11 @@
             </Image>
         </Button>
         
-        <local:ZoomBorder ClipToBounds="True"
+        <uc:ZoomBorder ClipToBounds="True"
                         VerticalAlignment="Stretch" HorizontalAlignment="Stretch" 
                         Grid.Column="2">
             <Image Source="{Binding Image}" Stretch="Uniform" HorizontalAlignment="Left" VerticalAlignment="Top" RenderOptions.BitmapScalingMode="{Binding RenderingBitmapScalingMode}"/>
-        </local:ZoomBorder>
+        </uc:ZoomBorder>
     </Grid>
 
 </Window>

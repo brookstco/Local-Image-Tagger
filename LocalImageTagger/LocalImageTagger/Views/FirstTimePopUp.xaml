@@ -18,16 +18,16 @@
             <TextBlock HorizontalAlignment="Center" Margin="30"  TextWrapping="Wrap" VerticalAlignment="Top">
                 Thank you for downloading Local Image Tagger!<LineBreak/><LineBreak/>
                 Information and instructions can be found on
-                <local:HyperlinkExternal NavigateUri="https://github.com/brookstco/Local-Image-Tagger">GitHub
-                </local:HyperlinkExternal>. <LineBreak/><LineBreak/>
-                I am a solo developer, so updates may be slow, but please report any bugs or issues at the <Hyperlink NavigateUri="https://github.com/brookstco/Local-Image-Tagger/issues" local:HyperlinkExtensions.IsExternal="True">
-                GitHub Issue Page</Hyperlink>.
+                <local:HyperlinkExternal NavigateUri="https://github.com/brookstco/Local-Image-Tagger">GitHub</local:HyperlinkExternal>. 
+                <LineBreak/><LineBreak/>
+                I am a solo developer, so updates may be slow, but please report any bugs or issues at the 
+                <local:HyperlinkExternal NavigateUri="https://github.com/brookstco/Local-Image-Tagger/issues">GitHub Issue Page</local:HyperlinkExternal>.
             </TextBlock>
 
         </StackPanel>
         <StackPanel VerticalAlignment="Bottom">
             <CheckBox Content="Do Not Show on Startup" IsChecked="{Binding Source={x:Static prop:Settings.Default}, Path=FirstTimePopUpDisplays, Mode=TwoWay}" HorizontalAlignment="Center" Margin="10" VerticalAlignment="Top"/>
-            <Button Name="btnOk"  Content="OK" IsCancel="True" IsDefault="True" Margin="10" Click="BtnOk_Click" HorizontalAlignment="Center" MinWidth="60"/>
+            <Button Content="OK" IsCancel="True" IsDefault="True" Margin="10" Command="{Binding Close}" HorizontalAlignment="Center" MinWidth="60"/>
         </StackPanel>
     </Grid>
 </Window>

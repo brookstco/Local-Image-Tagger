@@ -88,4 +88,8 @@
     <PackageReference Include="Wpf.Controls.PanAndZoom" Version="2.3.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\WpfTabControlLibrary\WpfTabControlLibrary.csproj" />
+  </ItemGroup>
+
 </Project>

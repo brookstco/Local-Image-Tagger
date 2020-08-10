@@ -123,8 +123,8 @@ namespace LocalImageTagger.Database
         /// <returns>The <see cref="int"/> amount of modified records or -1 if there was an error.</returns>
         public static int AddNewFiles(IEnumerable<NewFile> files)
         {
-            //Used code from https://www.codeproject.com/Articles/853842/Csharp-Avoiding-Performance-Issues-with-Inserts-in 
-            //and https://stackoverflow.com/questions/9006604/improve-performance-of-sqlite-bulk-inserts-using-dapper-orm to ensure that SQLITE will insert efficiently
+            // Used code from https://www.codeproject.com/Articles/853842/Csharp-Avoiding-Performance-Issues-with-Inserts-in and referenced https://stackoverflow.com/questions/9006604/improve-performance-of-sqlite-bulk-inserts-using-dapper-orm
+            // to ensure that SQLITE will insert efficiently. (See license in WpfTabControlLibrary)
 
             var results = new List<int>();
 
