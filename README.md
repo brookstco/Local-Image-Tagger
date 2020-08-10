@@ -12,7 +12,7 @@ Can currently open the filetypes: BMP, JPEG, PNG, TIFF, Windows Media Photo, GIF
 
 Users should take note of these warning to prevent catastrophic results. Hopefully as many of these warning can be removed as possible as the program develops.
 
-- Since this program does not connect ot the internet, user information is not automatically backed up. All tag information is saved in ./Database/TagDatabase.db, so it is recommended that you back this database up to at least another drive if not to the cloud or a seperate storage device frequently. While unlikely, this program is a small project from a new developer, so corruption is probably just a matter of time. Having backups is always good, but even more so when the database might be buggy.
+- Since this program does not connect to the internet, user information is not automatically backed up. All tag information is saved in ./Database/TagDatabase.db, so it is recommended that you back this database up to at least another drive if not to the cloud or a seperate storage device frequently. While unlikely, this program is a small project from a new developer, so corruption is probably just a matter of time. Having backups is always good, but even more so when the database might be buggy.
 
 - Files are not checked to see if they match their filetype in their filename. This will not cause an issue if a .jpg is named as .png, but if the program attemts to display a filetype that is not an image and is totally different (for example, an .exe that was renamed to .jpg), it may behave very badly. This behavior is undefined, so it could be inconsequential or crash the program. Either way, avoid loading non-image files with image file extensions.
 
