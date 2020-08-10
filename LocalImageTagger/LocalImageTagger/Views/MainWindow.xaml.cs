@@ -25,6 +25,7 @@ namespace LocalImageTagger
     {
         //IDEA: Load thumbnails through multi-threading, so each can be seen and interacted with even as they load. Howver, UI can not be interacted with from a thread, so it may not be a btter option.
         //(Possibly each thumbnail as a seperate thread? This would allow smaller images to load faster as well. Additionally, lets it prioritize images in various ways, and have the number be dynamic, maybe)
+        //Likely super inefficient due to overhead, but having it async would still be good possibly.
 
         public MainWindow()
         {

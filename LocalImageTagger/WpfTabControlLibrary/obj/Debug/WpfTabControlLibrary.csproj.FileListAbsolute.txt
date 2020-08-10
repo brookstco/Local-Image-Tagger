@@ -1,0 +1,14 @@
+C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\WpfTabControlLibrary\bin\Debug\WpfControlLibrary.dll
+C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\WpfTabControlLibrary\bin\Debug\WpfControlLibrary.pdb
+C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\WpfTabControlLibrary\obj\Debug\WpfTabControlLibrary.csprojAssemblyReference.cache
+C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\WpfTabControlLibrary\obj\Debug\TabHeaderControl.g.cs
+C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\WpfTabControlLibrary\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\WpfTabControlLibrary\obj\Debug\WpfControlLibrary_MarkupCompile.cache
+C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\WpfTabControlLibrary\obj\Debug\WpfControlLibrary_MarkupCompile.lref
+C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\WpfTabControlLibrary\obj\Debug\TabHeaderControl.baml
+C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\WpfTabControlLibrary\obj\Debug\WpfControlLibrary.g.resources
+C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\WpfTabControlLibrary\obj\Debug\WpfControlLibrary.Properties.Resources.resources
+C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\WpfTabControlLibrary\obj\Debug\WpfTabControlLibrary.csproj.GenerateResource.cache
+C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\WpfTabControlLibrary\obj\Debug\WpfTabControlLibrary.csproj.CoreCompileInputs.cache
+C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\WpfTabControlLibrary\obj\Debug\WpfControlLibrary.dll
+C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\WpfTabControlLibrary\obj\Debug\WpfControlLibrary.pdb

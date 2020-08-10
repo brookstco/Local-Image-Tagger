@@ -34,15 +34,8 @@
     <Compile Update="Views\TEST.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\VideoViewer.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <None Update="Database\Old\TagDatabaseDataSet.xsd">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Page Update="Views\NewFileWindow.xaml">
       <SubType>Designer</SubType>
@@ -69,9 +62,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\TEST.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\VideoViewer.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
