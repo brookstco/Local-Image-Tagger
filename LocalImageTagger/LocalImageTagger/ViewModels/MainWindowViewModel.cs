@@ -1,4 +1,5 @@
-﻿using LocalImageTagger.Views;
+﻿using LocalImageTagger.Files;
+using LocalImageTagger.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,29 +15,6 @@ namespace LocalImageTagger.ViewModels
 
         #region Properties
 
-        //#region Window information
-        ///// <summary>
-        ///// The minimum width that the windows can be adjusted to.
-        ///// </summary>
-        //public double WindowMinimumWidth { get; set; } = 400;
-
-        ///// <summary>
-        ///// The minimum height that the windows can be adjusted to.
-        ///// </summary>
-        //public double WindowMinimumHeight { get; set; } = 300;
-
-        ///// <summary>
-        ///// The current width of the window. Used for perserving window adjustments.
-        ///// </summary>
-        //public double WindowWidth { get; set; } = 1000;
-
-        ///// <summary>
-        ///// The current height of the window. Used for perserving window adjustments.
-        ///// </summary>
-        //public double WindowHeight { get; set; } = 600;
-
-        //#endregion
-
         #region Tabs
 
         /// <summary>
@@ -51,6 +29,8 @@ namespace LocalImageTagger.ViewModels
 
 
         #endregion
+
+        public ObservableCollection<FileItem> SelectedFiles { get; set; } = new ObservableCollection<FileItem>();
 
         #endregion
 

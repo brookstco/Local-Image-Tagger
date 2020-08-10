@@ -9,6 +9,7 @@ namespace LocalImageTagger.Tags
     /// </summary>
     public class FullTag : SearchTag
     {
+        //TODO: I can probably just have a single tag class with empty values by default that can be given info if needed. Makes using them and setting values only someitmes much easier.
 
         #region Properties
 

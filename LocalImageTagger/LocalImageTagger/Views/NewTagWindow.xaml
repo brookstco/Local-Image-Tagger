@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LocalImageTagger"
         mc:Ignorable="d"
+        x:Name="TagWindow"
         Title="Add New Tag" Height="300" Width="400"
         WindowStartupLocation="CenterOwner" 
         ResizeMode="NoResize">
@@ -25,23 +26,28 @@
         <Label Style="{StaticResource StandardStyleLabelBold}" Target="{Binding ElementName=txtBoxTag}" HorizontalAlignment="Right" Margin="10,10,0,0" VerticalAlignment="Top" >_Tag</Label>
         <TextBox Name="txtBoxTag" Padding="2" Grid.Column="1" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Width="250" ToolTip="(Required) Enter the new tag.&#x0a;It should have no spaces. Use - or _ instead."/>
 
-        <Label Content="_Category" Style="{StaticResource StandardStyleLabelBold}" Grid.Row="1" Target="{Binding ElementName=txtBoxCat}" HorizontalAlignment="Right" Margin="10,0,0,0" VerticalAlignment="Top"/><!--comboBoxCategory-->
-        <!--<TextBox Name="txtBoxCat" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Top" Width="250" ToolTip="(Required) Enter the category that the tag belongs to."/> --><!--TODO: Have a popup if the category is new to check if they want to add it as a new category-->
-        <TextBox Name="comboBoxCategory" Grid.Column="1" Grid.Row="1" Margin="10,0,10,10" ToolTip="(Required) Select the category that the tag belongs to"/> <!--IsEditable="True"-->
+        <Label Content="_Category" Style="{StaticResource StandardStyleLabelBold}" Grid.Row="1" Target="{Binding ElementName=txtBoxCat}" HorizontalAlignment="Right" Margin="10,0,0,0" VerticalAlignment="Top"/>
+        <!--comboBoxCategory-->
+        <!--<TextBox Name="txtBoxCat" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Top" Width="250" ToolTip="(Required) Enter the category that the tag belongs to."/> -->
+        <!--TODO: Have a popup if the category is new to check if they want to add it as a new category-->
+        <TextBox Name="comboBoxCategory" Grid.Column="1" Grid.Row="1" Margin="10,0,10,10" ToolTip="(Required) Select the category that the tag belongs to"/>
+        <!--IsEditable="True"-->
         <Button Content="_New" Grid.Column="2" HorizontalAlignment="Left" Margin="0,0,10,0" VerticalAlignment="Top" ToolTip="Add a new category" Grid.Row="1"/>
 
-        <Label Content="_Description" Target="{Binding ElementName=txtBoxDesc}" Grid.Row="2" HorizontalAlignment="Right" Margin="10,0,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="txtBoxDesc" Padding="2" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,10" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Top" Width="250" Height="70" ToolTip="(Optional) Enter the description for the new tag. This will be visible in the tag dictionary."/>
+        <Label Content="_Aliases" Target="{Binding ElementName=txtBoxAlias}" Grid.Row="2" HorizontalAlignment="Right" Margin="10,0,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="txtBoxAlias" Padding="2" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Top" Width="250" ToolTip="(Optional) Enter alternative searchable tags that lead to this tag. Each should be seperated by a space.&#x0a;For example, &quot;mum&quot; for &quot;Chrysanthemum&quot; or &quot;p&quot; as a shortcut for &quot;photo&quot;." />
 
-        <Label Content="_Aliases" Target="{Binding ElementName=txtBoxAlias}" Grid.Row="3" HorizontalAlignment="Right" Margin="10,0,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="txtBoxAlias" Padding="2" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Top" Width="250" ToolTip="(Optional) Enter alternative searchable tags that lead to this tag. Each should be seperated by a space.&#x0a;For example, &quot;mum&quot; for &quot;Chrysanthemum&quot; or &quot;p&quot; as a shortcut for &quot;photo&quot;." />
-
-        <Label Content="_Parents" Target="{Binding ElementName=txtBoxParent}" Grid.Row="4" HorizontalAlignment="Right" Margin="10,0,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="txtBoxParent" Padding="2" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Top" Width="250" ToolTip="(Optional) Enter any other tags that this tag implies exists. Those tag will be automatically added to an image when it is given this tag.&#x0a;For example, if &quot;flower&quot; is a parent of &quot;rose&quot;, when you tag an image with &quot;rose&quot; that image can be found with both the tags &quot;rose&quot; and &quot;flower&quot;"/>
+        <Label Content="_Parents" Target="{Binding ElementName=txtBoxParent}" Grid.Row="3" HorizontalAlignment="Right" Margin="10,0,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="txtBoxParent" Padding="2" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Top" Width="250" ToolTip="(Optional) Enter any other tags that this tag implies exists. Those tag will be automatically added to an image when it is given this tag.&#x0a;For example, if &quot;flower&quot; is a parent of &quot;rose&quot;, when you tag an image with &quot;rose&quot; that image can be found with both the tags &quot;rose&quot; and &quot;flower&quot;"/>
         
-        <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.ColumnSpan="3" HorizontalAlignment="Center">
-            <Button Content="Add Ta_g" Margin="10" VerticalAlignment="Bottom" MinWidth="60"/>
-            <Button Name="btnCancel" Content="Ca_ncel" IsCancel="True" IsDefault="True" Margin="0,10,10,10" VerticalAlignment="Bottom" MinWidth="60" Click="BtnCancel_Click"/>
+        <Label Content="_Description" Target="{Binding ElementName=txtBoxDesc}" Grid.Row="4" HorizontalAlignment="Right" Margin="10,0,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="txtBoxDesc" Padding="2" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,10" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Top" Width="250" Height="70" ToolTip="(Optional) Enter the description for the new tag. This will be visible in the tag dictionary."/>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="5" VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.ColumnSpan="3">
+            <Button Content="_OK" Margin="10" MinWidth="60"
+                    Command="{Binding SaveAndClose}" CommandParameter="{Binding ElementName=TagWindow}"/>
+            <Button Content="_Cancel" IsCancel="True" Margin="10" MinWidth="60" 
+                    Command="{Binding Close}" CommandParameter="{Binding ElementName=TagWindow}"/>
         </StackPanel>
         <!--<DockPanel Grid.Row="4" Grid.ColumnSpan="2">
             <Button DockPanel.Dock="Bottom" Content="Add" Margin="0,0,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="50"/>

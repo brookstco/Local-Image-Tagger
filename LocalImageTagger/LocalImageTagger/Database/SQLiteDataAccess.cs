@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using LocalImageTagger.Files;
+using LocalImageTagger.Tags;
 using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
@@ -175,6 +176,10 @@ namespace LocalImageTagger.Database
         }
 
 
+        public static void AddNewTag(FullTag tag)
+        {
+            throw new NotImplementedException();
+        }
 
 
     }

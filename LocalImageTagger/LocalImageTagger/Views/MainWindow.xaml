@@ -8,6 +8,7 @@
         xmlns:viewmodels="clr-namespace:LocalImageTagger.ViewModels"
         xmlns:prop="clr-namespace:LocalImageTagger.Properties" 
         mc:Ignorable="d"
+        x:Name="Main"
         WindowStartupLocation="CenterScreen"
         Title="Local Image Tagger" 
         Height="{Binding Source={x:Static prop:Settings.Default}, Path=MainWindowHeight, Mode=TwoWay}" 
@@ -26,13 +27,13 @@
                 <MenuItem Header="_Exit" />
             </MenuItem>
             <MenuItem Header="_Tags">
-                <MenuItem Header="Add new Tag" Command="{Binding OpenNewTagDialogCommand }" />
-                <MenuItem Header="Add new Category" Command="{Binding OpenNewCatDialogCommand}" />
+                <MenuItem Header="Add new Tag" Command="{Binding OpenNewTagDialogCommand }" CommandParameter="{Binding ElementName=Main}"/>
+                <MenuItem Header="Add new Category" Command="{Binding OpenNewCatDialogCommand}" CommandParameter="{Binding ElementName=Main}"/>
                 <MenuItem Header="Add new Alias"/>
                 <MenuItem Header="Edit Tag"/>
             </MenuItem>
             <MenuItem Header="_Files">
-                <MenuItem Header="Add new File(s)" Command="{Binding OpenNewFileDialogCommand}" />
+                <MenuItem Header="Add new File(s)" Command="{Binding OpenNewFileDialogCommand}" CommandParameter="{Binding ElementName=Main}"/>
             </MenuItem>
         </Menu>
         
@@ -55,6 +56,8 @@
                 <StackPanel Orientation="Horizontal" Grid.ColumnSpan="10">
                     <TextBox HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Width="448" MinHeight="20"/>
                     <Button x:Name="btnSearch" Content="Search" ToolTip="Searches Tagged Images by Tag"  HorizontalAlignment="Left" Margin="0,10,10,10" VerticalAlignment="Top" VerticalContentAlignment="Center" MinWidth="50" MinHeight="20"/>
+                    <Button Content="Open Test Image Viewer" ToolTip="Opens new window with test image loading" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Test_Button_Click"/>
+
                 </StackPanel>
             </StackPanel>
             
@@ -65,13 +68,15 @@
             <!--TODO: Make this gridsplitter restrictive in size, and collapsable like the imageviewer button-->
             <GridSplitter Grid.Row="1" Grid.Column="1" Width="5" HorizontalAlignment="Stretch" Grid.RowSpan="10" ShowsPreview="True"/>
 
-            <!--Temporary buttons to test the windows-->
             <StackPanel Grid.Column="2">
-                <Button Content="Open Test Image Viewer" ToolTip="Opens new window with test image loading" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Test_Button_Click"/>
-                <Button Content="Add New Tag Test" ToolTip="Opens new tag dialog, but doesn't actually work" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Tag_Button_Click"/>
-                <Button Content="Add New Cat Test" ToolTip="Opens new Cat dialog, but doesn't actually work" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Cat_Button_Click"/>
-                <Button Content="Add New File(s) Test" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Top" Click="File_Button_Click"/>
+                <!--Preview of file to be tagged-->
+                <Image Source="/Images/Files/unknownFiles.png" Stretch="None" RenderTransformOrigin="5,5" VerticalAlignment="Top" Margin="10"/>
+                <TextBlock Text="Selected FileName Goes Here." Margin="10"/>
+                <TextBlock Text="Tags:" Margin="10"/>
+                <TextBox TextWrapping="Wrap"/>
+
             </StackPanel>
+            
         </Grid>
     </DockPanel>
     
