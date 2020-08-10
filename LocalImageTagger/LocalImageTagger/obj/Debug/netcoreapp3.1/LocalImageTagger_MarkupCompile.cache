@@ -1,5 +1,5 @@
 ﻿LocalImageTagger
-1.0.0.0
+
 
 winexe
 C#
@@ -12,9 +12,9 @@ TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 C:\Users\Colin\Desktop\image tagger\Local-Image-Tagger\LocalImageTagger\LocalImageTagger\App.xaml
 9-1786000029
 1919875736
-49468961887
+47-1107461849
 210-1347980116
 Views\FirstTimePopUp.xaml;Views\ImageViewer.xaml;Views\MainWindow.xaml;Views\NewCategoryWindow.xaml;Views\NewFileLocationWindow.xaml;Views\NewFileWindow.xaml;Views\NewTagWindow.xaml;Views\TEST.xaml;Views\UserControls\SearchTab.xaml;
 
-True
+False
 

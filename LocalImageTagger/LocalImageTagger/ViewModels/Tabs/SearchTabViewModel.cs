@@ -11,10 +11,12 @@ namespace LocalImageTagger.ViewModels
         //TODO: Observable colections don't work with LINQ. Should I swap them out for something like a list?  - No fix or use both.
         //TODO: Pass in default search and whether it should immediately search with the ctor, so that links can open new tabs with prefilled values
 
+        #region Properties
+
         /// <summary>
         /// All of the FileItems returned by the search.
         /// </summary>
-        public ObservableCollection<FileItem> FileItems { get; set; }
+        public ObservableCollection<FileItem> FileItems { get; set; } = new ObservableCollection<FileItem>();
 
         /// <summary>
         /// The files items for the current page.
@@ -51,11 +53,25 @@ namespace LocalImageTagger.ViewModels
             } 
         }
 
+        #endregion
 
-
-        public SearchTabViewModel()
+        public SearchTabViewModel(string startingSearch = "", bool searchImmediately = false)
         {
-            TabName = "Search";
+            if (startingSearch == "")
+            {
+                TabName = "New Search";
+            }
+            else
+            {
+                TabName = startingSearch;
+            }
+
+
+            if (searchImmediately)
+            {
+                //TODO: Search immediately if true
+            }
+
         }
 
     }

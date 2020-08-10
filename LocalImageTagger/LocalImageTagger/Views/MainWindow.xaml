@@ -14,20 +14,27 @@
         Width="{Binding Source={x:Static prop:Settings.Default}, Path=MainWindowWidth, Mode=TwoWay}"
         MinHeight="{Binding WindowMinimumHeight}" MinWidth="{Binding WindowMinimumWidth}">
 
+    
     <!--Height="{Binding Path=WindowHeight, Mode=TwoWay}" Width="{Binding Path=WindowWidth, Mode=TwoWay}"
         MinHeight="{Binding WindowMinimumHeight}" MinWidth="{Binding WindowMinimumWidth}-->
 
     <DockPanel>
         <Menu DockPanel.Dock="Top">
-            <MenuItem Header="_File">
-                <MenuItem Command="New" />
+            <MenuItem Header="_System">
+                <MenuItem Command="Settings" />
                 <Separator />
                 <MenuItem Header="_Exit" />
             </MenuItem>
-            <MenuItem Header="_Edit">
-                <MenuItem Command="Cut" />
-                <MenuItem Command="Copy" />
-                <MenuItem Command="Paste" />
+            <MenuItem Header="_Tags">
+                <MenuItem Header="Add new Tag" Command="Cut" />
+                <MenuItem Header="Add new Category" Command="Paste" />
+                <MenuItem Header="Add new Alias" Command="Cut" />
+                <MenuItem Header="Edit Tag" Command="Cut" />
+            </MenuItem>
+            <MenuItem Header="_Files">
+                <MenuItem Header="Add new Tag" Command="Cut" />
+                <MenuItem Header="Add new File(s)" Command="Copy" />
+                <MenuItem Header="Add new Category" Command="Paste" />
             </MenuItem>
         </Menu>
         
@@ -42,6 +49,10 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
+            
+            <!--Thumbnail Viewer-->
+            
+            
             <StackPanel>
                 <StackPanel Orientation="Horizontal" Grid.ColumnSpan="10">
                     <TextBox HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Width="448" MinHeight="20"/>
@@ -49,6 +60,8 @@
                 </StackPanel>
             </StackPanel>
             
+            
+            <!--Tag editor-->
             
             
             <!--TODO: Make this gridsplitter restrictive in size, and collapsable like the imageviewer button-->

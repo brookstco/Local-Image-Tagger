@@ -1,8 +1,10 @@
-﻿using System;
+﻿using LocalImageTagger.Views;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Windows;
 using System.Windows.Input;
 
 namespace LocalImageTagger.ViewModels
@@ -55,15 +57,29 @@ namespace LocalImageTagger.ViewModels
         #region Commands
 
         /// <summary>
-        /// Adds a new tab
+        /// Adds a new tab.
         /// </summary>
         public RelayCommand AddTabCommand { get; private set; }
 
-        //TODO: Relay commands need to accept parameters. I should improve them significantly.
         /// <summary>
-        /// Removes a tab.
+        /// Removes a tab with int ID.
         /// </summary>
-        public RelayCommand RemoveTabCommand { get; private set; }
+        public RelayCommand<int> RemoveTabCommand { get; private set; }
+
+        /// <summary>
+        /// Opens a new <see cref="NewFileWindow"/> with this as the owner
+        /// </summary>
+        public RelayCommand<Window> OpenNewFileDialog { get; private set; }
+
+        /// <summary>
+        /// Opens a new <see cref="NewTagWindow"/> with this as the owner
+        /// </summary>
+        public RelayCommand<Window> OpenNewTagDialog { get; private set; }
+
+        /// <summary>
+        /// Opens a new <see cref="NewCategoryWindow"/> with this as the owner
+        /// </summary>
+        public RelayCommand<Window> OpenNewCatDialog { get; private set; }
 
         #endregion
 
@@ -73,12 +89,19 @@ namespace LocalImageTagger.ViewModels
         public MainWindowViewModel()
         {
             TabCollection = new ObservableCollection<BaseTabViewModel>();
+
+            //TODO: The default needs to be loaded from settings. So the distribution should be a blank search tab
             //Default with a single search tab open
             TabCollection.Add(new SearchTabViewModel());
+
             //Set the original selected tab to the first one there
             SelectedTab = TabCollection.FirstOrDefault();
 
             AddTabCommand = new RelayCommand(AddNewSearchTab);
+
+            OpenNewFileDialog = new RelayCommand<Window>(DialogHelper.OpenNewFileDialog);
+            OpenNewTagDialog = new RelayCommand<Window>(DialogHelper.OpenNewTagDialog);
+            OpenNewCatDialog = new RelayCommand<Window>(DialogHelper.OpenNewCategoryDialog);
         }
 
         #endregion

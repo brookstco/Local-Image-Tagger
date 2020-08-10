@@ -8,18 +8,19 @@
         xmlns:paz="clr-namespace:Wpf.Controls.PanAndZoom;assembly=Wpf.Controls.PanAndZoom"
         mc:Ignorable="d"
         Title="Local Image Tagger Image View" 
-        
+        Height="{Binding Path=WindowHeight, Mode=TwoWay}"
         Width="{Binding Path=WindowWidth, Mode=TwoWay}"
         MinHeight="{Binding WindowMinimumHeight}" MinWidth="{Binding WindowMinimumWidth}"
         Left="{Binding WindowLeft, Mode=TwoWay}" Top="{Binding WindowTop, Mode=TwoWay}"
         WindowStyle="{Binding WindowStyle}"
         WindowState="{Binding WindowState}">
-<!--Height="{Binding Path=WindowHeight, Mode=TwoWay}"-->
-    <Window.Height>
-        <Multibinding>
+
+    <!--<Window.Height>
+        <MultiBinding  StringFormat="{0}">
             <Binding Path="WindowHeight" Mode="TwoWay"/>
-        </Multibinding>
-    </Window.Height>
+            <Binding Source="{x:Static prop:Settings.Default}" Path="ImageViewerHeight" Mode="OneWayToSource"/>
+        </MultiBinding>
+    </Window.Height>-->
     
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
