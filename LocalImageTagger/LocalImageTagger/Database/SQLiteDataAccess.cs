@@ -247,10 +247,46 @@ namespace LocalImageTagger.Database
 
                     string sqlGetCategorysByID = "SELECT * FROM Categories WHERE ID = @CategoryID";
 
-                    //TODO: A query with no results should still return an empty list, not null or something else. Confirm this is the case.
+                    //Queries using Dapper. Returns as a Category. Returns null if there is no result.
+                    //TODO: Confirm result of QuerySingleOrDefault is null.
+                    output = cn.QuerySingleOrDefault<Category>(sqlGetCategorysByID, new { CategoryID = id });
 
-                    //Queries using Dapper, subs in the string as the parameter and returns the results as a list
-                    output = cn.QueryFirstOrDefault<Category>(sqlGetCategorysByID, new { CategoryID = id });
+                }
+            }
+            catch (SqliteException ex)
+            {
+                DatabaseError.DatabaseErrorUnknownMessage(ex);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                DatabaseError.OtherErrorMessage(ex);
+                return null;
+            }
+
+            return output;
+        }
+
+        /// <summary>
+        /// Returns a category with the given ID from the database
+        /// </summary>
+        /// <param name="name">The category name..</param>
+        /// <returns>A <see cref="Category"/> of the ID or null if there was no result.</returns>
+        public static Category GetCategoryByName(string name)
+        {
+            Category output = null;
+            try
+            {
+                //Closing is automatic with a using and will happen even on an error.
+                using (var cn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    cn.Open();
+
+                    string sqlGetCategorysByID = "SELECT * FROM Categories WHERE Name = @CategoryName";
+
+                    //Queries using Dapper. Returns as a Category. Returns null if there is no result.
+                    //TODO: Confirm result of QuerySingleOrDefault is null.
+                    output = cn.QuerySingleOrDefault<Category>(sqlGetCategorysByID, new { CategoryName = name });
 
                 }
             }
