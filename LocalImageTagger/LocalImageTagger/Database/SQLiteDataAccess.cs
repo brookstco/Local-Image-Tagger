@@ -16,6 +16,8 @@ namespace LocalImageTagger.Database
     {
         //NOTE: SQLite writes are atomic and limited by transation, but each transaction can have many writes or reads. Bundle things together to improve performance
 
+        #region Connection
+
         /// <summary>
         /// Returns the saved connection string for the SQLite database
         /// </summary>
@@ -24,6 +26,12 @@ namespace LocalImageTagger.Database
             return Properties.Settings.Default.DatabaseConnectionString;
         }
 
+        #endregion
+
+        #region Files
+
+        #region Get Files
+
         /// <summary>
         /// Returns a list of FileItems based on the given DB FileIDs.
         /// If no FileIds are in the IEnumerable<int>, returns everything. 
@@ -31,7 +39,7 @@ namespace LocalImageTagger.Database
         /// </summary>
         /// <param name="ids">A list of integer FileIds to return the file data for.</param>
         /// <returns>returns a List of FileItems or null on failure.</returns>
-        public static List<FileItem> LoadFilesByID(IEnumerable<int> ids)
+        public static List<FileItem> GetFilesByID(IEnumerable<int> ids)
         {
             if (ids == null) //There is no IEnumerable<int>
             {
@@ -39,7 +47,7 @@ namespace LocalImageTagger.Database
             }
             else if (!ids.Any()) //The IEnumerable<int> is empty
             {
-                return LoadAllFiles();
+                return GetAllFiles();
             }
 
             //The IEnumerable<int> exists and has values, so proceed as normal.
@@ -83,7 +91,7 @@ namespace LocalImageTagger.Database
         /// Returns all files in a List of FileItems.
         /// </summary>
         /// <returns>Reeturns a List of FileItems or null on failure.</returns>
-        public static List<FileItem> LoadAllFiles()
+        public static List<FileItem> GetAllFiles()
         {
             List<FileItem> output = null;
 
@@ -115,6 +123,10 @@ namespace LocalImageTagger.Database
 
             return output;
         }
+
+        #endregion
+
+        #region Add Files
 
         /// <summary>
         /// Adds <see cref="NewFile"/>s to the database. The files are passed in in any IEnumerable, and can have any number.
@@ -175,12 +187,105 @@ namespace LocalImageTagger.Database
             }
         }
 
+        #endregion
+
+        #region Edit Files
+
+        #endregion
+
+        #region Remove Files
+
+        #endregion
+
+
+        #endregion
+
+
+        #region Tags
+
+        #region Load Tags
+        #endregion
+
+        #region Add Tags
 
         public static void AddNewTag(FullTag tag)
         {
             throw new NotImplementedException();
         }
 
+        #endregion
 
+        #region Edit Tags
+
+        #endregion
+
+        #region Remove Tags
+
+        #endregion
+
+        #endregion
+
+
+        #region Categories
+
+        #region Get Categories
+
+        /// <summary>
+        /// Returns a category with the given ID from the database
+        /// </summary>
+        /// <param name="id">The DB ID for the category.</param>
+        /// <returns>A <see cref="Category"/> of the ID.</returns>
+        public static Category GetCategoryByID(int id)
+        {
+            Category output;
+            try
+            {
+                //Closing is automatic with a using and will happen even on an error.
+                using (var cn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    cn.Open();
+
+                    string sqlGetFilesByID = "SELECT * FROM Files";
+
+                    //TODO: A query with no results should still return an empty list, not null or something else. Confirm this is the case.
+
+                    //Queries using Dapper, subs in the string as the parameter and returns the results as a list
+                    output = cn.Query<FileItem>(sqlGetFilesByID).ToList();
+                }
+            }
+            catch (SqliteException ex)
+            {
+                DatabaseError.DatabaseErrorUnknownMessage(ex);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                DatabaseError.OtherErrorMessage(ex);
+                return null;
+            }
+
+            return output;
+        }
+
+        #endregion
+
+        #region Add Categories
+
+        public static void AddNewCategory(Category cat)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
+        #region Edit Categories
+
+        #endregion
+
+        #region Remove Categories
+
+        #endregion
+
+        #endregion
     }
 }

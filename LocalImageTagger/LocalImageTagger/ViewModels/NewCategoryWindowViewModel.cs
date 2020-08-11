@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using LocalImageTagger.Database;
+using LocalImageTagger.Properties;
+using System.Windows;
 
 namespace LocalImageTagger.ViewModels
 {
@@ -47,11 +49,17 @@ namespace LocalImageTagger.ViewModels
             }
         }
 
-        //TODO: Make the getter just directly return the value from the settings or wherever ti is stored.
         /// <summary>
-        /// The current default category that will get repalced if this becomes the default
+        /// The current default category.
+        /// This will be replaced if a new one is selected
         /// </summary>
-        public string CurrentDefaultCategory { get; } = "ERROR";
+        public string CurrentDefaultCategory
+        {
+            get
+            {
+                return SQLiteDataAccess.GetCategoryByID(Settings.Default.DefaultCategoryID).Name;
+            }
+        }
 
         #endregion
 

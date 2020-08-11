@@ -15,21 +15,31 @@ namespace LocalImageTagger.Tags
 
         /// <summary>
         /// The database ID of this tag.
-        /// This will be -1 if there is no associated database Id
+        /// Null if not in database
         /// </summary>
-        public int ID { get; private set; }
-        #endregion
+        public int? ID { get; private set; }
 
         /// <summary>
-        /// If this category is the default category.
+        /// The display color for tags in this category
+        /// Null if undefined
         /// </summary>
-        public bool DefaultCategory { get; private set; }
+        public string Color { get; private set; }
 
-        public Category(string name, int id = -1, bool defaultCat = false)
+        /// <summary>
+        /// The display priority for tags in this category
+        /// Null if undefined
+        /// </summary>
+        public int? Priority { get; private set; }
+
+        #endregion
+
+
+        public Category(string name, int? id = null, string color = null, int? priority = null )
         {
             Name = name;
             ID = id;
-            DefaultCategory = defaultCat;
+            Color = color;
+            Priority = priority;
         }
     }
 }
