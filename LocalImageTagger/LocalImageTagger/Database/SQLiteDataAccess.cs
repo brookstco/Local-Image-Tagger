@@ -234,10 +234,10 @@ namespace LocalImageTagger.Database
         /// Returns a category with the given ID from the database
         /// </summary>
         /// <param name="id">The DB ID for the category.</param>
-        /// <returns>A <see cref="Category"/> of the ID.</returns>
+        /// <returns>A <see cref="Category"/> of the ID or null if there was no result.</returns>
         public static Category GetCategoryByID(int id)
         {
-            Category output;
+            Category output = null;
             try
             {
                 //Closing is automatic with a using and will happen even on an error.
@@ -245,12 +245,13 @@ namespace LocalImageTagger.Database
                 {
                     cn.Open();
 
-                    string sqlGetFilesByID = "SELECT * FROM Files";
+                    string sqlGetCategorysByID = "SELECT * FROM Categories WHERE ID = @CategoryID";
 
                     //TODO: A query with no results should still return an empty list, not null or something else. Confirm this is the case.
 
                     //Queries using Dapper, subs in the string as the parameter and returns the results as a list
-                    output = cn.Query<FileItem>(sqlGetFilesByID).ToList();
+                    output = cn.QueryFirstOrDefault<Category>(sqlGetCategorysByID, new { CategoryID = id });
+
                 }
             }
             catch (SqliteException ex)
