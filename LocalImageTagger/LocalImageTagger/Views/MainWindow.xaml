@@ -27,10 +27,21 @@
                 <MenuItem Header="_Exit" />
             </MenuItem>
             <MenuItem Header="_Tags">
-                <MenuItem Header="Add new Tag" Command="{Binding OpenNewTagDialogCommand }" CommandParameter="{Binding ElementName=Main}"/>
-                <MenuItem Header="Add new Category" Command="{Binding OpenNewCatDialogCommand}" CommandParameter="{Binding ElementName=Main}"/>
-                <MenuItem Header="Add new Alias"/>
-                <MenuItem Header="Edit Tag"/>
+                <MenuItem Header="Add New">
+                    <MenuItem Header="Add new Tag" Command="{Binding OpenNewTagDialogCommand }" CommandParameter="{Binding ElementName=Main}"/>
+                    <MenuItem Header="Add new Category" Command="{Binding OpenNewCatDialogCommand}" CommandParameter="{Binding ElementName=Main}"/>
+                    <MenuItem Header="Add new Alias"/>
+                </MenuItem>
+                <MenuItem Header="Edit">
+                    <MenuItem Header="Edit Tag"/>
+                    <MenuItem Header="Edit Category"/>
+                    <MenuItem Header="Edit Alias"/>
+                </MenuItem>
+                <MenuItem Header="Remove">
+                    <MenuItem Header="Remove Tag"/>
+                    <MenuItem Header="Remove Category"/>
+                    <MenuItem Header="Remove Alias"/>
+                </MenuItem>
             </MenuItem>
             <MenuItem Header="_Files">
                 <MenuItem Header="Add new File(s)" Command="{Binding OpenNewFileDialogCommand}" CommandParameter="{Binding ElementName=Main}"/>

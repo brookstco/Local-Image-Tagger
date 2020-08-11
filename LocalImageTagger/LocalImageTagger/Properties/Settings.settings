@@ -46,8 +46,8 @@
     <Setting Name="Tabs" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="SelectedTab" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="SelectedTab" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="ThumbnailHeight" Type="System.Double" Scope="User">
       <Value Profile="(Default)">100</Value>
@@ -61,11 +61,11 @@
     <Setting Name="ThumbnailColumns" Type="System.String" Scope="User">
       <Value Profile="(Default)">3</Value>
     </Setting>
-    <Setting Name="ThumbnailImageBorderColor" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">Black</Value>
+    <Setting Name="ThumbnailImageBorderColor" Type="System.String" Scope="User">
+      <Value Profile="(Default)">#000000</Value>
     </Setting>
-    <Setting Name="ThumbnailAnimatedImageBoderColor" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">Cyan</Value>
+    <Setting Name="ThumbnailAnimatedImageBoderColor" Type="System.String" Scope="User">
+      <Value Profile="(Default)">#00FFFF</Value>
     </Setting>
     <Setting Name="ThumbnailImageBorderVisible" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
@@ -78,6 +78,9 @@
     </Setting>
     <Setting Name="ThumbnailMarginSize" Type="System.Double" Scope="User">
       <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="DefaultCategoryID" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
     </Setting>
   </Settings>
 </SettingsFile>

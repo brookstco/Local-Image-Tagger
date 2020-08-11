@@ -12,7 +12,7 @@ namespace LocalImageTagger.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.6.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.7.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -179,9 +179,10 @@ namespace LocalImageTagger.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public bool SelectedTab {
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int SelectedTab {
             get {
-                return ((bool)(this["SelectedTab"]));
+                return ((int)(this["SelectedTab"]));
             }
             set {
                 this["SelectedTab"] = value;
@@ -238,10 +239,10 @@ namespace LocalImageTagger.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
-        public global::System.Drawing.Color ThumbnailImageBorderColor {
+        [global::System.Configuration.DefaultSettingValueAttribute("#000000")]
+        public string ThumbnailImageBorderColor {
             get {
-                return ((global::System.Drawing.Color)(this["ThumbnailImageBorderColor"]));
+                return ((string)(this["ThumbnailImageBorderColor"]));
             }
             set {
                 this["ThumbnailImageBorderColor"] = value;
@@ -250,10 +251,10 @@ namespace LocalImageTagger.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Cyan")]
-        public global::System.Drawing.Color ThumbnailAnimatedImageBoderColor {
+        [global::System.Configuration.DefaultSettingValueAttribute("#00FFFF")]
+        public string ThumbnailAnimatedImageBoderColor {
             get {
-                return ((global::System.Drawing.Color)(this["ThumbnailAnimatedImageBoderColor"]));
+                return ((string)(this["ThumbnailAnimatedImageBoderColor"]));
             }
             set {
                 this["ThumbnailAnimatedImageBoderColor"] = value;
@@ -305,6 +306,18 @@ namespace LocalImageTagger.Properties {
             }
             set {
                 this["ThumbnailMarginSize"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int DefaultCategoryID {
+            get {
+                return ((int)(this["DefaultCategoryID"]));
+            }
+            set {
+                this["DefaultCategoryID"] = value;
             }
         }
     }
