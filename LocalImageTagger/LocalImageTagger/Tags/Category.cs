@@ -30,6 +30,9 @@ namespace LocalImageTagger.Tags
 
         #endregion
 
+        /// <summary>
+        /// Category holds the DB and Display information for the category.
+        /// </summary>
         public Category(string name, int id, string color, int priority)
         {
             Name = name;
@@ -38,6 +41,10 @@ namespace LocalImageTagger.Tags
             Priority = priority;
         }
 
+        /// <summary>
+        /// Category holds the DB and Display information for the category.
+        /// SQLite DB outputs int64
+        /// </summary>
         public Category(string name, long id, string color, long priority)
         {
             Name = name;
@@ -48,6 +55,10 @@ namespace LocalImageTagger.Tags
             Priority = (int)priority;
         }
 
+        /// <summary>
+        /// Category holds the DB and Display information for the category.
+        /// For new instantiation, only the name is a required field
+        /// </summary>
         public Category(string name, int? id = null, string color = null, int? priority = null )
         {
             Name = name;

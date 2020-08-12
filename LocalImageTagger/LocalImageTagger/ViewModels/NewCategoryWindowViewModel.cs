@@ -6,19 +6,30 @@ namespace LocalImageTagger.ViewModels
 {
     class NewCategoryWindowViewModel : BaseViewModel
     {
+        //Locals
+
+        private bool checkboxDefault = false;
+
+        private static string defaultColor = "#000000";
+        private static int defaultPriority = 5;
+
         #region Properties
 
         /// <summary>
-        /// The current width of the window. Used for perserving window adjustments.
+        /// The user-entered name of the new category
         /// </summary>
-        public double WindowWidth { get; set; }
+        public string NameText { get; set; }
 
         /// <summary>
-        /// The current height of the window. Used for perserving window adjustments.
+        /// The user-entered Color of the new category
         /// </summary>
-        public double WindowHeight { get; set; }
+        public string ColorText { get; set; } = defaultColor;
 
-        private bool checkboxDefault = false;
+        /// <summary>
+        /// The user-entered Priority of the new category
+        /// </summary>
+        public int PriorityText { get; set; } = defaultPriority;
+
 
         /// <summary>
         /// Controls the visibility of the Warning for setting a new default
@@ -71,12 +82,41 @@ namespace LocalImageTagger.ViewModels
 
         #endregion
 
+        #region Commands
+
+        /// <summary>
+        /// Closes the window (using MVVM).
+        /// </summary>
+        public RelayCommand<Window> Close { get; private set; }
+
+        /// <summary>
+        /// Saves the Category to the DB then closes the window.
+        /// </summary>
+        public RelayCommand<Window> SaveAndClose { get; private set; }
+
+
+        #endregion
+
         public NewCategoryWindowViewModel()
         {
-            //Set the window size when opening
-            WindowWidth = 400;
-            WindowHeight = 300;
+            Close = new RelayCommand<Window>(CloseHelper.CloseWindow);
+            SaveAndClose = new RelayCommand<Window>(saveAndClose);
+
         }
+
+        #region Methods
+
+        /// <summary>
+        /// Saves the Category to the DB then closes the window.
+        /// </summary>
+        /// <param name="window">The window doing the closing.</param>
+        private void saveAndClose(Window window)
+        {
+            
+            CloseHelper.CloseWindow(window);
+        }
+
+        #endregion
 
     }
 }

@@ -32,6 +32,7 @@ namespace LocalImageTagger.Files
         /// </summary>
         /// <param name="fullPath">The string fullpath to the file.</param>
         /// <param name="id">The Database ID for the file.</param>
+        /// <param name="tags">Optional <see cref="List{Tag}"/> for the tags associated with this File.</param>
         public FileItem(string fullPath, int id, List<Tag> tags = null) : base(fullPath)
         {
             ID = id;
@@ -47,6 +48,20 @@ namespace LocalImageTagger.Files
         public FileItem(Uri uri, int id, List<Tag> tags = null) : base(uri)
         {
             ID = id;
+            Tags = tags;
+        }
+
+        /// <summary>
+        /// FileItems must have both a path and an ID, since the program won't work with any file whose data hasn't been imported.
+        /// Tags can be loaded in for faster access, but are optional
+        /// This is for database loading which outputs strings and int64
+        /// </summary>
+        /// <param name="fullPath">The string fullpath to the file.</param>
+        /// <param name="id">The Database ID for the file.</param>
+        /// <param name="tags">Optional <see cref="List{Tag}"/> for the tags associated with this File.</param>
+        public FileItem(string fullPath, long id, List<Tag> tags = null) : base(fullPath)
+        {
+            ID = (int)id;
             Tags = tags;
         }
 
