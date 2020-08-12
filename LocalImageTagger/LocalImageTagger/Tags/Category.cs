@@ -30,10 +30,13 @@ namespace LocalImageTagger.Tags
 
         #endregion
 
+        #region Constructor
+
         /// <summary>
         /// Category holds the DB and Display information for the category.
+        /// For new instantiation, only the name is a required field
         /// </summary>
-        public Category(string name, int id, string color, int priority)
+        public Category(string name, int? id = null, string color = null, int? priority = null)
         {
             Name = name;
             ID = id;
@@ -55,16 +58,6 @@ namespace LocalImageTagger.Tags
             Priority = (int)priority;
         }
 
-        /// <summary>
-        /// Category holds the DB and Display information for the category.
-        /// For new instantiation, only the name is a required field
-        /// </summary>
-        public Category(string name, int? id = null, string color = null, int? priority = null )
-        {
-            Name = name;
-            ID = id;
-            Color = color;
-            Priority = priority;
-        }
+        #endregion
     }
 }

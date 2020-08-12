@@ -1,5 +1,6 @@
 ﻿using LocalImageTagger.Database;
 using LocalImageTagger.Properties;
+using LocalImageTagger.Tags;
 using System.Windows;
 
 namespace LocalImageTagger.ViewModels
@@ -10,8 +11,10 @@ namespace LocalImageTagger.ViewModels
 
         private bool checkboxDefault = false;
 
-        private static string defaultColor = "#000000";
-        private static int defaultPriority = 5;
+        //There are defaults in the DB itself, but I think setting them here would be useful for when user can add in the future.
+        //TODO: Best place/way to store defaults? App settings? DB can set defaults, but doesn't help with in program checking.
+        private static readonly string defaultColor = "#000000";
+        private static readonly int defaultPriority = 5;
 
         #region Properties
 
@@ -112,7 +115,10 @@ namespace LocalImageTagger.ViewModels
         /// <param name="window">The window doing the closing.</param>
         private void saveAndClose(Window window)
         {
-            
+            //Just always use the defaults in here. Won't matter if they are the same as in the DB anyway.
+            Category newCat = new Category(NameText, color: ColorText, priority: PriorityText);
+            SQLiteDataAccess.AddNewCategory(newCat);
+
             CloseHelper.CloseWindow(window);
         }
 

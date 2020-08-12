@@ -28,6 +28,45 @@ namespace LocalImageTagger.Database
 
         #endregion
 
+        #region Generic Functions
+        //For reducing repitition with the common formats
+
+        /// <summary>
+        /// Performs an INSERT command into the SQLite DB using Dapper given the SQL command and a preforms parameter object. Returns the number of affected rows or -1 on an error.
+        /// </summary>
+        /// <param name="sql">The sql command string.</param>
+        /// <param name="parameters"> The parameters in "new { param1 = val1, param2 = val2...}" form.</param>
+        /// <returns></returns>
+        private static int insertSQL(string sql, object parameters)
+        {
+            int affectedRows = 0;
+            try
+            {
+                //Closing is automatic with a using and will happen even on an error.
+                using (var cn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    //Opening is not implicit
+                    cn.Open();
+
+                    affectedRows = cn.Execute(sql, parameters);
+                }
+            }
+            catch (SqliteException ex)
+            {
+                DatabaseError.DatabaseErrorUnknownMessage(ex);
+                return -1;
+            }
+            catch (Exception ex)
+            {
+                DatabaseError.OtherErrorMessage(ex);
+                return -1;
+            }
+            return affectedRows;
+        }
+
+
+        #endregion
+
         #region Files
 
         #region Get Files
@@ -55,7 +94,7 @@ namespace LocalImageTagger.Database
             //Defined early to allow a null return at the end.
             List<FileItem> output = null;
 
-            string sqlGetFilesByID = "SELECT * FROM Files WHERE ID IN @IDs";
+            string sql = "SELECT * FROM Files WHERE ID IN @IDs";
             //The IDs are converted into a string for the sql parameter
             string IdString = string.Join(", ", ids);
 
@@ -69,7 +108,7 @@ namespace LocalImageTagger.Database
                     //TODO: A query with no results should still return an empty list, not null or something else. Confirm this is the case.
 
                     //Queries using Dapper, subs in the string as the parameter and returns the results as a list
-                    output = cn.Query<FileItem>(sqlGetFilesByID, new { IDs = IdString}).ToList();
+                    output = cn.Query<FileItem>(sql, new { IDs = IdString}).ToList();
                 }
             }
             catch (SqliteException ex)
@@ -95,7 +134,7 @@ namespace LocalImageTagger.Database
         {
             List<FileItem> output = null;
 
-            string sqlGetFilesByID = "SELECT * FROM Files";
+            string sql = "SELECT * FROM Files";
 
             try
             {
@@ -107,7 +146,7 @@ namespace LocalImageTagger.Database
                     //TODO: A query with no results should still return an empty list, not null or something else. Confirm this is the case.
 
                     //Queries using Dapper, subs in the string as the parameter and returns the results as a list
-                    output = cn.Query<FileItem>(sqlGetFilesByID).ToList();
+                    output = cn.Query<FileItem>(sql).ToList();
                 }
             }
             catch (SqliteException ex)
@@ -140,6 +179,7 @@ namespace LocalImageTagger.Database
             // to ensure that SQLITE will insert efficiently. (See license in WpfTabControlLibrary)
 
             var results = new List<int>();
+            string sql = "INSERT OR IGNORE INTO Files (FullPath) VALUES (?);";
 
             try { 
                 //Closing is automatic with a using and will happen even on an error.
@@ -147,13 +187,12 @@ namespace LocalImageTagger.Database
                 {
                     //Opening is not implicit
                     cn.Open();
-                    string sqlInsertFile = "INSERT OR IGNORE INTO Files (FullPath) VALUES (?);";
 
                     //Transactions always happen in SQLite and doing a transaction per insert is terribly slow
                     using var transaction = cn.BeginTransaction();
                     using (var cmd = cn.CreateCommand()) //Commmands with parameters prevent sql injection, and prevent the overhead in SQLite when doing a batch in one transaction
                     {
-                        cmd.CommandText = sqlInsertFile;
+                        cmd.CommandText = sql;
 
                         SQLiteParameter param = new SQLiteParameter();
                         //An Add adds into the first ?. I think addwithvalue isn't supported in sqllite? Either way, we want the value to be changed each time
@@ -234,7 +273,7 @@ namespace LocalImageTagger.Database
         public static Category GetCategoryByID(int id)
         {
             Category output = null;
-            string sqlGetCategorysByID = "SELECT Name, ID, Color, Priority FROM Categories WHERE ID = @CategoryID";
+            string sql = "SELECT Name, ID, Color, Priority FROM Categories WHERE ID = @CategoryID";
             try
             {
                 //Closing is automatic with a using and will happen even on an error.
@@ -244,7 +283,7 @@ namespace LocalImageTagger.Database
 
                     //Queries using Dapper. Returns as a Category. Returns null if there is no result.
                     //TODO: Confirm result of QuerySingleOrDefault is null.
-                    output = cn.QuerySingleOrDefault<Category>(sqlGetCategorysByID, new { CategoryID = id });
+                    output = cn.QuerySingleOrDefault<Category>(sql, new { CategoryID = id });
                     //Returns int64 like all sqlite things. Gets casted inside of category class ctor
                 }
             }
@@ -267,9 +306,32 @@ namespace LocalImageTagger.Database
 
         #region Add Categories
 
-        public static void AddNewCategory(Category cat)
+        public static int AddNewCategory(Category cat)
         {
-            throw new NotImplementedException();
+            string sql = "INSERT INTO Categories (Name, Color, Priority) Values (@Name, @Color, @Priority);";
+            int affectedRows = 0;
+            try
+            {
+                //Closing is automatic with a using and will happen even on an error.
+                using (var cn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    //Opening is not implicit
+                    cn.Open();
+
+                    affectedRows = cn.Execute(sql, new { Name = cat.Name, Color = cat.Color, Priority = cat.Priority });
+                }
+            }
+            catch (SqliteException ex)
+            {
+                DatabaseError.DatabaseErrorUnknownMessage(ex);
+                return -1;
+            }
+            catch (Exception ex)
+            {
+                DatabaseError.OtherErrorMessage(ex);
+                return -1;
+            }
+            return affectedRows;
         }
 
         #endregion
