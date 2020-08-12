@@ -3,6 +3,7 @@ using LocalImageTagger.Files;
 using LocalImageTagger.Tags;
 using Microsoft.Data.Sqlite;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
@@ -29,7 +30,7 @@ namespace LocalImageTagger.Database
         #endregion
 
         #region Generic Functions
-        //For reducing repitition with the common formats
+        //For reducing repitition with the common formats. Try catches are still repeated, but its only a few now. I could reduce them more, but it complicated function calls and added inefficiency.
 
         /// <summary>
         /// Performs an INSERT command into the SQLite DB using Dapper given the SQL command and a preforms parameter object. Returns the number of affected rows or -1 on an error.
@@ -64,6 +65,54 @@ namespace LocalImageTagger.Database
             return affectedRows;
         }
 
+        //private static int insertManySql(string sql, IEnumerable items)
+        //{
+        //    DApper has transactions.Look into those.Should be easier to be flexible with the number of parameters with that.This method is good, but not flexible currently.
+
+        //    var results = new List<int>();
+
+        //    try
+        //    {
+        //        //Closing is automatic with a using and will happen even on an error.
+        //        using (var cn = new SQLiteConnection(LoadConnectionString()))
+        //        {
+        //            //Opening is not implicit
+        //            cn.Open();
+
+        //            //Transactions always happen in SQLite and doing a transaction per insert is terribly slow
+        //            using var transaction = cn.BeginTransaction();
+        //            using (var cmd = cn.CreateCommand()) //Commmands with parameters prevent sql injection, and prevent the overhead in SQLite when doing a batch in one transaction
+        //            {
+        //                cmd.CommandText = sql;
+
+        //                SQLiteParameter param = new SQLiteParameter();
+        //                //An Add adds into the first ?. I think addwithvalue isn't supported in sqllite? Either way, we want the value to be changed each time
+        //                cmd.Parameters.Add(param); //"@Path"
+
+        //                //Insert each file in the list
+        //                foreach (var item in items)
+        //                {
+        //                    //cmd.Parameters["@Path"].Value = file.FullPath;
+        //                    param.Value = item.FullPath;
+        //                    results.Add(cmd.ExecuteNonQuery());
+        //                }
+        //            }
+        //            //Finishes and commits the transaction
+        //            transaction.Commit();
+        //        }
+        //        return results.Sum();
+        //    }
+        //    catch (SqliteException ex)
+        //    {
+        //        DatabaseError.DatabaseErrorUnknownMessage(ex);
+        //        return -1;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        DatabaseError.OtherErrorMessage(ex);
+        //        return -1;
+        //    }
+        //}
 
         #endregion
 
@@ -306,32 +355,15 @@ namespace LocalImageTagger.Database
 
         #region Add Categories
 
+        /// <summary>
+        /// Add a new category into the database
+        /// </summary>
+        /// <param name="cat"> The category to add. Only requires the name field to be filled. </param>
+        /// <returns>An integer of the rows affected or -1 on an error.</returns>
         public static int AddNewCategory(Category cat)
         {
             string sql = "INSERT INTO Categories (Name, Color, Priority) Values (@Name, @Color, @Priority);";
-            int affectedRows = 0;
-            try
-            {
-                //Closing is automatic with a using and will happen even on an error.
-                using (var cn = new SQLiteConnection(LoadConnectionString()))
-                {
-                    //Opening is not implicit
-                    cn.Open();
-
-                    affectedRows = cn.Execute(sql, new { Name = cat.Name, Color = cat.Color, Priority = cat.Priority });
-                }
-            }
-            catch (SqliteException ex)
-            {
-                DatabaseError.DatabaseErrorUnknownMessage(ex);
-                return -1;
-            }
-            catch (Exception ex)
-            {
-                DatabaseError.OtherErrorMessage(ex);
-                return -1;
-            }
-            return affectedRows;
+            return insertSQL(sql, new { Name = cat.Name, Color = cat.Color, Priority = cat.Priority });
         }
 
         #endregion
