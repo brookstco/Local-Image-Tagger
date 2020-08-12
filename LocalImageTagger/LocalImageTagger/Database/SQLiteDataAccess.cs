@@ -33,12 +33,13 @@ namespace LocalImageTagger.Database
         //For reducing repitition with the common formats. Try catches are still repeated, but its only a few now. I could reduce them more, but it complicated function calls and added inefficiency.
 
         /// <summary>
-        /// Performs an INSERT command into the SQLite DB using Dapper given the SQL command and a preforms parameter object. Returns the number of affected rows or -1 on an error.
+        /// Performs an INSERT command into the SQLite DB using Dapper given the SQL command and a preformed parameter object. 
+        /// Returns the number of affected rows or -1 on an error.
         /// </summary>
-        /// <param name="sql">The sql command string.</param>
-        /// <param name="parameters"> The parameters in "new { param1 = val1, param2 = val2...}" form.</param>
+        /// <param name="sql">The sql command <see cref="string"/>.</param>
+        /// <param name="paramObj"> The parameters in "new { param1 = val1, param2 = val2...}" form or in a class with identical field names as the params in the sql.</param>
         /// <returns></returns>
-        private static int insertSQL(string sql, object parameters)
+        private static int insertSQL(string sql, object paramObj)
         {
             int affectedRows = 0;
             try
@@ -49,7 +50,7 @@ namespace LocalImageTagger.Database
                     //Opening is not implicit
                     cn.Open();
 
-                    affectedRows = cn.Execute(sql, parameters);
+                    affectedRows = cn.Execute(sql, paramObj);
                 }
             }
             catch (SqliteException ex)
@@ -65,54 +66,45 @@ namespace LocalImageTagger.Database
             return affectedRows;
         }
 
-        //private static int insertManySql(string sql, IEnumerable items)
-        //{
-        //    DApper has transactions.Look into those.Should be easier to be flexible with the number of parameters with that.This method is good, but not flexible currently.
+        /// <summary>
+        /// Performs one or many INSERT commands into the SQLite DB using Dapper with an efficient transaction given the SQL command and a list of preformed parameter objects.
+        /// Returns the number of affected rows or -1 on an error.
+        /// </summary>
+        /// <param name="sql">The sql command <see cref="string"/>.</param>
+        /// <param name="paramObjList"> An <see cref="IEnumerable"/> of parameters in "new { param1 = val1, param2 = val2...}" form or in a class with identical field names as the params in the sql.</param>
+        /// <returns></returns>
+        private static int insertManySQL(string sql, IEnumerable paramObjList)
+        {
+            int affectedRows = 0;
+            try
+            {
+                //Closing is automatic with a using and will happen even on an error.
+                using (var cn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    //Opening is not implicit
+                    cn.Open();
+                    using (var transaction = cn.BeginTransaction())
+                    {
+                        affectedRows = cn.Execute(sql, paramObjList, transaction);
 
-        //    var results = new List<int>();
+                        transaction.Commit();
+                    }
 
-        //    try
-        //    {
-        //        //Closing is automatic with a using and will happen even on an error.
-        //        using (var cn = new SQLiteConnection(LoadConnectionString()))
-        //        {
-        //            //Opening is not implicit
-        //            cn.Open();
+                }
+            }
+            catch (SqliteException ex)
+            {
+                DatabaseError.DatabaseErrorUnknownMessage(ex);
+                return -1;
+            }
+            catch (Exception ex)
+            {
+                DatabaseError.OtherErrorMessage(ex);
+                return -1;
+            }
+            return affectedRows;
+        }
 
-        //            //Transactions always happen in SQLite and doing a transaction per insert is terribly slow
-        //            using var transaction = cn.BeginTransaction();
-        //            using (var cmd = cn.CreateCommand()) //Commmands with parameters prevent sql injection, and prevent the overhead in SQLite when doing a batch in one transaction
-        //            {
-        //                cmd.CommandText = sql;
-
-        //                SQLiteParameter param = new SQLiteParameter();
-        //                //An Add adds into the first ?. I think addwithvalue isn't supported in sqllite? Either way, we want the value to be changed each time
-        //                cmd.Parameters.Add(param); //"@Path"
-
-        //                //Insert each file in the list
-        //                foreach (var item in items)
-        //                {
-        //                    //cmd.Parameters["@Path"].Value = file.FullPath;
-        //                    param.Value = item.FullPath;
-        //                    results.Add(cmd.ExecuteNonQuery());
-        //                }
-        //            }
-        //            //Finishes and commits the transaction
-        //            transaction.Commit();
-        //        }
-        //        return results.Sum();
-        //    }
-        //    catch (SqliteException ex)
-        //    {
-        //        DatabaseError.DatabaseErrorUnknownMessage(ex);
-        //        return -1;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        DatabaseError.OtherErrorMessage(ex);
-        //        return -1;
-        //    }
-        //}
 
         #endregion
 
@@ -224,51 +216,55 @@ namespace LocalImageTagger.Database
         /// <returns>The <see cref="int"/> amount of modified records or -1 if there was an error.</returns>
         public static int AddNewFiles(IEnumerable<NewFile> files)
         {
-            // Used code from https://www.codeproject.com/Articles/853842/Csharp-Avoiding-Performance-Issues-with-Inserts-in and referenced https://stackoverflow.com/questions/9006604/improve-performance-of-sqlite-bulk-inserts-using-dapper-orm
-            // to ensure that SQLITE will insert efficiently. (See license in WpfTabControlLibrary)
+            //Cannot use ? as param if passing in classes with multiple properties in potentially random order.
+            string sql = "INSERT OR IGNORE INTO Files (FullPath) VALUES (@FullPath);";
+            return insertManySQL(sql, files);
 
-            var results = new List<int>();
-            string sql = "INSERT OR IGNORE INTO Files (FullPath) VALUES (?);";
+            //// Used code from https://www.codeproject.com/Articles/853842/Csharp-Avoiding-Performance-Issues-with-Inserts-in and referenced https://stackoverflow.com/questions/9006604/improve-performance-of-sqlite-bulk-inserts-using-dapper-orm
+            //// to ensure that SQLITE will insert efficiently. (See license in WpfTabControlLibrary)
 
-            try { 
-                //Closing is automatic with a using and will happen even on an error.
-                using (var cn = new SQLiteConnection(LoadConnectionString()))
-                {
-                    //Opening is not implicit
-                    cn.Open();
+            //var results = new List<int>();
+            //string sql = "INSERT OR IGNORE INTO Files (FullPath) VALUES (?);";
 
-                    //Transactions always happen in SQLite and doing a transaction per insert is terribly slow
-                    using var transaction = cn.BeginTransaction();
-                    using (var cmd = cn.CreateCommand()) //Commmands with parameters prevent sql injection, and prevent the overhead in SQLite when doing a batch in one transaction
-                    {
-                        cmd.CommandText = sql;
+            //try { 
+            //    //Closing is automatic with a using and will happen even on an error.
+            //    using (var cn = new SQLiteConnection(LoadConnectionString()))
+            //    {
+            //        //Opening is not implicit
+            //        cn.Open();
 
-                        SQLiteParameter param = new SQLiteParameter();
-                        //An Add adds into the first ?. I think addwithvalue isn't supported in sqllite? Either way, we want the value to be changed each time
-                        cmd.Parameters.Add(param); //"@Path"
+            //        //Transactions always happen in SQLite and doing a transaction per insert is terribly slow
+            //        using var transaction = cn.BeginTransaction();
+            //        using (var cmd = cn.CreateCommand()) //Commmands with parameters prevent sql injection, and prevent the overhead in SQLite when doing a batch in one transaction
+            //        {
+            //            cmd.CommandText = sql;
 
-                        //Insert each file in the list
-                        foreach (var file in files)
-                        {
-                            //cmd.Parameters["@Path"].Value = file.FullPath;
-                            param.Value = file.FullPath;
-                            results.Add(cmd.ExecuteNonQuery());
-                        }
-                    }
-                    //Finishes and commits the transaction
-                    transaction.Commit();
-                }
-                return results.Sum();
-            }
-            catch(SqliteException ex){
-                DatabaseError.DatabaseErrorUnknownMessage(ex);
-                return -1;
-            }
-            catch(Exception ex)
-            {
-                DatabaseError.OtherErrorMessage(ex);
-                return -1;
-            }
+            //            SQLiteParameter param = new SQLiteParameter();
+            //            //An Add adds into the first ?. I think addwithvalue isn't supported in sqllite? Either way, we want the value to be changed each time
+            //            cmd.Parameters.Add(param); //"@Path"
+
+            //            //Insert each file in the list
+            //            foreach (var file in files)
+            //            {
+            //                //cmd.Parameters["@Path"].Value = file.FullPath;
+            //                param.Value = file.FullPath;
+            //                results.Add(cmd.ExecuteNonQuery());
+            //            }
+            //        }
+            //        //Finishes and commits the transaction
+            //        transaction.Commit();
+            //    }
+            //    return results.Sum();
+            //}
+            //catch(SqliteException ex){
+            //    DatabaseError.DatabaseErrorUnknownMessage(ex);
+            //    return -1;
+            //}
+            //catch(Exception ex)
+            //{
+            //    DatabaseError.OtherErrorMessage(ex);
+            //    return -1;
+            //}
         }
 
         #endregion
@@ -363,7 +359,8 @@ namespace LocalImageTagger.Database
         public static int AddNewCategory(Category cat)
         {
             string sql = "INSERT INTO Categories (Name, Color, Priority) Values (@Name, @Color, @Priority);";
-            return insertSQL(sql, new { Name = cat.Name, Color = cat.Color, Priority = cat.Priority });
+            //Since Category has the same dfield names as the sql, we can just directly pass the object instead of new { Name = cat.Name, Color = cat.Color, Priority = cat.Priority }.
+            return insertSQL(sql, cat);
         }
 
         #endregion
