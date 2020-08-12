@@ -55,16 +55,16 @@ namespace LocalImageTagger.Database
             //Defined early to allow a null return at the end.
             List<FileItem> output = null;
 
+            string sqlGetFilesByID = "SELECT * FROM Files WHERE ID IN @IDs";
+            //The IDs are converted into a string for the sql parameter
+            string IdString = string.Join(", ", ids);
+
             try
             {
                 //Closing is automatic with a using and will happen even on an error.
                 using (var cn = new SQLiteConnection(LoadConnectionString()))
                 {
                     cn.Open();
-
-                    string sqlGetFilesByID = "SELECT * FROM Files WHERE ID IN @IDs";
-                    //The IDs are converted into a string for the sql parameter
-                    string IdString = string.Join(", ", ids);
 
                     //TODO: A query with no results should still return an empty list, not null or something else. Confirm this is the case.
 
@@ -95,14 +95,14 @@ namespace LocalImageTagger.Database
         {
             List<FileItem> output = null;
 
+            string sqlGetFilesByID = "SELECT * FROM Files";
+
             try
             {
                 //Closing is automatic with a using and will happen even on an error.
                 using (var cn = new SQLiteConnection(LoadConnectionString()))
                 {
                     cn.Open();
-
-                    string sqlGetFilesByID = "SELECT * FROM Files";
 
                     //TODO: A query with no results should still return an empty list, not null or something else. Confirm this is the case.
 
@@ -147,32 +147,28 @@ namespace LocalImageTagger.Database
                 {
                     //Opening is not implicit
                     cn.Open();
+                    string sqlInsertFile = "INSERT OR IGNORE INTO Files (FullPath) VALUES (?);";
 
-                    //Transatctions always happen in SQLite and doing a transaction per insert is terribly slow
-                    using (var transaction = cn.BeginTransaction())
+                    //Transactions always happen in SQLite and doing a transaction per insert is terribly slow
+                    using var transaction = cn.BeginTransaction();
+                    using (var cmd = cn.CreateCommand()) //Commmands with parameters prevent sql injection, and prevent the overhead in SQLite when doing a batch in one transaction
                     {
-                        //Commmands with parameters prevent sql injection, and prevent the overhead in SQLite when doing a batch in one transaction
-                        using (var cmd = cn.CreateCommand())
+                        cmd.CommandText = sqlInsertFile;
+
+                        SQLiteParameter param = new SQLiteParameter();
+                        //An Add adds into the first ?. I think addwithvalue isn't supported in sqllite? Either way, we want the value to be changed each time
+                        cmd.Parameters.Add(param); //"@Path"
+
+                        //Insert each file in the list
+                        foreach (var file in files)
                         {
-                            //Switching from @path to ? as a test, since the params weren't working
-                            //string sqlInsertFile = @"INSERT INTO Files (FullPath) VALUES (@Path);";
-
-                            cmd.CommandText = "INSERT OR IGNORE INTO Files (FullPath) VALUES (?);"; //sqlInsertFile;
-
-                            SQLiteParameter param = new SQLiteParameter();
-                            cmd.Parameters.Add(param); //"@Path"
-
-                            //Insert each file in the list
-                            foreach (var file in files)
-                            {
-                                //cmd.Parameters["@Path"].Value = file.FullPath;
-                                param.Value = file.FullPath;
-                                results.Add(cmd.ExecuteNonQuery());
-                            }
+                            //cmd.Parameters["@Path"].Value = file.FullPath;
+                            param.Value = file.FullPath;
+                            results.Add(cmd.ExecuteNonQuery());
                         }
-                        //Finishes and commits the transaction
-                        transaction.Commit();
                     }
+                    //Finishes and commits the transaction
+                    transaction.Commit();
                 }
                 return results.Sum();
             }
@@ -238,14 +234,13 @@ namespace LocalImageTagger.Database
         public static Category GetCategoryByID(int id)
         {
             Category output = null;
+            string sqlGetCategorysByID = "SELECT Name, ID, Color, Priority FROM Categories WHERE ID = @CategoryID";
             try
             {
                 //Closing is automatic with a using and will happen even on an error.
                 using (var cn = new SQLiteConnection(LoadConnectionString()))
                 {
                     cn.Open();
-
-                    string sqlGetCategorysByID = "SELECT * FROM Categories WHERE ID = @CategoryID";
 
                     //Queries using Dapper. Returns as a Category. Returns null if there is no result.
                     //TODO: Confirm result of QuerySingleOrDefault is null.
@@ -267,42 +262,6 @@ namespace LocalImageTagger.Database
             return output;
         }
 
-        /// <summary>
-        /// Returns a category with the given ID from the database
-        /// </summary>
-        /// <param name="name">The category name..</param>
-        /// <returns>A <see cref="Category"/> of the ID or null if there was no result.</returns>
-        public static Category GetCategoryByName(string name)
-        {
-            Category output = null;
-            try
-            {
-                //Closing is automatic with a using and will happen even on an error.
-                using (var cn = new SQLiteConnection(LoadConnectionString()))
-                {
-                    cn.Open();
-
-                    string sqlGetCategorysByID = "SELECT * FROM Categories WHERE Name = @CategoryName";
-
-                    //Queries using Dapper. Returns as a Category. Returns null if there is no result.
-                    //TODO: Confirm result of QuerySingleOrDefault is null.
-                    output = cn.QuerySingleOrDefault<Category>(sqlGetCategorysByID, new { CategoryName = name });
-
-                }
-            }
-            catch (SqliteException ex)
-            {
-                DatabaseError.DatabaseErrorUnknownMessage(ex);
-                return null;
-            }
-            catch (Exception ex)
-            {
-                DatabaseError.OtherErrorMessage(ex);
-                return null;
-            }
-
-            return output;
-        }
 
         #endregion
 

@@ -57,7 +57,15 @@ namespace LocalImageTagger.ViewModels
         {
             get
             {
-                return SQLiteDataAccess.GetCategoryByID(Settings.Default.DefaultCategoryID).Name;
+                var cat = SQLiteDataAccess.GetCategoryByID(Settings.Default.DefaultCategoryID);
+                if (cat == null)
+                {
+                    return "ERROR";
+                }
+                else
+                {
+                    return cat.Name;
+                }
             }
         }
 

@@ -33,6 +33,13 @@ namespace LocalImageTagger.Tags
 
         #endregion
 
+        public Category(string name, int id, string color, int priority)
+        {
+            Name = name;
+            ID = id;
+            Color = color;
+            Priority = priority;
+        }
 
         public Category(string name, int? id = null, string color = null, int? priority = null )
         {
