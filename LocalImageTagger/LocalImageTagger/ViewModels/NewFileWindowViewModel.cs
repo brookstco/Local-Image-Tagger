@@ -131,7 +131,7 @@ namespace LocalImageTagger.ViewModels
             OpenFileDialog fileDialog = new OpenFileDialog
             {
                 InitialDirectory = "c:\\",
-                Filter = "Images (*.png;*.jpeg;*.bmp;*.tiff)|*.png;*.jpeg;*.jpg;*.jpe*.bmp;*.tiff|All Files (*.*)|*.*", //Video files (*.mp4)|*.mp4|
+                Filter = "Images (*.png;*.jpeg;*.bmp;*.tiff)|*.png;*.jpeg;*.jpg;*.jpe*.bmp;*.tiff",//|All Files (*.*)|*.*", //Video files (*.mp4)|*.mp4|
                 RestoreDirectory = true,
                 Multiselect = true,
                 Title = "Select File(s) to import"
