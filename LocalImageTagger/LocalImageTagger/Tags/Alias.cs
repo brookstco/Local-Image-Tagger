@@ -17,7 +17,7 @@ namespace LocalImageTagger.Tags
         /// <summary>
         /// The database ID of this alias.
         /// </summary>
-        public int ID { get; private set; }
+        public int? ID { get; private set; }
 
         /// <summary>
         /// A list of tagIDs for the children of this alias
@@ -34,10 +34,17 @@ namespace LocalImageTagger.Tags
 
         #endregion
 
-        public Alias(string name, int id, List<int> children)
+        public Alias(string name, int? id = null, List<int> children)
         {
             Name = name;
             ID = id;
+            Children = children;
+        }
+
+        public Alias(string name, long id, List<int> children)
+        {
+            Name = name;
+            ID = (int)id;
             Children = children;
         }
 

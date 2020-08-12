@@ -245,7 +245,7 @@ namespace LocalImageTagger.Database
                     //Queries using Dapper. Returns as a Category. Returns null if there is no result.
                     //TODO: Confirm result of QuerySingleOrDefault is null.
                     output = cn.QuerySingleOrDefault<Category>(sqlGetCategorysByID, new { CategoryID = id });
-
+                    //Returns int64 like all sqlite things. Gets casted inside of category class ctor
                 }
             }
             catch (SqliteException ex)

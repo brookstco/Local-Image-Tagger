@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 namespace LocalImageTagger.Tags
 {
     public class Category
@@ -39,6 +36,16 @@ namespace LocalImageTagger.Tags
             ID = id;
             Color = color;
             Priority = priority;
+        }
+
+        public Category(string name, long id, string color, long priority)
+        {
+            Name = name;
+            //Casts int64 from sqlite selects into the proper int form. Won't even have problems with overflow for priority (small) and 2 billion is probably enough categories or files for a single user.
+            ID = (int)id;
+            Color = color;
+            //Casts int64 from sqlite selects into the proper int form. Won't even have problems with overflow for priority (small) and 2 billion is probably enough categories or files for a single user.
+            Priority = (int)priority;
         }
 
         public Category(string name, int? id = null, string color = null, int? priority = null )
