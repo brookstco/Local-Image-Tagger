@@ -130,6 +130,7 @@ namespace LocalImageTagger.ViewModels
         {
             OpenFileDialog fileDialog = new OpenFileDialog
             {
+                //TODO: DIrectory and filter should probably be constructed from settings based saved values, so I can easily acces them whereever with less hardcoding. Also to enable more codecs more easily.
                 InitialDirectory = "c:\\",
                 Filter = "Images (*.png;*.jpeg;*.bmp;*.tiff)|*.png;*.jpeg;*.jpg;*.jpe*.bmp;*.tiff",//|All Files (*.*)|*.*", //Video files (*.mp4)|*.mp4|
                 RestoreDirectory = true,
@@ -155,6 +156,7 @@ namespace LocalImageTagger.ViewModels
         private void saveAndClose(Window window)
         {
             addFilesToDB();
+            //TODO: Open a new tab with all of the added files as the search to make it easy to tag the new stuff.
             CloseHelper.CloseWindow(window);
         }
 

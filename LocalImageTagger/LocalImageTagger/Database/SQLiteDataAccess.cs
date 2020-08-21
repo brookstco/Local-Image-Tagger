@@ -219,94 +219,75 @@ namespace LocalImageTagger.Database
             //Cannot use ? as param if passing in classes with multiple properties in potentially random order.
             string sql = "INSERT OR IGNORE INTO Files (FullPath) VALUES (@FullPath);";
             return insertManySQL(sql, files);
-
-            //// Used code from https://www.codeproject.com/Articles/853842/Csharp-Avoiding-Performance-Issues-with-Inserts-in and referenced https://stackoverflow.com/questions/9006604/improve-performance-of-sqlite-bulk-inserts-using-dapper-orm
-            //// to ensure that SQLITE will insert efficiently. (See license in WpfTabControlLibrary)
-
-            //var results = new List<int>();
-            //string sql = "INSERT OR IGNORE INTO Files (FullPath) VALUES (?);";
-
-            //try { 
-            //    //Closing is automatic with a using and will happen even on an error.
-            //    using (var cn = new SQLiteConnection(LoadConnectionString()))
-            //    {
-            //        //Opening is not implicit
-            //        cn.Open();
-
-            //        //Transactions always happen in SQLite and doing a transaction per insert is terribly slow
-            //        using var transaction = cn.BeginTransaction();
-            //        using (var cmd = cn.CreateCommand()) //Commmands with parameters prevent sql injection, and prevent the overhead in SQLite when doing a batch in one transaction
-            //        {
-            //            cmd.CommandText = sql;
-
-            //            SQLiteParameter param = new SQLiteParameter();
-            //            //An Add adds into the first ?. I think addwithvalue isn't supported in sqllite? Either way, we want the value to be changed each time
-            //            cmd.Parameters.Add(param); //"@Path"
-
-            //            //Insert each file in the list
-            //            foreach (var file in files)
-            //            {
-            //                //cmd.Parameters["@Path"].Value = file.FullPath;
-            //                param.Value = file.FullPath;
-            //                results.Add(cmd.ExecuteNonQuery());
-            //            }
-            //        }
-            //        //Finishes and commits the transaction
-            //        transaction.Commit();
-            //    }
-            //    return results.Sum();
-            //}
-            //catch(SqliteException ex){
-            //    DatabaseError.DatabaseErrorUnknownMessage(ex);
-            //    return -1;
-            //}
-            //catch(Exception ex)
-            //{
-            //    DatabaseError.OtherErrorMessage(ex);
-            //    return -1;
-            //}
         }
 
         #endregion
 
         #region Edit Files
 
+        //TODO: Edit file paths if the file is missing
+
         #endregion
 
         #region Remove Files
 
+        //Delete function for the file. Should also delete all associated tagmaps. Currently foreign keys - Do they auto delete? is there a warning? Are foreign keys really needed here?
+
         #endregion
 
 
         #endregion
-
 
         #region Tags
 
         #region Load Tags
+
+        //TODO: Load tag by id
+
+        //TODO: Get tagid by name (return null if no tag)  ---  Must exactly match
+
+        //TODO: Get possible tagIDs by the start of a name  --returns a list of all tags that begin (or include?) the string
+
+        //TODO: Get AliasId by name (return null if no alias)
+
+        //TODO: Get possible aliasIDs by the start of a name  --returns a list of all aliases that begin (or include?) the string
+
         #endregion
 
         #region Add Tags
 
-        public static void AddNewTag(FullTag tag)
+        public static void AddNewTag(Tag tag)
         {
+            //TODO: Add tag info - get tagid
+            //Check if the aliases exists, if null, add new alias with this tagid
+            //if the alias exists, append this id to the alias id list.
+            //Append this id to the child id list for any parents.
             throw new NotImplementedException();
         }
+
+        //TODO: Add many tags for load in through file support. Make a transaction and return a list of ids in the same order as the passed in tag instances
 
         #endregion
 
         #region Edit Tags
 
+        //TODO: Lets you edit all tag fields. USES THE SAME VIEW but different viewmodels AS ADD NEW TAG.
+        //Keep a copy of the old and new, compare, and only update changed fields.
+        //Will have to search through everything since its not denormalised. IS extra space requirements worth? How slow will this be?
+
         #endregion
 
         #region Remove Tags
 
-        #endregion
+        //TODO: Remove a tag and all of its associated tagmaps, parent's child ids, and alias ids. Also delete any aliases that only have this as a child.
 
         #endregion
 
+        #endregion
 
         #region Categories
+
+        //TODO: Make each category have its own tag table? This would increase speed on searches (Right now, needs to check on every tag if it is the right cat.). Reduces the space needed for category fields on tags, but need disambiguation in the tagmaps.
 
         #region Get Categories
 
@@ -346,6 +327,9 @@ namespace LocalImageTagger.Database
             return output;
         }
 
+        //TODO: Get catid by name
+
+        //TODO: Get possible cats by the start of a name  --returns a list of all cats that begin (or include?) the string
 
         #endregion
 
@@ -367,12 +351,110 @@ namespace LocalImageTagger.Database
 
         #region Edit Categories
 
+        //TODO: Lets you edit all tag fields. USES THE SAME VIEW but different viewmodels AS ADD NEW TAG.
+        //Keep a copy of the old and new, compare, and only update changed fields.
+        //If the changes would affect a tag field, change all associated tags too.
+
+
+        //TODO: Merge category action? Since deleting a category is big and deletes tags, maybe a merge to hellp a transition? Not an immediate goal though.
+
         #endregion
 
         #region Remove Categories
 
+        //TODO: Deletes the category and all associated tags. Loop through the tags first, so that all of their associations are properly removed.
+
         #endregion
 
         #endregion
+
+        #region TagMaps
+
+        #region Load TagMaps
+
+        //TODO: Load tagmaps by fileID and return the tagIDs
+
+        //TODO: Load tagmaps by tagID and return the FileIds
+
+
+        //TODO: More complex searches proper searching. Maybe have its own region?
+        //https://vtidter.blogspot.com/2014/02/database-schema-for-tags.html
+        /*"Toxi" solution
+image
+Toxi came up with a three-table structure. Via the table “tagmap” the bookmarks and the tags are n-to-m related. Each tag can be used together with different bookmarks and vice versa. This DB-schema is also used by wordpress.
+The queries are quite the same as in the “scuttle” solution.
+Intersection (AND)
+Query for “bookmark+webservice+semweb”
+SELECT b.*
+FROM tagmap bt, bookmark b, tag t
+WHERE bt.tag_id = t.tag_id
+AND (t.name IN ('bookmark', 'webservice', 'semweb'))
+AND b.id = bt.bookmark_id
+GROUP BY b.id
+HAVING COUNT( b.id )=3
+Union (OR)
+Query for “bookmark|webservice|semweb”
+SELECT b.*
+FROM tagmap bt, bookmark b, tag t
+WHERE bt.tag_id = t.tag_id
+AND (t.name IN ('bookmark', 'webservice', 'semweb'))
+AND b.id = bt.bookmark_id
+GROUP BY b.id
+Minus (Exclusion)
+Query for “bookmark+webservice-semweb”, that is: bookmark AND webservice AND NOT semweb.
+
+SELECT b. *
+FROM bookmark b, tagmap bt, tag t
+WHERE b.id = bt.bookmark_id
+AND bt.tag_id = t.tag_id
+AND (t.name IN ('Programming', 'Algorithms'))
+AND b.id NOT IN (SELECT b.id FROM bookmark b, tagmap bt, tag t WHERE b.id = bt.bookmark_id AND bt.tag_id = t.tag_id AND t.name = 'Python')
+GROUP BY b.id
+HAVING COUNT( b.id ) =2
+Leaving out the HAVING COUNT leads to the Query for “bookmark|webservice-semweb”.
+Credits go to Rhomboid for helping me out with this query.
+Conclusion
+The advantages of this solution:
+You can save extra information on each tag (description, tag hierarchy, …)
+This is the most normalized solution (that is, if you go for 3NF: take this one :-)
+Disadvantages:
+When altering or deleting bookmarks you can end up with tag-orphans.
+If you want to have more complicated queries like (bookmarks OR bookmark) AND (webservice or WS) AND NOT (semweb or semanticweb) the queries tend to become very complicated. In these cases I suggest the following query/computation process:
+Run a query for each tag appearing in your “tag-query”: SELECT b.id FROM tagmap bt, bookmark b, tag t WHERE bt.tag_id = t.tag_id AND b.id = bt.bookmark_id AND t.name = "semweb"
+Put each id-set from the result into an array (that is: in your favourite coding language). You could cache this arrays if you want..
+Constrain the arrays with union or intersection or whatever.
+In this way, you can also do queries like (del.icio.us|delicious)+(semweb|semantic_web)-search. This type of queries (that is: the brackets) cannot be done by using the denormalized “MySQLicious solution”.
+This is the most flexible data structure and I guess it should scale pretty good (that is: if you do some caching).
+
+
+        */
+        #endregion
+
+        #region Add TagMaps
+
+        //TODO: Add many tagmaps based on a list of tagid and fileids
+
+        #endregion
+
+        //Tagmaps can't be edited. Just delete and add a new one.
+
+        #region Remove Tags
+
+        //TODO: Remove a tagmap based on fileid and tagid.
+
+        //TODO: Remove all tagmaps based on fileID or tagID.
+
+        #endregion
+
+        #endregion
+
+
+
+        //TODO: Preprocess tags
+        //When searching, break the tags up, and get the file ids for each, and put the ids in a new list. This makes it easier for the other functions
+
+        //TODO: Searching autocomplete. After 3(or user-chosen) number of letters typed, search the database for all of the possible choices. Prioritize categories then tags then aliases. Once in a category, only tags
+        //Show in order of the count for tags. Show what type (cat, tag, alias) and the count for the tags.
+
     }
 }

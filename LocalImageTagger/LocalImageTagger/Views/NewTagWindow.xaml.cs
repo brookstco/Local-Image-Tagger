@@ -21,6 +21,7 @@ namespace LocalImageTagger
         public NewTagWindow()
         {
             InitializeComponent();
+            //TODO: I can use this same view for both add and edit. Pass in viewmodel to allow for either? Also needs more of the data to be bound anyway, but def for this.
             DataContext = new NewTagWindowViewModel();
         }
 

@@ -33,14 +33,29 @@ namespace LocalImageTagger.Tags
             }
         }
 
+        /// <summary>
+        /// A list of tagIDs for the children of this tag.
+        /// </summary>
+        public List<int> Children { get; private set; }
+
+        /// <summary>
+        /// The text description of the tag shown in the tag dictionary.
+        /// </summary>
+        public string Description { get; private set; }
+
         #endregion
 
-        public Tag(string name, int id, int count)
+
+        public Tag(string name, int id, int count = 0, List<int> children = null, string desc = null)
         {
             Name = name;
             ID = id;
             Count = count;
+            Children = children;
+            Description = desc;
         }
+
+
 
     }
 }

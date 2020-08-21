@@ -25,8 +25,9 @@ namespace LocalImageTagger.ViewModels
         #region Properties
 
         //TODO: my tags don't support being empty, which isn't great. Figure that one out. Maybe blank fields as defaults, and it just checks if the entered info is valid before adding? Or have each as a field and build the tag at the end.
+        //Partially fixed, but double check sometime
 
-        public FullTag NewTag { get; private set; } //= new FullTag();
+        public Tag NewTag { get; private set; } //= new FullTag();
 
         #endregion
 
